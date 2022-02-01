@@ -12,27 +12,38 @@
     <div class="timeline-container">
 
       <!-- DAYS -->
-      <div class="days-arrows" style="display: flex; align-items: center; cursor: pointer;">
+      <div class="days-arrows">
         <!-- PREV ARROW -->
         <img
           src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
-          style="transform: rotate(90deg)"
+          style="transform: rotate(90deg) translateX(5px); cursor: pointer;"
+          @click="navigateDates('prev')"
         />
 
-        <div class="days-wrapper">
+        <div
+          class="days-wrapper"
+          v-for="day in currentDates"
+          :key="day">
           <div
             class="days-box"
-            v-for="day in dates"
-            :key="day"
-          >
+            @click="getDay(day)"
+            >
             <p>{{ day }}</p>
+          <img
+            class="arrow"
+            src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
+            v-if="day == daySelected"
+          />
           </div>
+          
+
         </div>
 
         <!-- NEXT ARROW -->
         <img
           src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
-          style="transform: rotate(-90deg)"
+          style="transform: rotate(-90deg) translateX(-5px); cursor: pointer;"
+          @click="navigateDates('next')"
         />
       </div>
 
@@ -59,23 +70,17 @@
           <img
             class="arrow"
             src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
-            v-if="year === yearSelected"
+            v-if="year == yearSelected"
           />
         </div>
           
       </div>
 
-
     </div>
 
   </div>
 
-
 </div>
-
-
-
-
 
 </template>
 
@@ -91,14 +96,15 @@ export default {
     return {
       years: [],
       dates: [],
+      currentDates: [],
       yearSelected: 1939,
+      daySelected: 'January 1'
     }
   },
   mounted() {
 
     //MAKE YEAR ARRAY
     for (let i = /*START */1939 ; i <= /*END*/1945; i++) { this.years.push(i) }
-
 
     // MAKE ARRAY OF DATES
     const getDateArray = function(start, end) {
@@ -121,35 +127,29 @@ export default {
     // FORMAT DATES INTO MONTH / DAY
     for (const date of dateArr) {
       const formattedDate = date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
-
       newArray.push(formattedDate)
-
     }
-
     this.dates = newArray
-    // console.log(newArray)
-
-    // // SPLIT ARRAY INTO CHUNKS OF 7
-    // function splitIntoChunk(arr, chunk) {
-
-    //     while(arr.length > 0) {
-
-    //         let tempArray;
-    //         tempArray = arr.splice(0, chunk);
-    //         console.log(tempArray);
-    //     }
-    // }
-
-    // splitIntoChunk(newArray, 7)
-
-
-
+    this.currentDates = newArray.slice(0, 7)
   },
   methods: {
     getYear(x) {
         this.yearSelected = x
+        console.log(this.yearSelected)
+    },
+    navigateDates(clicked) {
+        if (clicked === 'prev') {
+          this.currentDates = this.dates.slice(0, 7)
+        } else {
+          this.currentDates = this.dates.slice(7, 14)
+          console.log(this.currentDates)
+        }
+    },
+    getDay(x){
+      this.daySelected = x
+      console.log(this.daySelected)
     }
-  }
+  },
 
 }
 </script>
@@ -166,23 +166,27 @@ export default {
   padding: 0 20px;
 }
 
-.timeline-container {
-  /* display: none; */
-}
-
-.days-wrapper {
+.days-arrows {
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.days-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .days-box p {
   background-color: rgba(0,0,0,0.75);
+  text-align: center;
   color: white;
-  padding: 5px;
-  /* margin: 0 15px; */
+  padding: 5px 0;
   cursor: pointer;
-  width: max-content;
+  width: 100px;
   text-align: center;
 }
 
