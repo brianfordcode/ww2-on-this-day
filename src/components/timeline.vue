@@ -12,7 +12,14 @@
     <div class="timeline-container">
 
       <div class="days-wrapper">
-        <p>days</p>
+        <div
+          class="days-box"
+          v-for="day in dates"
+          :key="day"
+        >
+          <p>{{ day }}</p>
+        </div>
+        
       </div>
       
       <div class="year-wrapper">
@@ -21,7 +28,7 @@
           v-for="year in years"
           :key="year"
         >
-          <p>19{{ year }}</p>
+          <p>{{ year }}</p>
           <img
             draggable="false"
             class="bg"
@@ -45,12 +52,48 @@
 </template>
 
 <script>
+
+    // ARRAY OF MONTHS
+    // const months = Array.from({length: 12}, (item, i) => {
+    //   return new Date(0, i).toLocaleString('en-US', {month: 'long'})
+    // });
+
 export default {
   data() {
     return {
-      years: ['39','40','41','42','43','44','45'],
+      years: [],
+      dates: [],
     }
   },
+  mounted() {
+    //           START       END
+    for (let i = 1939 ; i <= 1945; i++) { this.years.push(i) }
+
+
+    // MAKE ARRAY OF DATES
+
+    const getDateArray = function(start, end) {
+        var arr = new Array();
+        var dt = new Date(start);
+        while (dt <= end) {
+            arr.push(new Date(dt));
+            dt.setDate(dt.getDate() + 1);
+        }
+        return arr;
+    }
+
+    const startDate = new Date(39, 0, 1); //YY-MM-DD
+    const endDate = new Date(45, 11, 31); //YY-MM-DD
+
+    const dateArr = getDateArray(startDate, endDate);
+
+    for (const date of dateArr) {
+      const formattedDate = date.toLocaleDateString('en-us', {month:"long", day:"numeric"}) 
+
+      this.dates.push(formattedDate)
+    }
+
+  }
 
 }
 </script>
@@ -68,6 +111,22 @@ export default {
 
 .timeline-container {
   /* display: none; */
+}
+
+.days-wrapper {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+  overflow: hidden;
+}
+
+.days-box p {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  width: max-content;
 }
 
 .year-wrapper {
@@ -92,7 +151,6 @@ export default {
   color: white;
   padding: 0 3px;
 }
-
 
 .year-box .bg {
   width: 100%;

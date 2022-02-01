@@ -4,7 +4,12 @@
 
   <timeline/>
 
+
+<div class="main-content">
   <router-view/>
+  <sideBar/>
+</div>
+
 
   <foot/>
 
@@ -14,10 +19,11 @@
 
 <script>
 import timeline from './components/timeline.vue'
+import sideBar from './components/sidebar.vue'
 import foot from './components/foot.vue'
 export default {
   components: {
-    foot, timeline
+    timeline, sideBar, foot 
   }
 
 }
@@ -34,9 +40,21 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* border: 1px solid blue; */
+  
+  
 }
 
 .app-container {
   height: 100vh;
 }
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 20px;
+}
+
 </style>
