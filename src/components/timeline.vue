@@ -17,22 +17,22 @@
         <img
           src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
           style="transform: rotate(90deg) translateX(5px); cursor: pointer;"
-          @click="navigateDates('prev')"
+          @click="startDay = getDayOffset(startDay, -7)"
         />
 
         <div
           class="days-wrapper"
-          v-for="day in currentDates"
-          :key="day">
+          v-for="offset in 7"
+          :key="offset">
           <div
             class="days-box"
-            @click="getDay(day)"
+            @click="daySelected = getDayOffset(startDay, offset - 1)"
             >
-            <p>{{ day }}</p>
+            <p>{{ getDayString(getDayOffset(startDay, offset - 1)) }}</p>
           <img
             class="arrow"
             src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
-            v-if="day == daySelected"
+            v-if="getDayOffset(startDay, offset - 1).getTime() === daySelected.getTime()"
           />
           </div>
           
@@ -43,7 +43,7 @@
         <img
           src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
           style="transform: rotate(-90deg) translateX(-5px); cursor: pointer;"
-          @click="navigateDates('next')"
+          @click="startDay = getDayOffset(startDay, 7)"
         />
       </div>
 
@@ -86,69 +86,48 @@
 
 <script>
 
-    // ARRAY OF MONTHS
-    // const months = Array.from({length: 12}, (item, i) => {
-    //   return new Date(0, i).toLocaleString('en-US', {month: 'long'})
-    // });
-
 export default {
   data() {
     return {
       years: [],
-      dates: [],
-      currentDates: [],
-      yearSelected: 1939,
-      daySelected: 'January 1'
+      yearSelected: null,
+      daySelected: null,
+      startDay: null,
     }
   },
-  mounted() {
+  created() {
 
+    // GET STARTING YEAR
+    const startYear = this.$store.state.start
+    const endYear = this.$store.state.end
     //MAKE YEAR ARRAY
-    for (let i = /*START */1939 ; i <= /*END*/1945; i++) { this.years.push(i) }
+    for (let i = startYear ; i <= endYear; i++) { this.years.push(i) }
+    this.yearSelected = startYear
 
-    // MAKE ARRAY OF DATES
-    const getDateArray = function(start, end) {
-        var arr = new Array();
-        var dt = new Date(start);
-        while (dt <= end) {
-            arr.push(new Date(dt));
-            dt.setDate(dt.getDate() + 1);
-        }
-        return arr;
-    }
+  
+    // GET CURRENT DAY IN LONG FORM
+    this.startDay = new Date(startYear, new Date().getMonth())
 
-    const startDate = new Date(39, 0, 1); //YY-MM-DD
-    const endDate = new Date(39, 11, 31); //YY-MM-DD
-
-    const dateArr = getDateArray(startDate, endDate);
-
-    const newArray = []
-
-    // FORMAT DATES INTO MONTH / DAY
-    for (const date of dateArr) {
-      const formattedDate = date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
-      newArray.push(formattedDate)
-    }
-    this.dates = newArray
-    this.currentDates = newArray.slice(0, 7)
+    // GET CURRENT DAY IN MONTH / DAY FORM AND SET AS DAY SELECTED
+    this.daySelected = this.startDay
   },
   methods: {
+    getDayOffset(date, dayOffset) {
+      return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
+    },
     getYear(x) {
         this.yearSelected = x
-        console.log(this.yearSelected)
-    },
-    navigateDates(clicked) {
-        if (clicked === 'prev') {
-          this.currentDates = this.dates.slice(0, 7)
-        } else {
-          this.currentDates = this.dates.slice(7, 14)
-          console.log(this.currentDates)
-        }
+        console.log(this.daySelected)
+
+        
     },
     getDay(x){
       this.daySelected = x
-      console.log(this.daySelected)
+    },
+    getDayString(date) {
+      return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
     }
+    
   },
 
 }
@@ -177,7 +156,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
+  height: 56px;
 }
 
 .days-box p {
@@ -193,7 +173,7 @@ export default {
 .year-wrapper {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 5px 0;
 }
 
 .year-arrow {

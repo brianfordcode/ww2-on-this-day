@@ -3,7 +3,9 @@
 
 
 <div class="sidebar-container">
-    <h1>sidebar</h1>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
 </div>
   
 
@@ -21,14 +23,17 @@ export default {
 <style scoped>
 
 .sidebar-container {
-    /* border: 1px solid black; */
-    height: 500px;
-    width: 200px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    /* box-shadow: 0px 0px 33px -20px #000000; */
-    background-color: grey;
+    flex-direction: column;
+}
+
+.box {
+    box-shadow: 0px 0px 33px -20px #000000;
+    background-color: rgb(206, 206, 206);
+    height: 150px;
+    width: 200px;
+    /* border: 1px solid black; */
+    margin-bottom: 20px;
 }
 
 </style>

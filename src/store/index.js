@@ -5,7 +5,7 @@ const store = createStore({
     return {
       start: 1939,
       end: 1945,
-      post: 'this is a post',
+      post: 'POST',
     }
   },
   mutations: {
