@@ -25,12 +25,12 @@
         <img
           src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
           style="transform: rotate(90deg) translateX(5px); cursor: pointer;"
-          @click="startDay = getDayOffset(startDay, -7)"
+          @click="startDay = getDayOffset(startDay, -this.numOfDaysInTimeline)"
         />
 
         <div
           class="days-wrapper"
-          v-for="offset in 7"
+          v-for="offset in this.numOfDaysInTimeline"
           :key="offset">
           <div
             class="days-box"
@@ -49,7 +49,7 @@
         <img
           src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
           style="transform: rotate(-90deg) translateX(-5px); cursor: pointer;"
-          @click="startDay = getDayOffset(startDay, 7)"
+          @click="startDay = getDayOffset(startDay, this.numOfDaysInTimeline)"
         />
       </div>
 
@@ -80,12 +80,8 @@
           />
         </div>
       </div>
-
-
     </div>
-
   </div>
-
 </div>
 
 </template>
@@ -99,6 +95,7 @@ export default {
       yearSelected: null,
       daySelected: null,
       startDay: null,
+      numOfDaysInTimeline: 7
     }
   },
   created() {
@@ -114,7 +111,15 @@ export default {
 
     // GET CURRENT DAY IN MONTH / DAY FORM AND SET AS DAY SELECTED
     this.daySelected = this.startDay
+
+    // GET BROWSER WIDTH
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+
   },
+  destroyed() {
+        window.removeEventListener('resize', this.handleResize);
+    },
   methods: {
     getDayOffset(date, dayOffset) {
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
@@ -128,8 +133,22 @@ export default {
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
+    },
+    // AMOUNT OF DAYS IN TIMELINE DEPENDING ON BROWSERWIDTH
+    handleResize() {
+      if (window.innerWidth > 1200) {
+        this.numOfDaysInTimeline = 7
+      }
+      if (window.innerWidth < 800) {
+        this.numOfDaysInTimeline = 5
+      }
+      if (window.innerWidth < 650) {
+        this.numOfDaysInTimeline = 3
+      }
+      if (window.innerWidth < 391) {
+        this.numOfDaysInTimeline = 2
+      }
     }
-
   },
 
 }
@@ -183,8 +202,9 @@ export default {
 
 .year-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 5px 0;
+  flex-wrap: wrap;
 }
 
 .year-arrow {
@@ -192,6 +212,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 82px;
+  padding: 0 10px;
 }
 
 .year-box {

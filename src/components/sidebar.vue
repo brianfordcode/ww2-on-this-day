@@ -1,22 +1,45 @@
 <template>
 
-
-
-<div class="sidebar-container">
+<div
+    class="sidebar-container"
+    v-if="showTimeline"
+>
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
 </div>
-  
-
-
 
 
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            showTimeline: true,
+        }
+    },
+    created() {
+        // GET BROWSER WIDTH
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 800) {
+                this.showTimeline = false
+            } else {
+                this.showTimeline = true
+            }
+        });
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
+    },
+    methods: {
+        handleResize() {
+            console.log(window.innerWidth)
+            if (window.innerWidth > 800) {
+                this.showTimeline = false
+            }
+        }
+    }
 }
 </script>
 

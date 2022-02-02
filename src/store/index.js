@@ -26,14 +26,14 @@ const store = createStore({
         // FEB 1, 1939
         eventId1: {
           date: '1939-02-01',
-          title: 'this is an event title for feb 1',
-          picture: 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU3OTIzNjU0NDk4NzIzNDc0/the-pictures-that-defined-world-war-iis-featured-photo.jpg',
+          title: 'first event for feb 1',
+          mainPicture: 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU3OTIzNjU0NDk4NzIzNDc0/the-pictures-that-defined-world-war-iis-featured-photo.jpg',
           books: ['book1']
         },
         eventId2: {
-          date: '1939-02-02',
-          title: 'this is an event title for feb 2',
-          picture: 'https://picsum.photos/300/200',
+          date: '1939-02-01',
+          title: 'second event for feb 1',
+          mainPicture: 'https://i.insider.com/579f448d88e4a7b32e8bbed0?width=600&format=jpeg&auto=webp',
           books: ['book1']
         },
 

@@ -2,45 +2,31 @@
   <div class="main-container">
 
     <div class="date-box">
-      <h1 class="date">{{ getSelectedDate }}</h1>
       <img
         draggable="false"
         class="bg"
         src="https://picsum.photos/300/200"
         alt="image"
       />
+      <h1 class="date">{{ getSelectedDate }}</h1>
     </div>
-    
-    <br/>
 
-    <!-- <p>{{ $store.state.post }}S for {{getSelectedDate}}</p> -->
-
-    <div
-      v-for="event in $store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate() )"
-      :key="event"
-    >
-    <div
-      class="event-pic-container"
-    >
-      <img
-        class="event-picture"
-        :src="event.picture"
-        :alt="event.picture"
-      />
-    </div>
-    <p>{{ event.title }}</p>
-    </div>
+    <entries/>
 
   </div>
 </template>
 
 <script>
+import entries from '../components/entries.vue'
 
 export default {
   name: 'Home',
   data() {
     return {
     }
+  },
+  components: {
+    entries
   },
   computed: {
     getSelectedDate() {
@@ -56,6 +42,8 @@ export default {
   width: 100%;
 }
 
+
+/* DATE BOX AND TEXT */
 .date-box {
   background-color: grey;
   width: 100%;
@@ -79,24 +67,8 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.5;
 }
-
-
-.event-pic-container {
-  height: 100px;
-  width: 100px;
-  overflow: hidden;
-}
-
-.event-picture {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-
-
 
 
 
