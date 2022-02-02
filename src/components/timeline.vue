@@ -4,7 +4,7 @@
 
   <div class="content">
 
-    
+    <!-- LOGO -->
       <div
         class="logo-arrow-container"
         style="display: flex; justify-content: space-between; align-items: center;"
@@ -19,7 +19,6 @@
           <h2>World War 2 on this day</h2>
           </router-link>
         </div>
-
         <img
           :src="arrowIcon"
           alt="arrow-icon"
@@ -28,9 +27,8 @@
           :class="{'arrow-icon': true, 'down': showTimeline}"
           @click="this.showTimeline = !this.showTimeline"
         >
-
       </div>
-
+    <!-- MAIN TIMELINE -->
     <div
       class="timeline-container" 
       v-if="this.$route.name === 'Home' && showTimeline"
@@ -87,7 +85,7 @@
             <img
               draggable="false"
               class="bg"
-              src="https://picsum.photos/300/200"
+              :src="getPicForYearBg(year)"
               alt="image"
             />
           </div>
@@ -150,6 +148,24 @@ export default {
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
     },
+    getPicForYearBg(year) {
+      const pictures = this.$store.state.pictures
+      if (year === 1939) {
+        return pictures.thirtyNine
+      } else if (year === 1940) {
+        return pictures.forty
+      } else if (year === 1941) {
+        return pictures.fortyOne
+      } else if (year === 1942) {
+        return pictures.fortyTwo
+      } else if (year === 1943) {
+        return pictures.fortyThree
+      } else if (year === 1944) {
+        return pictures.fortyFour
+      } else if (year === 1945) {
+        return pictures.fortyFive
+      }
+    },
     // AMOUNT OF DAYS IN TIMELINE DEPENDING ON BROWSERWIDTH
     handleResize() {
       let width = window.innerWidth
@@ -195,7 +211,7 @@ export default {
 
 .days-arrows {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   width: 100%;
 }
@@ -256,7 +272,7 @@ export default {
 
 .year-box p {
   background-color: rgba(0,0,0,0.75);
-  font-size: 30px;
+  font-size: 26px;
   position: absolute;
   color: white;
   padding: 0 3px;

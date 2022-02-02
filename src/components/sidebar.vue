@@ -60,8 +60,11 @@ export default {
     background-color: rgb(206, 206, 206);
     height: 150px;
     width: 220px;
-    margin-bottom: 20px;
     margin-left: 20px;
+}
+
+.box:not(:last-child) {
+    margin-bottom: 20px;
 }
 
 .sub {

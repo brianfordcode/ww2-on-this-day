@@ -40,8 +40,11 @@ export default {
 .entries-container {
     box-shadow: 0px 0px 33px -20px #000000;
     padding: 10px;
-    margin-bottom: 20px; 
     display: flex;
+}
+
+.entries-container:not(:last-child) {
+    margin-bottom: 20px; 
 }
 
 /* EVENT BOX */
