@@ -35,8 +35,6 @@
             v-if="getDayOffset(startDay, offset - 1).getTime() === daySelected.getTime()"
           />
           </div>
-          
-
         </div>
 
         <!-- NEXT ARROW -->
@@ -66,15 +64,15 @@
               alt="image"
             />
           </div>
-          <!-- SELECTOR ARROW -->
+
           <img
             class="arrow"
             src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
             v-if="year == yearSelected"
           />
         </div>
-          
       </div>
+
 
     </div>
 
@@ -96,7 +94,6 @@ export default {
     }
   },
   created() {
-
     // GET STARTING YEAR
     const startYear = this.$store.state.start
     const endYear = this.$store.state.end
@@ -119,12 +116,12 @@ export default {
         this.startDay = new Date(x, this.startDay.getMonth(), this.startDay.getDate());
         this.daySelected = new Date(x, this.daySelected.getMonth(), this.daySelected.getDate());
 
-        console.log(this.daySelected.toLocaleDateString('en-us', {month:"long", day:"numeric", year:"numeric"}))
+        this.$store.dispatch('changeDate', this.daySelected)
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
     }
-    
+
   },
 
 }
@@ -134,6 +131,8 @@ export default {
 
 .main-container {
   box-shadow: 0px 0px 33px -20px #000000;
+  user-select: none;
+  /* font-family: 'special elite' */
 }
 
 .content {
@@ -164,7 +163,6 @@ export default {
   padding: 5px 0;
   cursor: pointer;
   width: 100px;
-  text-align: center;
 }
 
 .year-wrapper {
@@ -184,9 +182,8 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items:center;
-  height: 75px;
-  width: 125px;
-  user-select: none;
+  height: 60px;
+  width: 120px;
 }
 
 .year-box p {

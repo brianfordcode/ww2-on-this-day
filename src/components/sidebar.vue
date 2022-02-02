@@ -34,6 +34,7 @@ export default {
     width: 200px;
     /* border: 1px solid black; */
     margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 </style>
