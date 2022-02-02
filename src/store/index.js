@@ -5,7 +5,7 @@ const store = createStore({
     return {
       start: 1939,
       end: 1945,
-      selectedDate: new Date(1939, new Date().getMonth()),
+      selectedDate: new Date(1939, new Date().getMonth(), new Date().getDay() - 1),
       post: 'POST',
 
 
@@ -26,14 +26,20 @@ const store = createStore({
         // FEB 1, 1939
         eventId1: {
           date: '1939-02-01',
-          title: 'first event for feb 1',
+          title: 'first event for feb 1, 1939',
           mainPicture: 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU3OTIzNjU0NDk4NzIzNDc0/the-pictures-that-defined-world-war-iis-featured-photo.jpg',
           books: ['book1']
         },
         eventId2: {
           date: '1939-02-01',
-          title: 'second event for feb 1',
+          title: 'second event for feb 1, 1939',
           mainPicture: 'https://i.insider.com/579f448d88e4a7b32e8bbed0?width=600&format=jpeg&auto=webp',
+          books: ['book1']
+        },
+        eventId3: {
+          date: '1939-02-01',
+          title: 'third event for feb 1, 1939',
+          mainPicture: 'https://www.wearethemighty.com/app/uploads/legacy/assets.rbl.ms/17493201/origin.jpg',
           books: ['book1']
         },
 

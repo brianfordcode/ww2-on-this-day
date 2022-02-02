@@ -12,10 +12,11 @@
         
     </div>
     <div class="box">
-        adsense
     </div>
     <div class="box">
         most popular days
+    </div>
+    <div class="box">
     </div>
 </div>
 
@@ -31,10 +32,11 @@ export default {
     },
     created() {
         // GET BROWSER WIDTH
-        window.addEventListener('resize', () => {
+        const checkBoundaries = () => {
             window.innerWidth < 800 ? this.showSideBar = false : this.showSideBar = true
-            }
-        );
+        }
+        window.addEventListener('resize', checkBoundaries);
+        checkBoundaries()
     },
     methods: {
         handleResize() {

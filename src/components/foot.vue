@@ -28,7 +28,7 @@ export default {
 #foot {
     position: absolute;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     box-shadow: 0px 0px 33px -20px #000000;
 }
 

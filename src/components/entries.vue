@@ -46,7 +46,7 @@ export default {
 
 /* EVENT BOX */
 .event-pic-container {
-    height: 100px;
+    height: 110px;
     width: 200px;
     overflow: hidden;
 }

@@ -39,13 +39,12 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* border: 1px solid blue; */
-  
-  
+  position: relative;
 }
 
 .app-container {
   height: 100vh;
+  /* border: 1px solid blue; */
 }
 
 .main-content {

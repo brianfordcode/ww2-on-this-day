@@ -9,7 +9,6 @@
         class="logo-arrow-container"
         style="display: flex; justify-content: space-between; align-items: center;"
       >
-
         <div class="logo">
           <router-link to="/">
           <img
@@ -24,15 +23,14 @@
         <img
           :src="arrowIcon"
           alt="arrow-icon"
-          v-if="showArrow"
-          style="cursor: pointer;"
+          v-if="showArrow && this.$route.name === 'Home'"
+          style="cursor: pointer; user-select: none;"
+          :class="{'arrow-icon': true, 'down': showTimeline}"
           @click="this.showTimeline = !this.showTimeline"
         >
 
       </div>
-      
-    
-    
+
     <div
       class="timeline-container" 
       v-if="this.$route.name === 'Home' && showTimeline"
@@ -41,8 +39,9 @@
       <div class="days-arrows">
         <!-- PREV ARROW -->
         <img
+          class="direction-arrow"
           :src="this.arrowIcon"
-          style="transform: rotate(90deg) translateX(5px); cursor: pointer;"
+          style="transform: rotate(90deg) translateX(1px);"
           @click="startDay = getDayOffset(startDay, -this.numOfDaysInTimeline)"
         />
 
@@ -55,6 +54,7 @@
             @click="daySelected = getDayOffset(startDay, offset - 1), yearClicked(this.yearSelected)"
             >
             <p>{{ getDayString(getDayOffset(startDay, offset - 1)) }}</p>
+          <!-- SELECTOR ARROW -->
           <img
             class="arrow"
             :src="this.arrowIcon"
@@ -65,8 +65,9 @@
 
         <!-- NEXT ARROW -->
         <img
+          class="direction-arrow"
           :src="this.arrowIcon"
-          style="transform: rotate(-90deg) translateX(-5px); cursor: pointer;"
+          style="transform: rotate(-90deg) translateX(-1px);"
           @click="startDay = getDayOffset(startDay, this.numOfDaysInTimeline)"
         />
       </div>
@@ -127,12 +128,13 @@ export default {
     for (let i = startYear ; i <= endYear; i++) { this.years.push(i) }
     this.yearSelected = startYear
     // GET CURRENT DAY IN LONG FORM
-    this.startDay = new Date(startYear, new Date().getMonth())
+    this.startDay = new Date(startYear, new Date().getMonth(), new Date().getDay() - 1)
+    console.log(this.startDay)
     // GET CURRENT DAY IN MONTH / DAY FORM AND SET AS DAY SELECTED
     this.daySelected = this.startDay
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
-    this.handleResize();
+      this.handleResize();
   },
   methods: {
     getDayOffset(date, dayOffset) {
@@ -151,10 +153,12 @@ export default {
     // AMOUNT OF DAYS IN TIMELINE DEPENDING ON BROWSERWIDTH
     handleResize() {
       let width = window.innerWidth
+      // TIMELINE DAYS SHOWN
       width < 1200 ? this.numOfDaysInTimeline = 7 : ''
       width < 800 ? this.numOfDaysInTimeline = 5 : ''
       width < 650 ? this.numOfDaysInTimeline = 3 : ''
       width <= 391 ? this.numOfDaysInTimeline = 2 : ''
+      // SHOW/HIDE TIMELINE AND ARROW
       if (width < 600) {
         this.showArrow = true
         this.showTimeline = false
@@ -196,6 +200,15 @@ export default {
   width: 100%;
 }
 
+.direction-arrow {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.direction-arrow:hover {
+  opacity: 1;
+}
+
 .days-box {
   display: flex;
   flex-direction: column;
@@ -211,6 +224,10 @@ export default {
   padding: 2px 0;
   cursor: pointer;
   width: 100px;
+}
+
+.down {
+  transform: rotate(180deg);
 }
 
 .year-wrapper {
