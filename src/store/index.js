@@ -68,7 +68,7 @@ const store = createStore({
     },
     eventsOnDay: (state, getters) => (year, month, day) => {
       const eventsOnDay = []
-      // MONTHS OFFSET BY 1
+      // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
       month = (month < 10 ? '0' : '') + (month + 1)
       day = (day < 10 ? '0' : '') + day
       Object
@@ -80,8 +80,6 @@ const store = createStore({
           }
         })
         return eventsOnDay
-
-
     }
   },
   mutations: {

@@ -127,7 +127,6 @@ export default {
     this.yearSelected = startYear
     // GET CURRENT DAY IN LONG FORM
     this.startDay = new Date(startYear, new Date().getMonth(), new Date().getDay() - 1)
-    console.log(this.startDay)
     // GET CURRENT DAY IN MONTH / DAY FORM AND SET AS DAY SELECTED
     this.daySelected = this.startDay
     // GET BROWSER WIDTH
