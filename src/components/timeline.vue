@@ -26,7 +26,7 @@
           :key="offset">
           <div
             class="days-box"
-            @click="daySelected = getDayOffset(startDay, offset - 1)"
+            @click="daySelected = getDayOffset(startDay, offset - 1), yearClicked(this.yearSelected)"
             >
             <p>{{ getDayString(getDayOffset(startDay, offset - 1)) }}</p>
           <img
@@ -56,7 +56,7 @@
         >
           <div
             class="year-box"
-            @click="getYear(year)"
+            @click="yearClicked(year)"
           >
             <p>{{ year }}</p>
             <img
@@ -104,7 +104,6 @@ export default {
     for (let i = startYear ; i <= endYear; i++) { this.years.push(i) }
     this.yearSelected = startYear
 
-  
     // GET CURRENT DAY IN LONG FORM
     this.startDay = new Date(startYear, new Date().getMonth())
 
@@ -115,14 +114,12 @@ export default {
     getDayOffset(date, dayOffset) {
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
     },
-    getYear(x) {
+    yearClicked(x) {
         this.yearSelected = x
-        console.log(this.daySelected)
+        this.startDay = new Date(x, this.startDay.getMonth(), this.startDay.getDate());
+        this.daySelected = new Date(x, this.daySelected.getMonth(), this.daySelected.getDate());
 
-        
-    },
-    getDay(x){
-      this.daySelected = x
+        console.log(this.daySelected.toLocaleDateString('en-us', {month:"long", day:"numeric", year:"numeric"}))
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
