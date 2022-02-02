@@ -49,7 +49,7 @@ const store = createStore({
     },
     eventsOnDay: (state, getters) => (year, month, day) => {
       const eventsOnDay = []
-      // months offset by 1
+      // MONTHS OFFSET BY 1
       month = (month < 10 ? '0' : '') + (month + 1)
       day = (day < 10 ? '0' : '') + day
       Object
@@ -60,7 +60,6 @@ const store = createStore({
             eventsOnDay.push(event)
           }
         })
-        console.log(eventsOnDay, year, month, day)
         return eventsOnDay
 
 

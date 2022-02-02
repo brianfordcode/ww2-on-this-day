@@ -4,26 +4,44 @@
 
   <div class="content">
 
-    <router-link to="/">
-      <div class="logo">
+    
+      <div
+        class="logo-arrow-container"
+        style="display: flex; justify-content: space-between; align-items: center;"
+      >
+
+        <div class="logo">
+          <router-link to="/">
+          <img
+            src="../assets/m1-garand.png"
+            alt="m1-garand"
+            style="height: 20px; width: auto; padding-right: 5px;"
+          />
+          <h2>World War 2 on this day</h2>
+          </router-link>
+        </div>
+
         <img
-          src="../assets/m1-garand.png"
-          alt="m1-garand"
-          style="height: 20px; width: auto; padding-right: 5px;"
-        />
-        <h2>World War 2 on this day</h2>
+          :src="arrowIcon"
+          alt="arrow-icon"
+          v-if="showArrow"
+          style="cursor: pointer;"
+          @click="this.showTimeline = !this.showTimeline"
+        >
+
       </div>
-    </router-link>
+      
+    
     
     <div
       class="timeline-container" 
-      v-if="this.$route.name === 'Home'"
+      v-if="this.$route.name === 'Home' && showTimeline"
     >
       <!-- DAYS -->
       <div class="days-arrows">
         <!-- PREV ARROW -->
         <img
-          src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
+          :src="this.arrowIcon"
           style="transform: rotate(90deg) translateX(5px); cursor: pointer;"
           @click="startDay = getDayOffset(startDay, -this.numOfDaysInTimeline)"
         />
@@ -39,7 +57,7 @@
             <p>{{ getDayString(getDayOffset(startDay, offset - 1)) }}</p>
           <img
             class="arrow"
-            src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
+            :src="this.arrowIcon"
             v-if="getDayOffset(startDay, offset - 1).getTime() === daySelected.getTime()"
           />
           </div>
@@ -47,7 +65,7 @@
 
         <!-- NEXT ARROW -->
         <img
-          src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
+          :src="this.arrowIcon"
           style="transform: rotate(-90deg) translateX(-5px); cursor: pointer;"
           @click="startDay = getDayOffset(startDay, this.numOfDaysInTimeline)"
         />
@@ -75,7 +93,7 @@
           <!-- SELECTOR ARROW -->
           <img
             class="arrow"
-            src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
+            :src="this.arrowIcon"
             v-if="year == yearSelected"
           />
         </div>
@@ -95,7 +113,10 @@ export default {
       yearSelected: null,
       daySelected: null,
       startDay: null,
-      numOfDaysInTimeline: 7
+      numOfDaysInTimeline: 7,
+      showTimeline: true,
+      showArrow: false,
+      arrowIcon: "https://img.icons8.com/material-rounded/24/000000/give-way.png"
     }
   },
   created() {
@@ -105,21 +126,14 @@ export default {
     //MAKE YEAR ARRAY
     for (let i = startYear ; i <= endYear; i++) { this.years.push(i) }
     this.yearSelected = startYear
-
     // GET CURRENT DAY IN LONG FORM
     this.startDay = new Date(startYear, new Date().getMonth())
-
     // GET CURRENT DAY IN MONTH / DAY FORM AND SET AS DAY SELECTED
     this.daySelected = this.startDay
-
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
-
   },
-  destroyed() {
-        window.removeEventListener('resize', this.handleResize);
-    },
   methods: {
     getDayOffset(date, dayOffset) {
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
@@ -128,7 +142,7 @@ export default {
         this.yearSelected = x
         this.startDay = new Date(x, this.startDay.getMonth(), this.startDay.getDate());
         this.daySelected = new Date(x, this.daySelected.getMonth(), this.daySelected.getDate());
-
+        // DISPATCH DAYSELECTED TO STORE
         this.$store.dispatch('changeDate', this.daySelected)
     },
     getDayString(date) {
@@ -136,17 +150,17 @@ export default {
     },
     // AMOUNT OF DAYS IN TIMELINE DEPENDING ON BROWSERWIDTH
     handleResize() {
-      if (window.innerWidth > 1200) {
-        this.numOfDaysInTimeline = 7
-      }
-      if (window.innerWidth < 800) {
-        this.numOfDaysInTimeline = 5
-      }
-      if (window.innerWidth < 650) {
-        this.numOfDaysInTimeline = 3
-      }
-      if (window.innerWidth < 391) {
-        this.numOfDaysInTimeline = 2
+      let width = window.innerWidth
+      width < 1200 ? this.numOfDaysInTimeline = 7 : ''
+      width < 800 ? this.numOfDaysInTimeline = 5 : ''
+      width < 650 ? this.numOfDaysInTimeline = 3 : ''
+      width <= 391 ? this.numOfDaysInTimeline = 2 : ''
+      if (width < 600) {
+        this.showArrow = true
+        this.showTimeline = false
+      } else {
+        this.showArrow = false
+        this.showTimeline = true
       }
     }
   },
@@ -159,7 +173,6 @@ export default {
 .main-container {
   box-shadow: 0px 0px 33px -20px #000000;
   user-select: none;
-  /* font-family: 'special elite' */
 }
 
 .content {

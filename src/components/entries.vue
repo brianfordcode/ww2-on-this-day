@@ -35,30 +35,26 @@ export default {
 
 .main-container {
     margin-top: 30px;
-    /* display: flex; */
-    
 }
 
 .entries-container {
     box-shadow: 0px 0px 33px -20px #000000;
     padding: 10px;
-    margin-bottom: 30px; 
+    margin-bottom: 20px; 
     display: flex;
-    /* border: 1px solid black; */
 }
-
 
 /* EVENT BOX */
 .event-pic-container {
-  height: 100px;
-  width: 200px;
-  overflow: hidden;
+    height: 100px;
+    width: 200px;
+    overflow: hidden;
 }
 
 .event-picture {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .event-details {
