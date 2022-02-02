@@ -13,7 +13,23 @@
     
     <br/>
 
-    <p>{{ $store.state.post }}S for {{getSelectedDate}}</p>
+    <!-- <p>{{ $store.state.post }}S for {{getSelectedDate}}</p> -->
+
+    <div
+      v-for="event in $store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate() )"
+      :key="event"
+    >
+    <div
+      class="event-pic-container"
+    >
+      <img
+        class="event-picture"
+        :src="event.picture"
+        :alt="event.picture"
+      />
+    </div>
+    <p>{{ event.title }}</p>
+    </div>
 
   </div>
 </template>
@@ -64,5 +80,24 @@ export default {
   height: 100%;
   object-fit: cover;
 }
+
+
+.event-pic-container {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+
+.event-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
 
 </style>

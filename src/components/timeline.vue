@@ -1,16 +1,24 @@
 <template>
 
-
 <div class="main-container">
 
   <div class="content">
 
-    <div class="logo" style="padding: 10px 0;">
-      <h2>World War 2 on this day</h2>
-    </div>
+    <router-link to="/">
+      <div class="logo">
+        <img
+          src="../assets/m1-garand.png"
+          alt="m1-garand"
+          style="height: 20px; width: auto; padding-right: 5px;"
+        />
+        <h2>World War 2 on this day</h2>
+      </div>
+    </router-link>
     
-    <div class="timeline-container">
-
+    <div
+      class="timeline-container" 
+      v-if="this.$route.name === 'Home'"
+    >
       <!-- DAYS -->
       <div class="days-arrows">
         <!-- PREV ARROW -->
@@ -64,7 +72,7 @@
               alt="image"
             />
           </div>
-
+          <!-- SELECTOR ARROW -->
           <img
             class="arrow"
             src="https://img.icons8.com/material-rounded/24/000000/give-way.png"
@@ -141,6 +149,14 @@ export default {
   padding: 0 20px;
 }
 
+.content a, .logo {
+  text-decoration: none;
+  color: black;
+  padding: 10px 0;
+  font-family: 'special elite';
+  display: flex;
+}
+
 .days-arrows {
   display: flex;
   justify-content: space-between;
@@ -153,14 +169,14 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 56px;
+  height: 48px;
 }
 
 .days-box p {
   background-color: rgba(0,0,0,0.75);
   text-align: center;
   color: white;
-  padding: 5px 0;
+  padding: 2px 0;
   cursor: pointer;
   width: 100px;
 }
