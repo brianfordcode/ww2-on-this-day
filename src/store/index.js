@@ -18,7 +18,7 @@ const store = createStore({
         },
       },
       pictures: {
-        // TIMELINE YEAR PICTURES
+        // TIMELINE AND DATEBOX PICTURES
         thirtyNine: "https://www.thenation.com/wp-content/uploads/2015/08/germany_poland_loc_img.jpg",
         forty: "https://www.history.com/.image/t_share/MTU3ODc4NjAyNzA4NDI4NTEx/image-placeholder-title.jpg",
         fortyOne: "https://list23.com/img/pearl-harbor-day-2021-80th-anniversary-of-date-which-will-live-in-infamy.jpeg",
@@ -86,7 +86,17 @@ const store = createStore({
       for (let i = state.start ; i <= state.end; i++) { years.push(i) }
       return years
     },
-    getPicForYearBg: (state, getters) =>(year) => {
+    getPicForBg: (state, getters) => (year) => {
+
+      // for (let i = 0; i < Object.keys(state.pictures).length; i++) {
+      //   const foundYear = Object.keys(state.pictures)[i]
+      //   if (JSON.stringify(year) == foundYear) {
+      //      console.log(foundYear)
+      //   }
+      // }
+      // if (typeof year != 'string') { const year = year.getFullYear()}
+      // selectedDate.getFullYear()
+
       if (year === 1939) {
         return state.pictures.thirtyNine
       } else if (year === 1940) {

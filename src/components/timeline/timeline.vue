@@ -77,7 +77,7 @@
             <img
               draggable="false"
               class="bg"
-              :src="$store.getters.getPicForYearBg(year)"
+              :src="$store.getters.getPicForBg(year)"
               alt="image"
             />
           </div>
@@ -116,7 +116,6 @@ export default {
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
       this.handleResize();
-      
   },
   methods: {
     getDayOffset(date, dayOffset) {
