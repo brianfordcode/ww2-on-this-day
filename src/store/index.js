@@ -18,6 +18,7 @@ const store = createStore({
         },
       },
       pictures: {
+        // TIMELINE YEAR PICTURES
         thirtyNine: "https://www.thenation.com/wp-content/uploads/2015/08/germany_poland_loc_img.jpg",
         forty: "https://www.history.com/.image/t_share/MTU3ODc4NjAyNzA4NDI4NTEx/image-placeholder-title.jpg",
         fortyOne: "https://list23.com/img/pearl-harbor-day-2021-80th-anniversary-of-date-which-will-live-in-infamy.jpeg",
@@ -33,25 +34,25 @@ const store = createStore({
         // FEB 1, 1939
         eventId1: {
           date: '1939-02-02',
-          title: 'first event for feb 1, 1939',
+          title: 'first event for feb 2, 1939',
           mainPicture: 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU3OTIzNjU0NDk4NzIzNDc0/the-pictures-that-defined-world-war-iis-featured-photo.jpg',
           books: ['book1']
         },
         eventId2: {
           date: '1939-02-02',
-          title: 'second event for feb 1, 1939',
+          title: 'second event for feb 2, 1939',
           mainPicture: 'https://i.insider.com/579f448d88e4a7b32e8bbed0?width=600&format=jpeg&auto=webp',
           books: ['book1']
         },
         eventId3: {
           date: '1939-02-02',
-          title: 'third event for feb 1, 1939',
+          title: 'third event for feb 2, 1939',
           mainPicture: 'https://www.wearethemighty.com/app/uploads/legacy/assets.rbl.ms/17493201/origin.jpg',
           books: ['book1']
         },
         eventId4: {
           date: '1939-02-02',
-          title: 'fourth event for feb 1, 1939',
+          title: 'fourth event for feb 2, 1939',
           mainPicture: 'https://www.archives.gov/files/research/still-pictures/ww2-111-sc-407101.jpeg',
           books: ['book1']
         },
@@ -80,6 +81,11 @@ const store = createStore({
           }
         })
         return eventsOnDay
+    },
+    yearTimeline: (state, getters) => () => {
+      const years = []
+      for (let i = state.start ; i <= state.end; i++) { years.push(i) }
+      return years
     }
   },
   mutations: {

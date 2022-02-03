@@ -38,11 +38,11 @@ export default {
     padding: 20px 10px 40px 10px;
     max-width: 1200px;
     margin: 0 auto;
+    /* text-align: center; */
 }
 
 #foot a {
     text-decoration: none;
-    font-weight: bold;
     color: black;
     margin: 0 10px;
 }

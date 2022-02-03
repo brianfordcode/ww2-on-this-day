@@ -4,7 +4,6 @@
 
   <div class="content">
 
-    
       <div
         class="logo-arrow-container"
         style="display: flex; justify-content: space-between; align-items: center;"
@@ -66,7 +65,7 @@
       <div class="year-wrapper">
         <div
           class="year-arrow"
-          v-for="year in years"
+          v-for="year in $store.getters.yearTimeline()"
           :key="year"
         >
           <div
@@ -101,10 +100,9 @@ import logo from "./logo.vue"
 export default {
   data() {
     return {
-      years: [],
-      yearSelected: null,
-      daySelected: null,
-      startDay: null,
+      yearSelected: this.$store.state.start,
+      daySelected: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
+      startDay: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
       numOfDaysInTimeline: 7,
       showTimeline: true,
       showArrow: false,
@@ -113,16 +111,6 @@ export default {
   },
   components: { logo },
   created() {
-    // GET STARTING YEAR
-    const startYear = this.$store.state.start
-    const endYear = this.$store.state.end
-    //MAKE YEAR ARRAY
-    for (let i = startYear ; i <= endYear; i++) { this.years.push(i) }
-    this.yearSelected = startYear
-    // GET CURRENT DAY IN LONG FORM
-    this.startDay = new Date(startYear, new Date().getMonth(), new Date().getDay() - 1)
-    // GET CURRENT DAY IN MONTH / DAY FORM AND SET AS DAY SELECTED
-    this.daySelected = this.startDay
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
       this.handleResize();
