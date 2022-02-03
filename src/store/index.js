@@ -20,10 +20,10 @@ const store = createStore({
       pictures: {
         thirtyNine: "https://www.thenation.com/wp-content/uploads/2015/08/germany_poland_loc_img.jpg",
         forty: "https://www.history.com/.image/t_share/MTU3ODc4NjAyNzA4NDI4NTEx/image-placeholder-title.jpg",
-        fortyOne: "https://www.history.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTYwMjM1MDg4NTkwNzQzNDY0/4-pearl-harbor-photo-gallery-gettyimages-2660129-.jpg",
+        fortyOne: "https://list23.com/img/pearl-harbor-day-2021-80th-anniversary-of-date-which-will-live-in-infamy.jpeg",
         fortyTwo: "https://i.insider.com/5b69fe6c8905f218008b5063?width=1136&format=jpeg",
-        fortyThree: "http://www.nww2m.com/wp-content/uploads/2013/10/1280px-B-17F_formation_over_Schweinfurt_Germany_August_17_1943.jpg",
-        fortyFour: "https://www.sarahsundin.com/wp-content/uploads/2014/11/Lost-Battalion.jpg",
+        fortyThree: "https://media.iwm.org.uk/ciim5/29/844/large_000000.jpg",
+        fortyFour: "https://media.newyorker.com/photos/5cf933a5d822ca03dda19640/16:9/w_2560,h_1440,c_limit/Angell-DDay.jpg",
         fortyFive: "https://www.nationalww2museum.org/sites/default/files/styles/wide_medium/public/2021-05/626815-wiki-american_military_personnel_gather_in_paris_to_celebrate_the_japanese_surrender.jpg",
       },
 

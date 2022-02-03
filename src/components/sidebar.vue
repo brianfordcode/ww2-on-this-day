@@ -11,12 +11,14 @@
         </div>
         
     </div>
-    <div class="box">
+    <div class="box ad">
+        ad
     </div>
-    <div class="box">
-        most popular days
+    <div class="box pop-days">
+        <p>Most Popular Days</p>
     </div>
-    <div class="box">
+    <div class="box ad">
+        ad
     </div>
 </div>
 
@@ -55,29 +57,32 @@ export default {
     flex-direction: column;
 }
 
+.sidebar-container p {
+    font-family: 'special elite';
+}
+
 .box {
     box-shadow: 0px 0px 33px -20px #000000;
-    background-color: rgb(206, 206, 206);
     height: 150px;
     width: 220px;
     margin-left: 20px;
+    background-color: white;
 }
 
 .box:not(:last-child) {
     margin-bottom: 20px;
 }
 
+/* SUBSCRIBE BOX */
 .sub {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(255, 255, 255);
     text-align: center;
 }
 
 .sub-content p {
-    font-family: 'special elite';
     width: 60%;
     margin: 0 auto;
 }
@@ -88,6 +93,24 @@ export default {
     width: 70%;
     padding: 5px;
     outline: none;
+}
+/* POPULAR DAYS BOX */
+.pop-days {
+    height: 250px;
+}
+
+.pop-days p {
+    text-align: center;
+    padding: 20px;
+}
+
+/* ADS */
+
+.ad {
+    background-color: rgb(180, 180, 180);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 </style>

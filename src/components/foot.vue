@@ -26,11 +26,12 @@ export default {
 <style scoped>
 
 #foot {
-    /* position: absolute; */
-    /* bottom: 0; */
+    /* position: absolute;
+    bottom: 0; */
     margin-top: 20px;
     width: 100%;
     box-shadow: 0px 0px 33px -20px #000000;
+    background-color: white;
 }
 
 .footer-content {

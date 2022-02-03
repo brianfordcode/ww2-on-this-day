@@ -92,6 +92,7 @@ export default {
   height: 100%;
   object-fit: cover;
   opacity: 0.5;
+  object-position: 0 30%;
 }
 
 

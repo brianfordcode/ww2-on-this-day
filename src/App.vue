@@ -4,16 +4,16 @@
 
   <timeline/>
 
-
-<div class="main-content">
-  <router-view/>
-  <sideBar/>
-</div>
-
+  <div class="main-content">
+    <router-view/>
+    <sideBar/>
+  </div>
 
   <foot/>
-
+  
 </div>
+
+
 
 </template>
 
@@ -41,6 +41,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  height: 100%;
 }
 
 .app-container {

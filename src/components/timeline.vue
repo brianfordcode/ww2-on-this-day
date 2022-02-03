@@ -4,29 +4,22 @@
 
   <div class="content">
 
-    <!-- LOGO -->
+    
       <div
         class="logo-arrow-container"
         style="display: flex; justify-content: space-between; align-items: center;"
       >
-        <div class="logo">
-          <router-link to="/">
-          <img
-            src="../assets/m1-garand.png"
-            alt="m1-garand"
-            style="height: 20px; width: auto; padding-right: 5px;"
-          />
-          <h2>World War 2 on this day</h2>
-          </router-link>
-        </div>
+        <!-- LOGO -->
+        <logo style="padding: 10px; 0 5px 0"/>
+        <!-- ARROW ICON WHEN SMALL SCREEN -->
         <img
           :src="arrowIcon"
           alt="arrow-icon"
           v-if="showArrow && this.$route.name === 'Home'"
           style="cursor: pointer; user-select: none;"
-          :class="{'arrow-icon': true, 'down': showTimeline}"
+          :class="{'down': showTimeline}"
           @click="this.showTimeline = !this.showTimeline"
-        >
+        />
       </div>
     <!-- MAIN TIMELINE -->
     <div
@@ -69,7 +62,6 @@
           @click="startDay = getDayOffset(startDay, this.numOfDaysInTimeline)"
         />
       </div>
-
       <!-- YEARS -->
       <div class="year-wrapper">
         <div
@@ -104,6 +96,7 @@
 </template>
 
 <script>
+import logo from "./logo.vue"
 
 export default {
   data() {
@@ -118,6 +111,7 @@ export default {
       arrowIcon: "https://img.icons8.com/material-rounded/24/000000/give-way.png"
     }
   },
+  components: { logo },
   created() {
     // GET STARTING YEAR
     const startYear = this.$store.state.start
@@ -198,14 +192,6 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.content a, .logo {
-  text-decoration: none;
-  color: black;
-  padding: 10px 0;
-  font-family: 'special elite';
-  display: flex;
 }
 
 .days-arrows {
