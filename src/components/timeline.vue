@@ -14,8 +14,9 @@
         <img
           :src="arrowIcon"
           alt="arrow-icon"
+          draggable = "false"
           v-if="showArrow && this.$route.name === 'Home'"
-          style="cursor: pointer; user-select: none;"
+          style="cursor: pointer;"
           :class="{'down': showTimeline}"
           @click="this.showTimeline = !this.showTimeline"
         />
@@ -31,8 +32,9 @@
         <img
           class="direction-arrow"
           :src="this.arrowIcon"
-          style="transform: rotate(90deg) translateX(1px);"
-          @click="startDay = getDayOffset(startDay, -this.numOfDaysInTimeline)"
+          draggable = "false"
+          style="transform: rotate(90deg); translateX(1px);"
+          @click="startDate = getDayOffset(startDate, -this.numOfDaysInTimeline)"
         />
 
         <div
@@ -41,14 +43,15 @@
           :key="offset">
           <div
             class="days-box"
-            @click="daySelected = getDayOffset(startDay, offset - 1), yearClicked(this.yearSelected)"
+            @click="dateSelected = getDayOffset(startDate, offset - 1), yearClicked(this.yearSelected)"
             >
-            <p>{{ getDayString(getDayOffset(startDay, offset - 1)) }}</p>
+            <p>{{ getDayString(getDayOffset(startDate, offset - 1)) }}</p>
           <!-- SELECTOR ARROW -->
           <img
             class="arrow"
             :src="this.arrowIcon"
-            v-if="getDayOffset(startDay, offset - 1).getTime() === daySelected.getTime()"
+            draggable = "false"
+            v-if="getDayOffset(startDate, offset - 1).getTime() === dateSelected.getTime()"
           />
           </div>
         </div>
@@ -57,8 +60,9 @@
         <img
           class="direction-arrow"
           :src="this.arrowIcon"
-          style="transform: rotate(-90deg) translateX(-1px);"
-          @click="startDay = getDayOffset(startDay, this.numOfDaysInTimeline)"
+          draggable = "false"
+          style="transform: rotate(-90deg); translateX(-1px);"
+          @click="startDate = getDayOffset(startDate, this.numOfDaysInTimeline)"
         />
       </div>
       <!-- YEARS -->
@@ -76,13 +80,14 @@
             <img
               draggable="false"
               class="bg"
-              :src="getPicForYearBg(year)"
+              :src="$store.getters.getPicForYearBg(year)"
               alt="image"
             />
           </div>
           <!-- SELECTOR ARROW -->
           <img
             class="arrow"
+            draggable = "false"
             :src="this.arrowIcon"
             v-if="year == yearSelected"
           />
@@ -101,8 +106,8 @@ export default {
   data() {
     return {
       yearSelected: this.$store.state.start,
-      daySelected: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
-      startDay: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
+      dateSelected: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
+      startDate: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
       numOfDaysInTimeline: 7,
       showTimeline: true,
       showArrow: false,
@@ -119,33 +124,15 @@ export default {
     getDayOffset(date, dayOffset) {
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
     },
-    yearClicked(x) {
-        this.yearSelected = x
-        this.startDay = new Date(x, this.startDay.getMonth(), this.startDay.getDate());
-        this.daySelected = new Date(x, this.daySelected.getMonth(), this.daySelected.getDate());
-        // DISPATCH DAYSELECTED TO STORE
-        this.$store.dispatch('changeDate', this.daySelected)
+    yearClicked(clickedYear) {
+        this.yearSelected = clickedYear
+        this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
+        this.dateSelected = new Date(clickedYear, this.dateSelected.getMonth(), this.dateSelected.getDate());
+        // DISPATCH dateSelected TO STORE
+        this.$store.dispatch('changeDate', this.dateSelected)
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
-    },
-    getPicForYearBg(year) {
-      const pictures = this.$store.state.pictures
-      if (year === 1939) {
-        return pictures.thirtyNine
-      } else if (year === 1940) {
-        return pictures.forty
-      } else if (year === 1941) {
-        return pictures.fortyOne
-      } else if (year === 1942) {
-        return pictures.fortyTwo
-      } else if (year === 1943) {
-        return pictures.fortyThree
-      } else if (year === 1944) {
-        return pictures.fortyFour
-      } else if (year === 1945) {
-        return pictures.fortyFive
-      }
     },
     // AMOUNT OF DAYS IN TIMELINE DEPENDING ON BROWSERWIDTH
     handleResize() {
