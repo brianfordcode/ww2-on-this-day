@@ -1,9 +1,7 @@
 <template>
 
 <div class="main-container">
-
   <div class="content">
-
       <div
         class="logo-arrow-container"
         style="display: flex; justify-content: space-between; align-items: center;"
@@ -36,7 +34,6 @@
           style="transform: rotate(90deg); translateX(1px);"
           @click="startDate = getDayOffset(startDate, -this.numOfDaysInTimeline)"
         />
-
         <div
           class="days-wrapper"
           v-for="offset in this.numOfDaysInTimeline"
@@ -55,7 +52,6 @@
           />
           </div>
         </div>
-
         <!-- NEXT ARROW -->
         <img
           class="direction-arrow"
@@ -107,7 +103,7 @@ export default {
     return {
       yearSelected: this.$store.state.start,
       dateSelected: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
-      startDate: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
+      startDate: this.$store.state.selectedDate,
       numOfDaysInTimeline: 7,
       showTimeline: true,
       showArrow: false,
@@ -119,6 +115,7 @@ export default {
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
       this.handleResize();
+      
   },
   methods: {
     getDayOffset(date, dayOffset) {
@@ -134,10 +131,9 @@ export default {
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
     },
-    // AMOUNT OF DAYS IN TIMELINE DEPENDING ON BROWSERWIDTH
+    // AMOUNT OF DAYS IN TIMELINE & SHOW/HIDE TIMELINE AND ARROW DEPENDING ON BROWSERWIDTH
     handleResize() {
       let width = window.innerWidth
-      // TIMELINE DAYS SHOWN
       width < 1200 ? this.numOfDaysInTimeline = 7 : ''
       width < 800 ? this.numOfDaysInTimeline = 5 : ''
       width < 650 ? this.numOfDaysInTimeline = 3 : ''
@@ -152,7 +148,6 @@ export default {
       }
     }
   },
-
 }
 </script>
 

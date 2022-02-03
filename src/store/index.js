@@ -30,7 +30,6 @@ const store = createStore({
 
       // EVENTS
       events: {
-
         // FEB 1, 1939
         eventId1: {
           date: '1939-02-02',
@@ -106,13 +105,13 @@ const store = createStore({
     },
   },
   mutations: {
-    changeDate(state, date) {
-      state.selectedDate = date
+    changeDate(state, dateSelectedfromTimeline) {
+      state.selectedDate = dateSelectedfromTimeline
     }
   },
   actions: {
-    changeDate(context, date) {
-      context.commit('changeDate', date)
+    changeDate(context, dateSelectedfromTimeline) {
+      context.commit('changeDate', dateSelectedfromTimeline)
     }
   },
   modules: {

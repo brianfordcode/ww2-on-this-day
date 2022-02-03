@@ -13,8 +13,7 @@
 <style scoped>
 
 .logo {
-    width: 40%;
-    min-width: 300px
+    width: 300px
 }
 
 </style>
