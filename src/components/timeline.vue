@@ -4,10 +4,10 @@
   <div class="content">
       <div
         class="logo-arrow-container"
-        style="display: flex; justify-content: space-between; align-items: center;"
+        style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;"
       >
         <!-- LOGO -->
-        <logo style="padding: 10px; 0 5px 0"/>
+        <logo style="margin: 10px 0 5px 0;"/>
         <!-- ARROW ICON WHEN SMALL SCREEN -->
         <img
           :src="arrowIcon"
@@ -24,7 +24,7 @@
       class="timeline-container" 
       v-if="this.$route.name === 'Home' && showTimeline"
     >
-      <!-- DAYS -->
+      <!-- DAYS CONTAINER -->
       <div class="days-arrows">
         <!-- PREV ARROW -->
         <img
@@ -34,6 +34,7 @@
           style="transform: rotate(90deg); translateX(1px);"
           @click="startDate = getDayOffset(startDate, -this.numOfDaysInTimeline)"
         />
+        <!-- DAYS -->
         <div
           class="days-wrapper"
           v-for="offset in this.numOfDaysInTimeline"
@@ -61,7 +62,7 @@
           @click="startDate = getDayOffset(startDate, this.numOfDaysInTimeline)"
         />
       </div>
-      <!-- YEARS -->
+      <!-- YEARS CONTAINER -->
       <div class="year-wrapper">
         <div
           class="year-arrow"
@@ -161,7 +162,6 @@ export default {
 .content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .days-arrows {
