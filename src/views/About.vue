@@ -33,6 +33,19 @@
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 500px) {
+
+  .content img {
+    width: 200px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
 }
 
