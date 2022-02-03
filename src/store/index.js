@@ -87,31 +87,13 @@ const store = createStore({
       return years
     },
     getPicForBg: (state, getters) => (year) => {
-
-      // for (let i = 0; i < Object.keys(state.pictures).length; i++) {
-      //   const foundYear = Object.keys(state.pictures)[i]
-      //   if (JSON.stringify(year) == foundYear) {
-      //      console.log(foundYear)
-      //   }
-      // }
-      // if (typeof year != 'string') { const year = year.getFullYear()}
-      // selectedDate.getFullYear()
-
-      if (year === 1939) {
-        return state.pictures.thirtyNine
-      } else if (year === 1940) {
-        return state.pictures.forty
-      } else if (year === 1941) {
-        return state.pictures.fortyOne
-      } else if (year === 1942) {
-        return state.pictures.fortyTwo
-      } else if (year === 1943) {
-        return state.pictures.fortyThree
-      } else if (year === 1944) {
-        return state.pictures.fortyFour
-      } else if (year === 1945) {
-        return state.pictures.fortyFive
-      }
+      if (year === 1939) { return state.pictures.thirtyNine }
+      if (year === 1940) { return state.pictures.forty }
+      if (year === 1941) { return state.pictures.fortyOne }
+      if (year === 1942) { return state.pictures.fortyTwo }
+      if (year === 1943) { return state.pictures.fortyThree }
+      if (year === 1944) { return state.pictures.fortyFour }
+      if (year === 1945) { return state.pictures.fortyFive }
     },
   },
   mutations: {

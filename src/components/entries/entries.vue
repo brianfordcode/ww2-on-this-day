@@ -7,20 +7,16 @@
         v-for="event in $store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate())"
         :key="event"
     >
-    <div
-        class="event-pic-container"
-    >
-        <img
-        class="event-picture"
-        :src="event.mainPicture"
-        :alt="event.mainPicture"
-        />
-    </div>
-    <div class="event-details">
-        <p>{{ event.title }}</p>
-    </div>
-    
-
+        <div class="event-pic-container">
+            <img
+            class="event-picture"
+            :src="event.mainPicture"
+            :alt="event.mainPicture"
+            />
+        </div>
+        <div class="event-details">
+            <p>{{ event.title }}</p>
+        </div>
     </div>
 </div>
 </template>

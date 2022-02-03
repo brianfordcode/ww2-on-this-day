@@ -15,7 +15,7 @@ const routes = [
     name: 'About',
     component: () => import('../views/About.vue'),
     meta: {
-      title: "WW2 on this day | About"
+      title: "About | WW2 on this day"
     }
   },
   {
@@ -23,7 +23,7 @@ const routes = [
     name: 'Contribute',
     component: () => import('../views/Contribute.vue'),
     meta: {
-      title: "WW2 on this day | Contribute"
+      title: "Contribute | WW2 on this day"
     }
   },
 ]

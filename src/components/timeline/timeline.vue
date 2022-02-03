@@ -139,13 +139,8 @@ export default {
       width < 650 ? this.numOfDaysInTimeline = 3 : ''
       width <= 391 ? this.numOfDaysInTimeline = 2 : ''
       // SHOW/HIDE TIMELINE AND ARROW
-      if (width < 600) {
-        this.showArrow = true
-        this.showTimeline = false
-      } else {
-        this.showArrow = false
-        this.showTimeline = true
-      }
+      if ( width < 600 ) { this.showArrow = true, this.showTimeline = false }
+      else { this.showArrow = false, this.showTimeline = true }
     }
   },
 }

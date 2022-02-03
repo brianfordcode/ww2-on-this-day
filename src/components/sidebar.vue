@@ -40,13 +40,6 @@ export default {
         window.addEventListener('resize', checkBoundaries);
         checkBoundaries()
     },
-    methods: {
-        handleResize() {
-            if (window.innerWidth > 800) {
-                this.showSideBar = false
-            }
-        }
-    }
 }
 </script>
 
