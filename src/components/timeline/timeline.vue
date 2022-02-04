@@ -7,7 +7,7 @@
         style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;"
       >
         <!-- LOGO -->
-        <logo style="margin: 10px 0 5px 0;"/>
+        <logo/>
         <!-- ARROW ICON WHEN SMALL SCREEN -->
         <img
           :src="arrowIcon"

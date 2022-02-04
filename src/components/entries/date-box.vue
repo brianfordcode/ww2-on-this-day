@@ -1,11 +1,6 @@
 <template>
     <div class="date-box">
-        <img
-            draggable="false"
-            class="bg"
-            :src="$store.getters.getPicForBg(this.$store.state.selectedDate.getFullYear())"
-            alt="image"
-        />
+        <video :src="this.$store.state.video" autoplay muted playbackRate = "0.5"/>
         <h1 class="date">
             {{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}
         </h1>
@@ -21,6 +16,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  overflow: hidden;
 }
 
 .date {
@@ -28,17 +24,14 @@
   position: absolute;
   text-align: center;
   color: white;
-  padding: 5px 0;
-  width: 300px;
+  padding: 5px 15px;
+  width: max-content;
   user-select: none;
 }
 
-.bg {
+video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
   opacity: 0.5;
-  object-position: 0 30%;
 }
 
 </style>
