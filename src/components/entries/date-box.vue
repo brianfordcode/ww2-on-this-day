@@ -1,6 +1,6 @@
 <template>
     <div class="date-box">
-        <video :src="this.$store.state.video" autoplay muted playbackRate = "0.5"/>
+        <video :src="this.$store.state.video" playsinline autoplay muted playbackRate = "0.5"/>
         <h1 class="date">
             {{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}
         </h1>
