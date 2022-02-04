@@ -13,8 +13,6 @@
   
 </div>
 
-
-
 </template>
 
 <script>
@@ -23,10 +21,7 @@ import sideBar from './components/sidebar.vue'
 import foot from './components/foot.vue'
 
 export default {
-  components: {
-    timeline, sideBar, foot 
-  }
-
+  components: { timeline, sideBar, foot }
 }
 </script>
 
@@ -46,7 +41,6 @@ export default {
 
 .app-container {
   height: 100vh;
-  /* border: 1px solid blue; */
 }
 
 .main-content {
