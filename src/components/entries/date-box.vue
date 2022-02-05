@@ -16,7 +16,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  overflow: hidden;
 }
 
 .date {
@@ -32,6 +31,8 @@
 video {
   width: 100%;
   opacity: 0.5;
+  object-fit: cover;
+  height: 100%;
 }
 
 </style>

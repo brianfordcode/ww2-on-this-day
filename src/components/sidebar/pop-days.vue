@@ -13,8 +13,6 @@ export default {
 <style scoped>
 .pop-days {
     height: 250px;
-    box-shadow: 0px 0px 33px -20px #000000;
-    background-color: white;
 }
 
 .pop-days p {

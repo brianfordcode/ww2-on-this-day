@@ -5,7 +5,6 @@
     v-if="showSideBar"
     style="margin-left: 20px;"
 >
-
     <subBox/>
     <ad/>
     <popDays/>
@@ -38,10 +37,7 @@ export default {
 <style>
 
 .box {
-    width: 220px;
-    box-shadow: 0px 0px 33px -20px #000000;
-    background-color: white;
-    margin-right: 20px;
+    background-color: rgb(238, 238, 238);
 }
 
 .box:not(:last-child) {

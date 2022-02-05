@@ -17,7 +17,7 @@
 
 <script>
 import timeline from './components/timeline/timeline.vue'
-import sideBar from './components/sidebar.vue'
+import sideBar from './components/sidebar/sidebar.vue'
 import foot from './components/foot.vue'
 
 export default {
@@ -48,9 +48,9 @@ export default {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
   position: relative;
-  margin-top: 20px;
+  
 }
 
 </style>

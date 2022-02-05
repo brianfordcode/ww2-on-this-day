@@ -8,18 +8,7 @@ const store = createStore({
       selectedDate: new Date(1939, new Date().getMonth(), new Date().getDay() - 1),
       events: [],
       video: "/banner-video.mp4",
-
-      // BOOKS
-      // books: {
-      //   book1: {
-      //     title: 'book title',
-      //     picture: 'https://picsum.photos/300/200',
-      //     author: 'author title',
-      //     link: 'affiliate link',
-      //   },
-      // },
-      pictures: {
-        // TIMELINE AND DATEBOX PICTURES
+      timelineYearPictures: {
         '1939': "https://www.thenation.com/wp-content/uploads/2015/08/germany_poland_loc_img.jpg",
         '1940': "https://www.history.com/.image/t_share/MTU3ODc4NjAyNzA4NDI4NTEx/image-placeholder-title.jpg",
         '1941': "https://list23.com/img/pearl-harbor-day-2021-80th-anniversary-of-date-which-will-live-in-infamy.jpeg",
@@ -28,33 +17,6 @@ const store = createStore({
         '1944': "https://media.newyorker.com/photos/5cf933a5d822ca03dda19640/16:9/w_2560,h_1440,c_limit/Angell-DDay.jpg",
         '1945': "https://www.nationalww2museum.org/sites/default/files/styles/wide_medium/public/2021-05/626815-wiki-american_military_personnel_gather_in_paris_to_celebrate_the_japanese_surrender.jpg",
       },
-
-      // events: {
-      //   // FEB 1, 1939
-      //   eventId1: {
-      //     date: '1939-02-02',
-      //     title: 'first event for feb 2, 1939',
-      //     mainPicture: 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTU3OTIzNjU0NDk4NzIzNDc0/the-pictures-that-defined-world-war-iis-featured-photo.jpg',
-      //     books: ['book1']
-      //   },
-      //   eventId2: {
-      //     date: '1939-02-02',
-      //     title: 'second event for feb 2, 1939',
-      //     mainPicture: 'https://i.insider.com/579f448d88e4a7b32e8bbed0?width=600&format=jpeg&auto=webp',
-      //     books: ['book1']
-      //   },
-      //   eventId3: {
-      //     date: '1939-02-02',
-      //     title: 'third event for feb 2, 1939',
-      //     mainPicture: 'https://www.wearethemighty.com/app/uploads/legacy/assets.rbl.ms/17493201/origin.jpg',
-      //     books: ['book1']
-      //   },
-      //   eventId4: {
-      //     date: '1939-02-02',
-      //     title: 'fourth event for feb 2, 1939',
-      //     mainPicture: 'https://www.archives.gov/files/research/still-pictures/ww2-111-sc-407101.jpeg',
-      //     books: ['book1']
-      //   },
     }
   },
   getters: {
@@ -86,7 +48,7 @@ const store = createStore({
       return years
     },
     getPicForBg: (state) => (year) => {
-      return year ? state.pictures[year] : ''
+      return year ? state.timelineYearPictures[year] : ''
     },
   },
   mutations: {
