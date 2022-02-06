@@ -113,7 +113,6 @@ export default {
   },
   components: { logo },
   created() {
-    console.log(new Date().getDate())
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
       this.handleResize();

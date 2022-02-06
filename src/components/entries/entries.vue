@@ -1,6 +1,5 @@
 <template>
 
-
 <div class="main-container">
     <div
         class="entries-container"
@@ -17,26 +16,67 @@
             />
         </div>
         <div class="event-details">
+            <p>{{ event.date }}</p>
             <p class="event-title">{{ event.title }}</p>
             <div class="links-container">
-                <div class="books-container">
+                <!-- SEARCH THIS EVENT IN GOOGLE LINK -->
+                <a
+                    class="search-link-btn"
+                    :href="`https://www.google.com/search?q=${ event.keywords ? event.keywords : event.title }`"
+                    rel="search"
+                    target="_blank"
+                >
+                <img style="height: 20px; width: 20px;" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="">
+                Search This Event
+                </a>
+                <!-- BOOKS -->
+                <div class="books media-container">
                     <img class="icon" src="https://img.icons8.com/pastel-glyph/64/000000/books.png"/>
-                    <div class="books-wrapper">
-                        <div class="book-box">
+                    <div class="books media-wrapper">
+                        <div class="book media-box">
                             <img :src="event.books.picture" alt="book">
                         </div>
-                        <div class="book-box">
+                        <div class="book media-box">
                             <img :src="event.books.picture" alt="book">
                         </div>
-                        <div class="book-box">
+                        <div class="book media-box">
                             <img :src="event.books.picture" alt="book">
                         </div>
-                        <div class="book-box">
+                        <div class="book media-box">
+                            <img :src="event.books.picture" alt="book">
+                        </div>
+                        <div class="book media-box">
+                            <img :src="event.books.picture" alt="book">
+                        </div>
+                        <div class="book media-box">
+                            <img :src="event.books.picture" alt="book">
+                        </div>
+                        <div class="book media-box">
+                            <img :src="event.books.picture" alt="book">
+                        </div>
+                        <div class="book media-box">
                             <img :src="event.books.picture" alt="book">
                         </div>
                     </div>
                 </div>
-                
+                <!-- MOVIES -->
+                <div class="movies media-container">
+                    <img class="icon" src="https://img.icons8.com/ios-filled/50/000000/cinema---v1.png"/>
+                    <div class="movies media-wrapper">
+                        <div class="movies media-box">
+                            <img :src="event.books.picture" alt="movie">
+                        </div>
+                        <div class="movies media-box">
+                            <img :src="event.books.picture" alt="movie">
+                        </div>
+                        <div class="movies media-box">
+                            <img :src="event.books.picture" alt="movie">
+                        </div>
+                        <div class="movies media-box">
+                            <img :src="event.books.picture" alt="movie">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -52,7 +92,6 @@ export default {
     },
     methods: {
         handleHover(event) {
-            console.log(event)
             event ? this.showLinks = true : false
         }
     }
@@ -60,6 +99,10 @@ export default {
 </script>
 
 <style scoped>
+
+.event-details > *:not(:last-child) {
+    margin-bottom: 10px;
+}
 
 .main-container {
     margin-top: 30px;
@@ -75,7 +118,7 @@ export default {
 }
 
 .entries-container:not(:last-child) {
-    margin-bottom: 15px; 
+    margin-bottom: 10px; 
 }
 
 .entries-container:hover .links-container {
@@ -110,32 +153,61 @@ export default {
 
 .event-details {
     margin-left: 10px;
-    width: 75%;
+    width: 80%;
 }
 
 .links-container {
-    margin-top: 5px;
+    /* margin-top: 5px; */
+    display: flex;
+    /* justify-content: space-around; */
+    /* border: 1px solid; */
+    /* position: relative; */
+}
+
+.links-container > *:not(:last-child) {
+    margin-right: 50px;
+}
+
+.search-link-btn {
+    border: 1px solid rgba(0,0,0,0.75);
+    padding: 2px 5px 2px 2px;
+    height: min-content;
+    width: max-content;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    /* margin-right: 10px; */
+    transition: .25s ease-in-out;
+
+}
+
+.search-link-btn:hover {
+    color: white;
+    background-color: rgba(0,0,0,0.75);
 }
 
 .icon {
-    width: 40px;
-    height: auto;
+    width: auto;
+    height: 40px;
 }
 
-.books-wrapper {
+.media-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5;
-    border: 1px solid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: min-content;
+    grid-gap: 10px;
+    /* border: 1px solid; */
+    /* margin-right: 50px; */
 }
 
-.book-box {
+.media-box {
     height: 70px;
     width: 50px;
     background-color: grey;
 }
 
-.book-box img {
+.media-box img {
     height: 100%;
     width: 100%;
     object-fit: cover;

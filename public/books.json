@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": "book1",
         "title": "book title",
         "picture": "https://picsum.photos/300/200",
         "year": "book year",

@@ -5,6 +5,7 @@
     <ad/>
     <popDays/>
     <ad/>
+    <popEvents/>
 </div>
 
 </template>
@@ -13,9 +14,10 @@
 import subBox from './sub-box.vue'
 import ad from './ad.vue'
 import popDays from './pop-days.vue'
+import popEvents from './pop-events.vue'
 
 export default {
-    components: { subBox, ad, popDays },
+    components: { subBox, ad, popDays, popEvents },
 }
 </script>
 
