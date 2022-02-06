@@ -5,7 +5,7 @@ const store = createStore({
     return {
       start: 1939,
       end: 1945,
-      selectedDate: new Date(1939, new Date().getMonth(), new Date().getDay() - 1),
+      selectedDate: new Date(1939, new Date().getMonth(), new Date().getDate()),
       events: [],
       video: "/banner-video.mp4",
       timelineYearPictures: {

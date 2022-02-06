@@ -13,9 +13,9 @@
           :src="arrowIcon"
           alt="arrow-icon"
           draggable = "false"
-          v-if="showArrow && this.$route.name === 'Home'"
-          style="cursor: pointer;"
           :class="{'down': showTimeline}"
+          v-if="this.$route.name === 'Home'"
+          style="cursor: pointer;"
           @click="this.showTimeline = !this.showTimeline"
         />
       </div>
@@ -103,7 +103,7 @@ export default {
   data() {
     return {
       yearSelected: this.$store.state.start,
-      dateSelected: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDay() - 1),
+      dateSelected: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDate()),
       startDate: this.$store.state.selectedDate,
       numOfDaysInTimeline: 7,
       showTimeline: true,
@@ -113,6 +113,7 @@ export default {
   },
   components: { logo },
   created() {
+    console.log(new Date().getDate())
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
       this.handleResize();
@@ -139,7 +140,7 @@ export default {
       width < 650 ? this.numOfDaysInTimeline = 3 : ''
       width <= 391 ? this.numOfDaysInTimeline = 2 : ''
       // SHOW/HIDE TIMELINE AND ARROW
-      if ( width < 600 ) { this.showArrow = true, this.showTimeline = false }
+      if ( width < 600 ) { this.showTimeline = false }
       else { this.showArrow = false, this.showTimeline = true }
     }
   },
@@ -239,5 +240,15 @@ export default {
   width: 20px;
   margin-top: 2px;
 }
+
+.timeline-container {
+  display: initial;
+}
+
+/* @media screen and (max-width: 600px) {
+  .timeline-container {
+    display: none;
+  }
+} */
 
 </style>
