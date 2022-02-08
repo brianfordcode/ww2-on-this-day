@@ -38,57 +38,60 @@
             
             <div class="all-media-container">
                 <!-- BOOKS -->
-                <div class="media-container">
-                    <img
-                        v-if="event.books[0]"
-                        src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
-                        draggable="false"
-                    />
-                    <div
-                        class="books media-wrapper"
-                        v-for="book in event.books"
-                        :key="book"
-                    >
-                        <a :href="book.link" target="_blank">
-                            <img
-                                class="media"
-                                :src="book.picture"
-                                :alt="book.title"
-                            >
-                        </a>
+                <div style="margin-left: 20px">
+                    <div class="media-container">
+                        <img
+                            v-if="event.books[0]"
+                            src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
+                            draggable="false"
+                        />
+                        <div
+                            class="books media-wrapper"
+                            v-for="book in event.books"
+                            :key="book"
+                        >
+                            <a :href="book.link" target="_blank">
+                                <img
+                                    class="media"
+                                    :src="book.picture"
+                                    :alt="book.title"
+                                >
+                            </a>
+                        </div>
+                    </div>
+                    <!-- MOVIES -->
+                    <div class="media-container">
+                        <img
+                            v-if="event.movies[0]"
+                            src="https://img.icons8.com/ios-filled/50/000000/clapperboard.png"
+                            draggable="false"
+                        />
+                        <div
+                            class="movies media-wrapper"
+                            v-for="movies in event.movies"
+                            :key="movies"
+                        >
+                            <a :href="movies.link" target="_blank">
+                                <img
+                                    class="media"
+                                    :src="movies.picture"
+                                    :alt="movies.title"
+                                >
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- MOVIES -->
-                <div class="media-container">
-                    <img
-                        v-if="event.movies[0]"
-                        src="https://img.icons8.com/ios-filled/50/000000/clapperboard.png"
-                        draggable="false"
-                    />
-                    <div
-                        class="movies media-wrapper"
-                        v-for="movies in event.movies"
-                        :key="movies"
-                    >
-                        <a :href="movies.link" target="_blank">
-                            <img
-                                class="media"
-                                :src="movies.picture"
-                                :alt="movies.title"
-                            >
-                        </a>
-                    </div>
-                </div>
+                <iframe
+                    class="map"
+                    v-if="event.coordinates"
+                    style="border:0; margin-right: 20px"
+                    loading="lazy"
+                    allowfullscreen
+                    :src="`https://www.google.com/maps/embed/v1/view?key=AIzaSyAzuMuGU3ynDz4KU87IzdKY_pXzhUyILoQ&center=${event.coordinates}&zoom=6&maptype=satellite`"
+                >
+                </iframe>
            </div>
-            <iframe
-                v-if="event.coordinates"
-                width="300"
-                height="250"
-                style="border:0"
-                loading="lazy"
-                allowfullscreen
-                :src="`https://www.google.com/maps/embed/v1/view?key=AIzaSyAzuMuGU3ynDz4KU87IzdKY_pXzhUyILoQ&center=${event.coordinates}&zoom=6`">
-            </iframe>
+            
         </div>
     </div>
 </div>
@@ -150,6 +153,12 @@ export default {
 .pic-title {
     display: flex;
     position: relative;
+}
+
+.all-media-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 /* EVENT BOX */
@@ -241,7 +250,12 @@ export default {
     transform-origin: top;
 }
 
-@media screen and (max-width: 500px) {
+.map {
+    width:280px;
+    height:230px
+}
+
+@media screen and (max-width: 600px) {
     .pic-title {
         flex-direction: column;
     }
@@ -267,5 +281,23 @@ export default {
         height: 100%;
     }
 }
+@media screen and (max-width: 768px) {
+    .map {
+        width: 250px;
+        height:200px;
+    }
+    .media-wrapper {
+        width: 60px;
+        height: 90px;
+    }
+
+}
+@media screen and (max-width: 600px) {
+    .all-media-container {
+            flex-direction: column;
+            align-items:center;
+        }
+}
+
 
 </style>
