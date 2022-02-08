@@ -20,7 +20,7 @@
             <p style="font-size: 12px; color: rgba(0,0,0,0.75); margin-bottom: 3px;">{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
             <!-- EVENT TITLE -->
             <p class="event-title">{{ event.title }}</p>
-            
+        
             <div class="links-container">
                 <!-- SEARCH THIS EVENT IN GOOGLE LINK -->
                 <a
@@ -130,6 +130,11 @@ export default {
     opacity: 1;
 }
 
+.entries-container:hover .event-pic-container {
+    height: 100%;
+    width: 300px;
+}
+
 /* EVENT BOX */
 .event-pic-container {
     height: 120px;
@@ -138,10 +143,10 @@ export default {
     transition: .25s ease-in-out;
 }
 
-.event-pic-container:hover {
+/* .event-pic-container:hover {
     width: 40%;
     height: 200px;
-}
+} */
 
 .event-picture {
     width: 100%;
@@ -192,23 +197,29 @@ export default {
 }
 
 .media {
-    width: 75px;
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .media-wrapper:hover {
     transform: scale(2);
-    /* width: min-content;
-    height: min-content; */
     z-index: 2;
-}
-
-.media-container:first-child .media-wrapper:hover {
-    transform-origin: top;
 }
 .media-container:last-child .media-wrapper:hover {
     transform-origin: bottom;
+}
+.media-container:first-child .media-wrapper:hover {
+    transform-origin: top;
+}
+.media-container:first-child .media-wrapper:last-child:hover {
+    transform-origin: top right;
+}
+.media-container:last-child .media-wrapper:last-child:hover {
+    transform-origin: bottom right;
+}
+.media-container:first-child .media-wrapper:hover {
+    transform-origin: top;
 }
 
 @media screen and (max-width: 500px) {
@@ -225,6 +236,13 @@ export default {
     .event-details {
         margin-left: 0;
         width: 100%;
+    }
+    .media-wrapper {
+        width: 60px;
+        height: 90px;
+    }
+    .media-wrapper:hover {
+        transform: scale(2.25);
     }
 }
 
