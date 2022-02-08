@@ -36,7 +36,11 @@
                 <div class="all-media-container">
                     <!-- BOOKS -->
                     <div class="media-container">
-                        <img v-if="event.books[0]" src="https://img.icons8.com/external-flat-icons-inmotus-design/67/000000/external-books-reading-flat-icons-inmotus-design.png"/>
+                        <img
+                            v-if="event.books[0]"
+                            src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
+                            draggable="false"
+                        />
                         <div
                             class="books media-wrapper"
                             v-for="book in event.books"
@@ -53,7 +57,11 @@
                     </div>
                     <!-- MOVIES -->
                     <div class="media-container">
-                        <img v-if="event.movies[0]" src="https://img.icons8.com/ios-filled/50/000000/clapperboard.png"/>
+                        <img
+                            v-if="event.movies[0]"
+                            src="https://img.icons8.com/ios-filled/50/000000/clapperboard.png"
+                            draggable="false"
+                        />
                         <div
                             class="movies media-wrapper"
                             v-for="movies in event.movies"
@@ -69,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-
+                
             </div>
         </div>
     </div>
@@ -93,21 +101,17 @@ export default {
 
 <style scoped>
 
-/* .event-details > *:not(:last-child) {
-    margin-bottom: 10px;
-} */
-
 .main-container {
     margin-top: 30px;
 }
 
 .entries-container {
-    /* border: 1px solid blue; */
     box-shadow: 0px 0px 33px -20px #000000;
     padding: 10px;
     display: flex;
     background-color: white;
     transition: .25s ease-in-out;
+    position: relative;
 }
 
 .entries-container:not(:last-child) {
@@ -118,7 +122,7 @@ export default {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: opacity .5s ease-in-out, max-height .5s ease-in-out
+    transition: opacity 1s ease-in, max-height .75s ease-in-out
 }
 
 .entries-container:hover .links-container {
@@ -163,7 +167,6 @@ export default {
     color: black;
     display: flex;
     align-items: center;
-    /* margin-right: 10px; */
     transition: .25s ease-in-out;
 }
 
@@ -173,11 +176,10 @@ export default {
 }
 
 .media-container {
-    width: min-content;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 5px;
-    align-items: center
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .media-wrapper {
@@ -185,29 +187,31 @@ export default {
     height: 100px;
     position: relative;
     transition: .25s ease-in-out;
+    margin: 5px;
+    overflow: hidden;
 }
 
 .media {
-    width: 100%;
+    width: 75px;
     height: 100%;
     object-fit: cover;
 }
 
-/* .media-wrapper:hover {
-    width: 140px;
-    height: 200px;
-} */
-
-.all-media-container {
-    display: flex;
-    justify-content: space-around;
+.media-wrapper:hover {
+    transform: scale(2);
+    /* width: min-content;
+    height: min-content; */
+    z-index: 2;
 }
 
+.media-container:first-child .media-wrapper:hover {
+    transform-origin: top;
+}
+.media-container:last-child .media-wrapper:hover {
+    transform-origin: bottom;
+}
 
-
-
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
     .entries-container {
         flex-direction: column;
     }
@@ -221,9 +225,7 @@ export default {
     .event-details {
         margin-left: 0;
         width: 100%;
+    }
 }
-    
-}
-
 
 </style>
