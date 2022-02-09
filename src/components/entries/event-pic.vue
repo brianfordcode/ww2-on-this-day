@@ -37,5 +37,16 @@ export default {
     height: 100%;
     object-fit: cover;
 }
+@media screen and (max-width: 600px) {
+    .event-pic-container {
+        padding-bottom: 10px;
+        width: 100%;
+        height: 150px;
+    }
+    .entries-container:hover .event-pic-container{
+        width: 100%;
+        height: 100%;
+    }
+}
 
 </style>

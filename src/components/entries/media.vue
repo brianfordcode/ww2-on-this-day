@@ -1,26 +1,27 @@
 <template>
-    <div class="all-media-container">
+
+<div class="all-media-container">
     <!-- BOOKS -->
-        <div class="media-container">
-            <img
-                v-if="event.books[0]"
-                src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
-                draggable="false"
-            />
-            <div
-                class="books media-wrapper"
-                v-for="book in event.books"
-                :key="book"
-            >
-                <a :href="book.link" target="_blank">
-                    <img
-                        class="media"
-                        :src="book.picture"
-                        :alt="book.title"
-                    >
-                </a>
-            </div>
+    <div class="media-container">
+        <img
+            v-if="event.books[0]"
+            src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
+            draggable="false"
+        />
+        <div
+            class="books media-wrapper"
+            v-for="book in event.books"
+            :key="book"
+        >
+            <a :href="book.link" target="_blank">
+                <img
+                    class="media"
+                    :src="book.picture"
+                    :alt="book.title"
+                >
+            </a>
         </div>
+    </div>
     <!-- MOVIES -->
     <div class="media-container">
         <img
@@ -43,6 +44,7 @@
         </div>
     </div>
 </div>
+
 </template>
 
 <script>
@@ -75,7 +77,7 @@ export default {
     height: 110px;
     position: relative;
     transition: .25s ease-in-out;
-    margin: 5px 10px 0 5px;
+    margin: 5px 5px 0 5px;
     overflow: hidden;
 }
 .media-wrapper:hover {
@@ -87,7 +89,7 @@ export default {
     height: 100%;
     object-fit: cover;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .media-wrapper {
         width: 60px;
         height: 90px;
@@ -102,8 +104,18 @@ export default {
         height: 90px;
     }
     .media-wrapper:hover {
-        transform: scale(1);
+        transform: scale(2);
         z-index: 2;
+    }
+}
+
+@media screen and (max-width: 393px) {
+    .media-wrapper {
+        width: 50px;
+        height: 80px;
+    }
+    .media-wrapper:hover {
+        transform: scale(1);
     }
 }
 

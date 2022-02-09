@@ -26,9 +26,9 @@ export default {
     width:280px;
     height:230px
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
     .map {
-        width: 250px;
+        width: 100%;
         height:200px;
     }
 }
