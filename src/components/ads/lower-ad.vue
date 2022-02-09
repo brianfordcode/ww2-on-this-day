@@ -1,11 +1,19 @@
 <template>
     <div class="ad">
-        lower ad
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4666012694247809"
+     data-ad-slot="2938290425"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
     </div>
 </template>
 
 <script>
 export default {
+    mounted() {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    }
 
 }
 </script>
