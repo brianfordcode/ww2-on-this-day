@@ -12,7 +12,10 @@
         </div>
         <div class="media-map">
             <media :event="event"/>
-            <eventMap :event="event"/>
+            <eventMap 
+                v-if="event.location.coordinates"
+                :event="event"
+            />
         </div>
     </div>
     <lowerAd/>
