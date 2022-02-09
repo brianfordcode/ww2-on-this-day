@@ -137,7 +137,7 @@ export default {
       width < 800 ? this.numOfDaysInTimeline = 5 : ''
       width < 650 ? this.numOfDaysInTimeline = 3 : ''
       // SHOW/HIDE TIMELINE AND ARROW
-      if ( width < 600 ) { this.showTimeline = false }
+      if ( width < 925 ) { this.showTimeline = false }
       else {this.showTimeline = true}
     }
   },
@@ -206,7 +206,7 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 82px;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 .year-box {

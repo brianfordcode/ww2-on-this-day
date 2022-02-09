@@ -73,8 +73,8 @@ export default {
     transform-origin: top left;
 }
 .media-wrapper {
-    width: 80px;
-    height: 110px;
+    width: 70px;
+    height: 100px;
     position: relative;
     transition: .25s ease-in-out;
     margin: 5px 5px 0 5px;
@@ -98,10 +98,6 @@ export default {
 @media screen and (max-width: 600px) {
     .all-media-container {
         margin-bottom: 10px;
-    }
-    .media-wrapper {
-        width: 60px;
-        height: 90px;
     }
     .media-wrapper:hover {
         transform: scale(2);

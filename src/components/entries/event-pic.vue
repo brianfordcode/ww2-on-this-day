@@ -37,7 +37,7 @@ export default {
     height: 100%;
     object-fit: cover;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     .event-pic-container {
         padding-bottom: 10px;
         width: 100%;

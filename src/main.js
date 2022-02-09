@@ -5,4 +5,15 @@ import store from './store'
 
 store.dispatch('loadJSONFiles')
 
+
+
+
+
+
+
+
+
+
+
+
 createApp(App).use(store).use(router).mount('#app')

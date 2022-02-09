@@ -37,7 +37,7 @@ export default {
     display: initial;
 }
 
-@media screen and (max-width: 912px) {
+@media screen and (max-width: 925px) {
     .sidebar-container {
         display: none;
     }

@@ -20,7 +20,7 @@ export default {
     width: 100%;
 }
 
-@media screen and (max-width: 912px) {
+@media screen and (max-width: 925px) {
     .ad {
         display: flex;
     }

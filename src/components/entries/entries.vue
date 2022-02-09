@@ -59,11 +59,14 @@ export default {
     position: relative;
 }
 
-.entries-container .media-map {
+.media-map {
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: opacity .5s ease-in-out, max-height .5s ease-in-out
+    transition: opacity .75s ease-in-out, max-height .75s ease-in-out
 }
 
 .entries-container:hover .media-map {
@@ -71,13 +74,7 @@ export default {
     opacity: 1;
 }
 
-.media-map {
-    display: flex;
-    justify-content: space-between;
-    align-items:flex-start;
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     .pic-title {
         flex-direction: column;
     }
