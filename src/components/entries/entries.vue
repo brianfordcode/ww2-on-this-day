@@ -15,7 +15,9 @@
             <eventMap :event="event"/>
         </div>
     </div>
+    <lowerAd/>
 </div>
+
 </template>
 
 <script>
@@ -24,9 +26,10 @@ import eventMap from './event-map.vue'
 import media from './media.vue'
 import eventPic from './event-pic.vue'
 import searchEvent from './search-event.vue'
+import lowerAd from '../ads/lower-ad.vue'
 
 export default {
-    components: { eventDetails, eventMap, media, eventPic, searchEvent },
+    components: { eventDetails, eventMap, media, eventPic, searchEvent, lowerAd },
 }
 </script>
 

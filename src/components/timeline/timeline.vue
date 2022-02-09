@@ -107,7 +107,6 @@ export default {
       startDate: this.$store.state.selectedDate,
       numOfDaysInTimeline: 7,
       showTimeline: true,
-      showArrow: false,
       arrowIcon: "https://img.icons8.com/material-rounded/24/000000/give-way.png"
     }
   },
@@ -115,7 +114,7 @@ export default {
   created() {
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
-      this.handleResize();
+    this.handleResize();
   },
   methods: {
     getDayOffset(date, dayOffset) {
@@ -137,10 +136,9 @@ export default {
       width < 1200 ? this.numOfDaysInTimeline = 7 : ''
       width < 800 ? this.numOfDaysInTimeline = 5 : ''
       width < 650 ? this.numOfDaysInTimeline = 3 : ''
-      width <= 391 ? this.numOfDaysInTimeline = 2 : ''
       // SHOW/HIDE TIMELINE AND ARROW
       if ( width < 600 ) { this.showTimeline = false }
-      else { this.showArrow = false, this.showTimeline = true }
+      else {this.showTimeline = true}
     }
   },
 }
@@ -243,11 +241,4 @@ export default {
 .timeline-container {
   display: initial;
 }
-
-/* @media screen and (max-width: 600px) {
-  .timeline-container {
-    display: none;
-  }
-} */
-
 </style>

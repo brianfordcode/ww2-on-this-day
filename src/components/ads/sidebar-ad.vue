@@ -1,6 +1,6 @@
 <template>
     <div class="box ad">
-        ad
+        sidebar ad
     </div>
 </template>
 
@@ -17,6 +17,6 @@ export default {
     justify-content: space-around;
     align-items: center;
     height: 150px;
-    width: 220px;
+    width: 100%;
 }
 </style>

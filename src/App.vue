@@ -21,7 +21,7 @@ import sideBar from './components/sidebar/sidebar.vue'
 import foot from './components/foot.vue'
 
 export default {
-  components: { timeline, sideBar, foot }
+  components: { timeline, sideBar, foot}
 }
 </script>
 

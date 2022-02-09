@@ -12,7 +12,7 @@
 
 <script>
 import subBox from './sub-box.vue'
-import ad from './ad.vue'
+import ad from '../ads/sidebar-ad.vue'
 import popDays from './pop-days.vue'
 import popEvents from './pop-events.vue'
 
@@ -25,6 +25,7 @@ export default {
 
 .box {
     background-color: rgb(238, 238, 238);
+    width: 220px;
 }
 
 .box:not(:last-child) {

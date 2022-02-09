@@ -41,11 +41,15 @@ export default {
     .event-pic-container {
         padding-bottom: 10px;
         width: 100%;
-        height: 150px;
+        height: 175px;
+        transition: .25s ease-in-out;
     }
     .entries-container:hover .event-pic-container{
         width: 100%;
-        height: 100%;
+        height: 175px;
+    }
+    .entries-container:hover .event-pic-container:hover {
+        height: 300px;
     }
 }
 
