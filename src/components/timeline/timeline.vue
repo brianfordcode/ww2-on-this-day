@@ -149,6 +149,7 @@ export default {
 .main-container {
   box-shadow: 0px 0px 33px -20px #000000;
   user-select: none;
+  background-color: white;
 }
 
 .content {
