@@ -21,16 +21,21 @@ export default {
 <style scoped>
 .ad {
     background-color: rgb(180, 180, 180);
-    display: none;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     height: 150px;
     width: 100%;
 }
 
-@media screen and (max-width: 925px) {
+/* @media screen and (max-width: 925px) {
     .ad {
         display: flex;
     }
+} */
+
+.adsbygoogle {
+    height: 100%;
+    width: 100%;
 }
 </style>
