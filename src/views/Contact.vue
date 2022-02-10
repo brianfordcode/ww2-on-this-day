@@ -86,7 +86,7 @@
 
 h1 {
     position: absolute;
-    margin-top: 50px;
+    margin-top: 5%;
 
 }
 
