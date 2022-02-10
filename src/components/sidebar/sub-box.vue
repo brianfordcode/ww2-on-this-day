@@ -40,6 +40,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
 #mc_embed_signup {
     box-shadow: 0px 0px 33px -20px #000000;
     height: 150px;
