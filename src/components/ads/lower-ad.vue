@@ -1,7 +1,6 @@
 <template>
     <div class="ad">
 <ins class="adsbygoogle"
-     style="display:block"
      data-ad-client="ca-pub-4666012694247809"
      data-ad-slot="2938290425"
      data-ad-format="auto"
@@ -20,10 +19,7 @@ export default {
 
 <style scoped>
 .ad {
-    background-color: rgb(180, 180, 180);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    border: 1px solid black;
     height: 150px;
     width: 100%;
 }
@@ -35,6 +31,7 @@ export default {
 } */
 
 .adsbygoogle {
+    display: block;
     height: 100%;
     width: 100%;
 }

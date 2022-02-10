@@ -1,12 +1,14 @@
 <template>
 
     <div class="ad">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4666012694247809"
-     data-ad-slot="2938290425"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+        <ins
+            class="adsbygoogle"
+            data-ad-client="ca-pub-4666012694247809"
+            data-ad-slot="2938290425"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+        >
+        </ins>
     </div>
 
 </template>
@@ -22,16 +24,14 @@ export default {
 
 <style scoped>
 .ad {
-    background-color: rgb(180, 180, 180);
+    border: 1px solid;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     height: 150px;
     width: 100%;
 }
 
 .adsbygoogle {
+    display: block;
     height: 100%;
     width: 100%;
 }

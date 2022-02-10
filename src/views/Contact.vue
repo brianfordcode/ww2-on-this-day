@@ -37,6 +37,7 @@
 </template>
 
 <script>
+// EMAILJS
 // import emailjs from 'emailjs-com';
 // import{ init } from '@emailjs/browser';
 // init("user_8PTtMq3xl344kHsE2kRkq");
@@ -75,12 +76,10 @@
 <style scoped>
 
 .main-container {
-    /* border: 1px solid blue; */
     width: 100%;
     height: min-content;
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
     position: relative;
     user-select: none;
 }
@@ -88,11 +87,10 @@
 h1 {
     position: absolute;
     margin-top: 50px;
-    /* font-size: 30px; */
 
 }
 
-/*
+/* EMAILJS
 .main-container {
     width: 100%;
     position: relative;
