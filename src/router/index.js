@@ -19,11 +19,11 @@ const routes = [
     }
   },
   {
-    path: '/contribute',
-    name: 'Contribute',
-    component: () => import('../views/Contribute.vue'),
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('../views/Contact.vue'),
     meta: {
-      title: "Contribute | WW2 on this day"
+      title: "Contact | WW2 on this day"
     }
   },
 ]

@@ -10,7 +10,7 @@
             />
         </router-link>
         <router-link to="/about">About</router-link>
-        <router-link to="/contribute">Contribute</router-link>
+        <router-link to="/contact">Contact</router-link>
     </div>
 
   </div>

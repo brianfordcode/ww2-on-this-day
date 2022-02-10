@@ -1,6 +1,7 @@
 <template>
 <div class="main-container">
-  <form @submit.prevent="event => sendEmail(event)">
+    <!-- EMAILJS -->
+<!--   <form @submit.prevent="event => sendEmail(event)">
 
     <div>
         <label>Name: </label>
@@ -20,53 +21,81 @@
     <input class="send-btn" type="submit" value="Send" >
     <div class="success" v-if="success">Message Has Been Sent!</div>
 
-  </form>
-</div>
+  </form> -->
 
+    <!-- MAILCHIMP CONTACT FORM -->
+    <h1>Contact Us</h1>
+    <iframe
+        style="width: 100%; height: 930px;"
+        src="https://us14.list-manage.com/contact-form?u=00d82a43010f547c0dca8843a&form_id=6ce4c415c69ff9aba7d88881897370c0"
+        frameborder="0"
+    >
+    </iframe>
+
+
+</div>
 </template>
 
 <script>
-import emailjs from 'emailjs-com';
-import{ init } from '@emailjs/browser';
-init("user_8PTtMq3xl344kHsE2kRkq");
+// import emailjs from 'emailjs-com';
+// import{ init } from '@emailjs/browser';
+// init("user_8PTtMq3xl344kHsE2kRkq");
 
-export default {
-    data() {
-        return {
-            user_name: '',
-            user_email: '',
-            message: '',
-            success: false
-        }
-    },
-  methods: {
-    sendEmail(event) {
-      console.log(event)
+// export default {
+//     data() {
+//         return {
+//             user_name: '',
+//             user_email: '',
+//             message: '',
+//             success: false
+//         }
+//     },
+//   methods: {
+//     sendEmail(event) {
+//       console.log(event)
 
-        emailjs.sendForm('service_yceurzu', 'template_qepth8s', event.target, 'user_8PTtMq3xl344kHsE2kRkq')
+//         emailjs.sendForm('service_yceurzu', 'template_qepth8s', event.target, 'user_8PTtMq3xl344kHsE2kRkq')
         
-            .then((result) => {
-                console.log('SUCCESS!', result.text);
-            }, (error) => {
-                console.log('FAILED...', error.text);
-            });
-            setTimeout(()=> {
-                this.user_name = ''
-                this.user_email = ''
-                this.message = ''
-                this.success = true
-            }, 900)
-            }
-  }
-}
+//             .then((result) => {
+//                 console.log('SUCCESS!', result.text);
+//             }, (error) => {
+//                 console.log('FAILED...', error.text);
+//             });
+//             setTimeout(()=> {
+//                 this.user_name = ''
+//                 this.user_email = ''
+//                 this.message = ''
+//                 this.success = true
+//             }, 900)
+//             }
+//   }
+// }
 </script>
 
 <style scoped>
 
 .main-container {
+    /* border: 1px solid blue; */
     width: 100%;
+    height: min-content;
     display: flex;
     justify-content: space-around;
+    /* align-items: center; */
+    position: relative;
+    user-select: none;
+}
+
+h1 {
+    position: absolute;
+    margin-top: 50px;
+    /* font-size: 30px; */
+
+}
+
+/*
+.main-container {
+    width: 100%;
+    position: relative;
 }
 
 form {
@@ -75,7 +104,7 @@ form {
     align-items: flex-start;
     width: min-content;
     height: min-content;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     color: black;
 }
 form div {
@@ -125,5 +154,5 @@ form div input {
         max-height: 100px;
         min-height: 100px;
     }
-}
+} */
 </style>
