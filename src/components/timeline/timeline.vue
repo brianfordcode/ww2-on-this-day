@@ -8,7 +8,7 @@
       >
         <!-- LOGO -->
         <logo/>
-        <!-- ARROW ICON WHEN SMALL SCREEN -->
+        <!-- OPEN/CLOSE TIMELINE -->
         <img
           :src="arrowIcon"
           alt="arrow-icon"
@@ -49,7 +49,7 @@
             class="arrow"
             :src="arrowIcon"
             draggable = "false"
-            v-if="getDayOffset(startDate, offset - 1).getTime() === $store.state.selectedDate.getTime()"
+            v-if="(getDayOffset(startDate, offset - 1).getMonth(), getDayOffset(startDate, offset - 1).getDate()) === ($store.state.selectedDate.getMonth() - 1 , $store.state.selectedDate.getDate())"
           />
           </div>
         </div>
@@ -98,6 +98,7 @@
 
 <script>
 import logo from "./logo.vue"
+
 export default {
   data() {
     return {
@@ -112,17 +113,19 @@ export default {
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
+
   },
   methods: {
     getDayOffset(date, dayOffset) {
+      // console.log('startdate in timeline:', date)
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
     },
     yearClicked(clickedYear) {
-        this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
-        // DISPATCH date selected TO STORE
-        this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
-        console.log(this.$store.state.selectedDate)
-        this.changeRoute()
+      this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
+      // DISPATCH date selected TO STORE
+      this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
+      console.log(this.$store.state.selectedDate)
+      this.changeRoute()
     },
     dayClicked(offset) {
       this.$store.dispatch('changeDate', this.getDayOffset(this.startDate, offset - 1), this.$store.state.selectedDate.getFullYear())
@@ -130,9 +133,10 @@ export default {
       this.changeRoute()
     },
     changeRoute() {
-      const year = this.$store.state.selectedDate.getFullYear()
-      const month = (this.$store.state.selectedDate.getMonth() < 10 ? '0' : '') + (this.$store.state.selectedDate.getMonth() + 1)
-      const day = (this.$store.state.selectedDate.getDate() < 10 ? '0' : '') + this.$store.state.selectedDate.getDate()
+      const selectedDate = this.$store.state.selectedDate
+      const year = selectedDate.getFullYear()
+      const month = (selectedDate.getMonth() < 10 ? '0' : '') + (selectedDate.getMonth() + 1)
+      const day = (selectedDate.getDate() < 10 ? '0' : '') + selectedDate.getDate()
       const fullDate = year + '-' + month + '-' + day
       this.$router.push(`/${fullDate}`)
     },

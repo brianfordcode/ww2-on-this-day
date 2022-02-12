@@ -1,5 +1,8 @@
 import { createStore } from 'vuex'
 
+// const route = useRoute()
+// console.log(useRoute().params)
+
 const store = createStore({
   state() {
     return {
@@ -48,11 +51,12 @@ const store = createStore({
     },
     getPicForBg: (state) => (year) => {
       return year ? state.timelineYearPictures[year] : ''
-    },
+    }
   },
   mutations: {
     changeDate(state, dateSelectedfromTimeline) {
       state.selectedDate = dateSelectedfromTimeline
+      // console.log(dateSelectedfromTimeline)
     },
     loadJSONFiles(state, data) {
       state.events = data
