@@ -1,10 +1,13 @@
 <template>
     <div class="ad">
-<ins class="adsbygoogle"
-     data-ad-client="ca-pub-4666012694247809"
-     data-ad-slot="2938290425"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+        <ins
+            class="adsbygoogle"
+            data-ad-client="ca-pub-4666012694247809"
+            data-ad-slot="2938290425"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+        >
+        </ins>
     </div>
 </template>
 

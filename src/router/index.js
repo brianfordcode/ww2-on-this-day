@@ -10,14 +10,14 @@ const routes = [
       title: "WW2 on this day"
     }
   },
-  // {
-  //   path: '/:datestring',
-  //   name: 'Home',
-  //   component: Home,
-  //   meta: {
-  //     title: "WW2 on this day"
-  //   }
-  // },
+  {
+    path: '/:datestring',
+    name: 'Home',
+    component: Home,
+    meta: {
+      title: "WW2 on this day"
+    }
+  },
   {
     path: '/about',
     name: 'About',
@@ -45,9 +45,9 @@ const router = createRouter({
   },
 })
 
-// router.beforeEach((to, from, next) => {
-//   document.title = `${to.meta.title}`
-//   next();
-// })
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title}`
+  next();
+})
 
 export default router

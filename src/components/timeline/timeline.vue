@@ -122,10 +122,19 @@ export default {
         // DISPATCH date selected TO STORE
         this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
         console.log(this.$store.state.selectedDate)
+        this.changeRoute()
     },
     dayClicked(offset) {
       this.$store.dispatch('changeDate', this.getDayOffset(this.startDate, offset - 1), this.$store.state.selectedDate.getFullYear())
       console.log(this.$store.state.selectedDate)
+      this.changeRoute()
+    },
+    changeRoute() {
+      const year = this.$store.state.selectedDate.getFullYear()
+      const month = (this.$store.state.selectedDate.getMonth() < 10 ? '0' : '') + (this.$store.state.selectedDate.getMonth() + 1)
+      const day = (this.$store.state.selectedDate.getDate() < 10 ? '0' : '') + this.$store.state.selectedDate.getDate()
+      const fullDate = year + '-' + month + '-' + day
+      this.$router.push(`/${fullDate}`)
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
@@ -141,11 +150,6 @@ export default {
       else {this.showTimeline = true}
     }
   },
-  computed: {
-    getYear() {
-      console.log(this.date)
-    }
-  }
 }
 </script>
 

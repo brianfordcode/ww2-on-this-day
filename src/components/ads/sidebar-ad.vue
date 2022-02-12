@@ -1,5 +1,4 @@
 <template>
-
     <div class="ad">
         <ins
             class="adsbygoogle"
@@ -10,7 +9,6 @@
         >
         </ins>
     </div>
-
 </template>
 
 <script>
