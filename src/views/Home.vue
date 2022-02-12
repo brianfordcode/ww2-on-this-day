@@ -27,7 +27,6 @@ export default {
   created() {
 
     if (this.$route.params.datestring) {
-      
       const [ year, month, day ] = this.$route.params.datestring.split('-')
       const date = new Date(+year, +month - 1, +day)
       this.$store.dispatch('changeDate', date)
@@ -35,12 +34,12 @@ export default {
 
       this.$store.dispatch('changeDate', date)
     } else {
-        const selectedDate = this.$store.state.selectedDate
-        const year = selectedDate.getFullYear()
-        const month = (selectedDate.getMonth() < 10 ? '0' : '') + (selectedDate.getMonth() + 1)
-        const day = (selectedDate.getDate() < 10 ? '0' : '') + selectedDate.getDate()
-        const fullDate = year + '-' + month + '-' + day
-        this.$router.push(`/${fullDate}`)
+        // const selectedDate = this.$store.state.selectedDate
+        // const year = selectedDate.getFullYear()
+        // const month = (selectedDate.getMonth() < 10 ? '0' : '') + (selectedDate.getMonth() + 1)
+        // const day = (selectedDate.getDate() < 10 ? '0' : '') + selectedDate.getDate()
+        // const fullDate = year + '-' + month + '-' + day
+        this.$router.push(`/${this.$store.getters.dateForRouter()}`)
     }
 
 

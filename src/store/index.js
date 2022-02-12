@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import router from '@/router'
 
 // const route = useRoute()
 // console.log(useRoute().params)
@@ -43,6 +44,13 @@ const store = createStore({
           }
         })
         return eventsOnDay
+    },
+    dateForRouter: (state) => () => {
+      const year = state.selectedDate.getFullYear()
+      const month = (state.selectedDate.getMonth() < 10 ? '0' : '') + (state.selectedDate.getMonth() + 1)
+      const day = (state.selectedDate.getDate() < 10 ? '0' : '') + state.selectedDate.getDate()
+      const fullDate = year + '-' + month + '-' + day
+      return fullDate
     },
     yearTimeline: (state) => () => {
       const years = []

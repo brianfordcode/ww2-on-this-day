@@ -14,7 +14,6 @@
           alt="arrow-icon"
           draggable = "false"
           :class="{'down': showTimeline}"
-          
           style="cursor: pointer;"
           @click="showTimeline = !showTimeline"
         />
@@ -22,7 +21,7 @@
     <!-- MAIN TIMELINE -->
     <div
       class="timeline-container" 
-      v-if="/*$route.name === 'Home' && */showTimeline"
+      v-if="showTimeline"
     >
       <!-- DAYS CONTAINER -->
       <div class="days-arrows">
@@ -116,28 +115,19 @@ export default {
   },
   methods: {
     getDayOffset(date, dayOffset) {
-      // console.log('startdate in timeline:', date)
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
     },
     yearClicked(clickedYear) {
       this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
       // DISPATCH date selected TO STORE
       this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
-      // console.log(this.$store.state.selectedDate)
-      this.changeRoute()
+
+      this.$router.push(`/${this.$store.getters.dateForRouter()}`)
     },
     dayClicked(offset) {
       this.$store.dispatch('changeDate', this.getDayOffset(this.startDate, offset - 1), this.$store.state.selectedDate.getFullYear())
-      // console.log(this.$store.state.selectedDate)
-      this.changeRoute()
-    },
-    changeRoute() {
-      const selectedDate = this.$store.state.selectedDate
-      const year = selectedDate.getFullYear()
-      const month = (selectedDate.getMonth() < 10 ? '0' : '') + (selectedDate.getMonth() + 1)
-      const day = (selectedDate.getDate() < 10 ? '0' : '') + selectedDate.getDate()
-      const fullDate = year + '-' + month + '-' + day
-      this.$router.push(`/${fullDate}`)
+
+      this.$router.push(`/${this.$store.getters.dateForRouter()}`)
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
