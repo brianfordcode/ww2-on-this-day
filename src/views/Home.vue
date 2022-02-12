@@ -25,14 +25,27 @@ import sideBar from '../components/sidebar/sidebar.vue'
 
 export default {
   created() {
-    const [ year, month, day ] = this.$route.params.datestring.split('-')
-    const date = new Date(+year, +month - 1, +day)
-    this.$store.dispatch('changeDate', date)
-    this.$store.state.selectedDate = date
 
-    this.$store.dispatch('changeDate', date)
+    if (this.$route.params.datestring) {
+      
+      const [ year, month, day ] = this.$route.params.datestring.split('-')
+      const date = new Date(+year, +month - 1, +day)
+      this.$store.dispatch('changeDate', date)
+      this.$store.state.selectedDate = date
 
-    // console.log(date)
+      this.$store.dispatch('changeDate', date)
+    } else {
+        const selectedDate = this.$store.state.selectedDate
+        const year = selectedDate.getFullYear()
+        const month = (selectedDate.getMonth() < 10 ? '0' : '') + (selectedDate.getMonth() + 1)
+        const day = (selectedDate.getDate() < 10 ? '0' : '') + selectedDate.getDate()
+        const fullDate = year + '-' + month + '-' + day
+        this.$router.push(`/${fullDate}`)
+    }
+
+
+    // this.$route.params.datestring ? this.$router.push(`/${this.$route.params.datestring}`) : this.$router.push('/about')
+
 
   },
   components: { entries, dateBox, timeline, sideBar },

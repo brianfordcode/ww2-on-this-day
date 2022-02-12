@@ -14,7 +14,7 @@ const routes = [
   },
   {
     path: '/:datestring',
-    name: 'Home',
+    name: 'datestring',
     component: Home,
     meta: {
       title: "WW2 on this day"

@@ -14,7 +14,7 @@
           alt="arrow-icon"
           draggable = "false"
           :class="{'down': showTimeline}"
-          v-if="$route.name === 'Home'"
+          
           style="cursor: pointer;"
           @click="showTimeline = !showTimeline"
         />
@@ -22,7 +22,7 @@
     <!-- MAIN TIMELINE -->
     <div
       class="timeline-container" 
-      v-if="$route.name === 'Home' && showTimeline"
+      v-if="/*$route.name === 'Home' && */showTimeline"
     >
       <!-- DAYS CONTAINER -->
       <div class="days-arrows">
@@ -113,7 +113,6 @@ export default {
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
-
   },
   methods: {
     getDayOffset(date, dayOffset) {
@@ -124,12 +123,12 @@ export default {
       this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
       // DISPATCH date selected TO STORE
       this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
-      console.log(this.$store.state.selectedDate)
+      // console.log(this.$store.state.selectedDate)
       this.changeRoute()
     },
     dayClicked(offset) {
       this.$store.dispatch('changeDate', this.getDayOffset(this.startDate, offset - 1), this.$store.state.selectedDate.getFullYear())
-      console.log(this.$store.state.selectedDate)
+      // console.log(this.$store.state.selectedDate)
       this.changeRoute()
     },
     changeRoute() {
