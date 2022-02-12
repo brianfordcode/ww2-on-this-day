@@ -14,52 +14,52 @@
           alt="arrow-icon"
           draggable = "false"
           :class="{'down': showTimeline}"
-          v-if="this.$route.name === 'Home'"
+          v-if="$route.name === 'Home'"
           style="cursor: pointer;"
-          @click="this.showTimeline = !this.showTimeline"
+          @click="showTimeline = !showTimeline"
         />
       </div>
     <!-- MAIN TIMELINE -->
     <div
       class="timeline-container" 
-      v-if="this.$route.name === 'Home' && showTimeline"
+      v-if="$route.name === 'Home' && showTimeline"
     >
       <!-- DAYS CONTAINER -->
       <div class="days-arrows">
         <!-- PREV ARROW -->
         <img
           class="direction-arrow"
-          :src="this.arrowIcon"
+          :src="arrowIcon"
           draggable = "false"
           style="transform: rotate(90deg); translateX(1px);"
-          @click="startDate = getDayOffset(startDate, -this.numOfDaysInTimeline)"
+          @click="startDate = getDayOffset(startDate, -numOfDaysInTimeline)"
         />
         <!-- DAYS -->
         <div
           class="days-wrapper"
-          v-for="offset in this.numOfDaysInTimeline"
+          v-for="offset in numOfDaysInTimeline"
           :key="offset">
           <div
             class="days-box"
-            @click="dateSelected = getDayOffset(startDate, offset - 1), yearClicked(this.yearSelected)"
+            @click="dayClicked(offset)"
             >
             <p>{{ getDayString(getDayOffset(startDate, offset - 1)) }}</p>
           <!-- SELECTOR ARROW -->
           <img
             class="arrow"
-            :src="this.arrowIcon"
+            :src="arrowIcon"
             draggable = "false"
-            v-if="getDayOffset(startDate, offset - 1).getTime() === dateSelected.getTime()"
+            v-if="getDayOffset(startDate, offset - 1).getTime() === $store.state.selectedDate.getTime()"
           />
           </div>
         </div>
         <!-- NEXT ARROW -->
         <img
           class="direction-arrow"
-          :src="this.arrowIcon"
+          :src="arrowIcon"
           draggable = "false"
           style="transform: rotate(-90deg); translateX(-1px);"
-          @click="startDate = getDayOffset(startDate, this.numOfDaysInTimeline)"
+          @click="startDate = getDayOffset(startDate, numOfDaysInTimeline)"
         />
       </div>
       <!-- YEARS CONTAINER -->
@@ -85,8 +85,8 @@
           <img
             class="arrow"
             draggable = "false"
-            :src="this.arrowIcon"
-            v-if="year == yearSelected"
+            :src="arrowIcon"
+            v-if="year === $store.state.selectedDate.getFullYear()"
           />
         </div>
       </div>
@@ -98,12 +98,9 @@
 
 <script>
 import logo from "./logo.vue"
-
 export default {
   data() {
     return {
-      yearSelected: this.$store.state.start,
-      dateSelected: new Date(this.$store.state.start, new Date().getMonth(), new Date().getDate()),
       startDate: this.$store.state.selectedDate,
       numOfDaysInTimeline: 7,
       showTimeline: true,
@@ -121,11 +118,14 @@ export default {
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
     },
     yearClicked(clickedYear) {
-        this.yearSelected = clickedYear
         this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
-        this.dateSelected = new Date(clickedYear, this.dateSelected.getMonth(), this.dateSelected.getDate());
-        // DISPATCH dateSelected TO STORE
-        this.$store.dispatch('changeDate', this.dateSelected)
+        // DISPATCH date selected TO STORE
+        this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
+        console.log(this.$store.state.selectedDate)
+    },
+    dayClicked(offset) {
+      this.$store.dispatch('changeDate', this.getDayOffset(this.startDate, offset - 1), this.$store.state.selectedDate.getFullYear())
+      console.log(this.$store.state.selectedDate)
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
@@ -141,6 +141,11 @@ export default {
       else {this.showTimeline = true}
     }
   },
+  computed: {
+    getYear() {
+      console.log(this.date)
+    }
+  }
 }
 </script>
 

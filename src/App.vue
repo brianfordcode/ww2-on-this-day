@@ -3,7 +3,6 @@
 <div class="app-container">
 
   <timeline/>
-
   <div class="main-content">
     <router-view/>
     <sideBar/>

@@ -27,7 +27,6 @@ const store = createStore({
       return state.events[id]
     },
     eventsOnDay: (state, getters) => (year, month, day) => {
-
       const eventsOnDay = []
       // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
       month = (month < 10 ? '0' : '') + (month + 1)
@@ -67,7 +66,7 @@ const store = createStore({
       fetch("events.json")
         .then(response => response.json())
         .then(data => (context.commit('loadJSONFiles', data)))
-    },
+    }
   },
   modules: {
   }
