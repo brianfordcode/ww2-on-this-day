@@ -12,7 +12,6 @@
         <img
           :src="arrowIcon"
           alt="arrow-icon"
-          v-if="$route.name != 'About' && $route.name != 'Contact'"
           draggable = "false"
           :class="{'down': showTimeline}"
           style="cursor: pointer;"
@@ -22,7 +21,7 @@
     <!-- MAIN TIMELINE -->
     <div
       class="timeline-container" 
-      v-if="$route.name != 'About' && $route.name != 'Contact' && showTimeline"
+      v-if="showTimeline"
     >
       <!-- DAYS CONTAINER -->
       <div class="days-arrows">
@@ -113,6 +112,14 @@ export default {
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
+
+    // DO NOT SHOW TIMELINE IF NAVIGATE AWAY FROM EVENTS PAGE
+    if (this.$route.params.datestring || this.$route.name === 'Home') {
+      this.showTimeline = true
+    } else {
+      this.showTimeline = false
+    }
+
   },
   methods: {
     getDayOffset(date, dayOffset) {
