@@ -1,11 +1,24 @@
 import { createStore } from 'vuex'
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  limit,
+  getDocs,
+  where,
+} from "firebase/firestore";
+
 
 const store = createStore({
   state() {
     return {
       start: 1939,
       end: 1945,
-      selectedDate: new Date(1939, new Date().getMonth(), new Date().getDate()),
+      selectedDate: (() => {
+        const today = new Date();
+        return new Date(1939, today.getMonth(), today.getDate())
+      })(),
       events: [],
       video: "/banner-video.mp4",
       timelineYearPictures: {
@@ -21,25 +34,13 @@ const store = createStore({
   },
   getters: {
     book(id) {
-      return state.books[id]
+      return [] // TODO: editor for recommended books
     },
     event(id) {
-      return state.events[id]
+      return state.events.find(e => e.id == id);
     },
-    eventsOnDay: (state, getters) => (year, month, day) => {
-      const eventsOnDay = []
-      // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
-      month = (month < 10 ? '0' : '') + (month + 1)
-      day = (day < 10 ? '0' : '') + day
-      Object
-        .entries(state.events)
-        .forEach(entry =>  {
-          const [ eventId, event ] = entry
-          if (event.date === `${year}-${month}-${day}`) {
-            eventsOnDay.push(event)
-          }
-        })
-        return eventsOnDay
+    eventsOnDay: (state) => () => {
+      return state.events
     },
     yearTimeline: (state) => () => {
       const years = []
@@ -54,18 +55,59 @@ const store = createStore({
     changeDate(state, dateSelectedfromTimeline) {
       state.selectedDate = dateSelectedfromTimeline
     },
-    loadJSONFiles(state, data) {
+    fetchEvents(state, data) {
       state.events = data
     }
   },
   actions: {
     changeDate(context, dateSelectedfromTimeline) {
-      context.commit('changeDate', dateSelectedfromTimeline)
+      context.commit("changeDate", dateSelectedfromTimeline);
+
+      // TODO: cleanup - trigger fetchEvents instead of copy, paste
+      let lo = new Date(dateSelectedfromTimeline);
+      lo.setDate(lo.getDate() - 3);
+      lo = lo.toISOString().split("T")[0];
+      let hi = new Date(dateSelectedfromTimeline);
+      hi.setDate(hi.getDate() + 3);
+      hi = hi.toISOString().split("T")[0];
+      console.log(lo);
+      console.log(hi);
+      getDocs(
+        query(
+          collection(getFirestore(), "events"),
+          where("startDate", ">=", lo),
+          where("startDate", "<=", hi),
+          orderBy("startDate", "asc"),
+          orderBy("id", "desc"),
+          limit(100)
+        )
+      ).then((docs) => {
+        const data = [];
+        docs.forEach((e) => data.push(e.data()));
+        context.commit("fetchEvents", data);
+      });
     },
-    loadJSONFiles(context) {
-      fetch("events.json")
-        .then(response => response.json())
-        .then(data => (context.commit('loadJSONFiles', data)))
+    fetchEvents(context) {
+      let lo = new Date(context.state.selectedDate);
+      lo.setDate(lo.getDate() - 3);
+      lo = lo.toISOString().split("T")[0];
+      let hi = new Date(context.state.selectedDate);
+      hi.setDate(hi.getDate() + 3);
+      hi = hi.toISOString().split("T")[0];
+      getDocs(
+        query(
+          collection(getFirestore(), "events"),
+          where("startDate", ">=", lo),
+          where("startDate", "<=", hi),
+          orderBy("startDate", "asc"),
+          orderBy("id", "desc"),
+          limit(100)
+        )
+      ).then((docs) => {
+        const data = [];
+        docs.forEach((e) => data.push(e.data()));
+        context.commit("fetchEvents", data);
+      });
     }
   },
   modules: {

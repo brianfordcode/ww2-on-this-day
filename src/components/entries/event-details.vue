@@ -1,11 +1,12 @@
 <template>
 <div class="event-details">
     <!-- DATE -->
-    <p style="font-size: 12px; color: rgba(0,0,0,0.75); margin-bottom: 3px;">{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
+    <p style="font-size: 12px; color: rgba(0,0,0,0.75); margin-bottom: 3px;">{{ event.startDate }}</p>
     <!-- TITLE -->
-    <p class="event-title">{{event.title}}</p>
+    <p class="event-title">{{event.text}}</p>
     <!-- SEARCH  -->
     <searchEvent :event="event"/>
+    <p class="event-keywords">{{event.keywords.join(" ")}}</p>
 </div>
 </template>
 
@@ -31,6 +32,10 @@ export default {
     height: 100%;
     width: 80%;
     margin-left: 10px;
+}
+
+.event-keywords {
+    font-style: italic;
 }
 
 @media screen and (max-width: 600px) {
