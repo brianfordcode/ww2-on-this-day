@@ -1,20 +1,18 @@
 <template>
-  <div class="main-container">
 
     <timeline/>
-    
-    <div class="entries-sidebar">
 
-      <div class="datebox-entries">
-        <dateBox/>
-        <entries/>
+      <div class="entries-sidebar">
+
+        <div class="datebox-entries">
+          <dateBox/>
+          <entries/>
+        </div>
+
+        <sideBar/>
+        
       </div>
-
-      <sideBar/>
-
-    </div>
-    
-  </div>
+  
 </template>
 
 <script>
@@ -34,17 +32,8 @@ export default {
 
       this.$store.dispatch('changeDate', date)
     } else {
-        // const selectedDate = this.$store.state.selectedDate
-        // const year = selectedDate.getFullYear()
-        // const month = (selectedDate.getMonth() < 10 ? '0' : '') + (selectedDate.getMonth() + 1)
-        // const day = (selectedDate.getDate() < 10 ? '0' : '') + selectedDate.getDate()
-        // const fullDate = year + '-' + month + '-' + day
         this.$router.push(`/${this.$store.getters.dateForRouter()}`)
     }
-
-
-    // this.$route.params.datestring ? this.$router.push(`/${this.$route.params.datestring}`) : this.$router.push('/about')
-
 
   },
   components: { entries, dateBox, timeline, sideBar },
@@ -59,14 +48,15 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: 20px;
   }
 
   .entries-sidebar {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
     position: relative;
   }
 

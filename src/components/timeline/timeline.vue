@@ -12,6 +12,7 @@
         <img
           :src="arrowIcon"
           alt="arrow-icon"
+          v-if="$route.name != 'About' && $route.name != 'Contact'"
           draggable = "false"
           :class="{'down': showTimeline}"
           style="cursor: pointer;"
@@ -21,7 +22,7 @@
     <!-- MAIN TIMELINE -->
     <div
       class="timeline-container" 
-      v-if="showTimeline"
+      v-if="$route.name != 'About' && $route.name != 'Contact' && showTimeline"
     >
       <!-- DAYS CONTAINER -->
       <div class="days-arrows">
@@ -152,11 +153,14 @@ export default {
   box-shadow: 0px 0px 33px -20px #000000;
   user-select: none;
   background-color: white;
+  width: 100%;
+  z-index: 10000000;
 }
 
 .content {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .days-arrows {

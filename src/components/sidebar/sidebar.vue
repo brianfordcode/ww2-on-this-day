@@ -23,6 +23,11 @@ export default {
 
 <style>
 
+.sidebar-container {
+    margin: 20px;
+    display: initial;
+}
+
 .box {
     background-color: rgb(238, 238, 238);
     width: 220px;
@@ -32,10 +37,6 @@ export default {
     margin-bottom: 20px;
 }
 
-.sidebar-container {
-    margin-left: 20px;
-    display: initial;
-}
 
 @media screen and (max-width: 925px) {
     .sidebar-container {

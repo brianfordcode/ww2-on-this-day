@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
-
-
 const routes = [
   {
     path: '/',
@@ -36,6 +34,11 @@ const routes = [
       title: "Contact | WW2 on this day"
     }
   },
+  // {
+  //   path: '/:catchAll(.*)*',
+  //   name: "PageNotFound",
+  //   component: PageNotFound,
+  // },
 ]
 
 const router = createRouter({

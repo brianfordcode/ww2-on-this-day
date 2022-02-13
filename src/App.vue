@@ -32,8 +32,8 @@ export default {
   height: 100%;
 }
 
-.app-container {
+/* .app-container {
   height: 100vh;
-}
+} */
 
 </style>
