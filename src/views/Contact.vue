@@ -14,7 +14,6 @@
             </iframe>
         </div>
 
-
         <sideBar/>
 
     </div>
@@ -36,13 +35,16 @@ export default {
 
 .container {
     display: flex;
-    user-select: none;
+    /* user-select: none; */
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto;
+}
+
+iframe {
+     margin: 25px auto;
 }
 
 .content {
-    
     width: 100%;
     position: relative;
 }

@@ -3,9 +3,9 @@
 <div class="sidebar-container">
     <subBox/>
     <ad/>
-    <popDays/>
+    <!-- <popDays/> -->
     <ad/>
-    <popEvents/>
+    <!-- <popEvents/> -->
 </div>
 
 </template>

@@ -33,12 +33,7 @@ const routes = [
     meta: {
       title: "Contact | WW2 on this day"
     }
-  },
-  // {
-  //   path: '/:catchAll(.*)*',
-  //   name: "PageNotFound",
-  //   component: PageNotFound,
-  // },
+  }
 ]
 
 const router = createRouter({

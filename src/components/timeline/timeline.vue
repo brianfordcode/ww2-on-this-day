@@ -119,7 +119,6 @@ export default {
     } else {
       this.showTimeline = false
     }
-
   },
   methods: {
     getDayOffset(date, dayOffset) {
@@ -200,7 +199,7 @@ export default {
   color: white;
   padding: 2px 0;
   cursor: pointer;
-  width: 100px;
+  width: 110px;
 }
 
 .down {

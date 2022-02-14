@@ -25,13 +25,15 @@ export default {
     border: 1px solid black;
     height: 150px;
     width: 100%;
+    display: none;
+    margin-bottom: 100px;
 }
 
-/* @media screen and (max-width: 925px) {
+@media screen and (max-width: 925px) {
     .ad {
         display: flex;
     }
-} */
+}
 
 .adsbygoogle {
     display: block;

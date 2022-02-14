@@ -39,7 +39,8 @@ export default {
 <style scoped>
 
 .main-container {
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .entries-container {

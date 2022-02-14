@@ -53,10 +53,8 @@ export default {
 
   .entries-sidebar {
     display: flex;
-    /* justify-content: space-between; */
     max-width: 1200px;
     margin: 0 auto;
-    /* padding: 20px; */
     position: relative;
   }
 
