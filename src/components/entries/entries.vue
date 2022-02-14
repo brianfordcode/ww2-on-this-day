@@ -3,8 +3,8 @@
 <div class="main-container">
     <div
         class="entries-container"
-        v-for="event in this.$store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate())"
-        :key="event"
+        v-for="event in this.$store.getters.eventsOnDay()"
+        :key="event.id"
     >
         <div class="pic-title">
             <eventPic :event="event"/>
@@ -12,10 +12,7 @@
         </div>
         <div class="media-map">
             <media :event="event"/>
-            <eventMap 
-                v-if="event.location.coordinates"
-                :event="event"
-            />
+            <eventMap v-if="event.location" :event="event" />
         </div>
     </div>
     <lowerAd/>

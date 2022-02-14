@@ -2,8 +2,8 @@
     <div class="event-pic-container">
         <img
             class="event-picture"
-            :src="event.mainPicture"
-            :alt="event.mainPicture"
+            :src="event.imgdat"
+            :alt="event.text"
         />
     </div>
 </template>

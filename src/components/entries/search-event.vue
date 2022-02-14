@@ -1,7 +1,7 @@
 <template>
     <a
         class="search-link-btn"
-        :href="`https://www.google.com/search?q=${ event.keywords ? event.keywords : event.title }`"
+        :href="`https://www.google.com/search?q=${ event.keywords ? event.keywords.join(' ') : event.text }`"
         rel="search"
         target="_blank"
     >
