@@ -30,13 +30,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   height: 100%;
-  border: 1px solid blue;
 }
 
 .app-container {
-  border: 1px solid;
   min-height: 100vh;
-  position: relative;
 }
 
 </style>
