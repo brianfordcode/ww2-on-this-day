@@ -1,92 +1,54 @@
+<template>
+  
+  <div class="about-container">
 
-    <!-- https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/MacArthur_Manila.jpg/220px-MacArthur_Manila.jpg" alt="macarthur" -->
+    <h2 class="title">About World War 2 on this day</h2>
 
-        <!-- <p>
+    <div class="content">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/MacArthur_Manila.jpg/220px-MacArthur_Manila.jpg" alt="macarthur">
+      <p>
         This site has been crafted from a love and respect of history and everything World War 2.
         <br>
         <br>
         Follow along daily as each of the days events are highlighted.
-        </p> -->
-
-<template>
-
-    <timeline/>
-
-    <div class="container">
-
-        <div class="content">
-            <h1>About WW2 on this day</h1>
-
-
-            <div class="img-text">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/MacArthur_Manila.jpg/220px-MacArthur_Manila.jpg" alt="macarthur">
-            <p>
-            This site has been crafted from a love and respect of history and everything World War 2.
-            <br>
-            <br>
-            Follow along daily as each of the days events are highlighted.
-            </p>
-            </div>
-
-        </div>
-
-
-        <sideBar/>
-
+      </p>
     </div>
 
-    
+  </div>
 
 </template>
 
-<script>
-import timeline from '../components/timeline/timeline.vue'
-import sideBar from '../components/sidebar/sidebar.vue'
-
-export default {
-  components: {timeline, sideBar }
-}
-</script>
-
 <style scoped>
 
-.container {
-    display: flex;
-    user-select: none;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-h1 {
-    text-align: center;
-    width: 100%;
-    padding: 50px 0;
-}
-
-.content {
+.about-container {
   width: 100%;
 }
 
-.img-text {
-    display: flex;
-    padding: 0 20px;
+.title {
+  text-align: center;
+  margin: 20px;
 }
 
-p {
-  padding-left: 20px;
+.content img {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 500px) {
-  img {
+
+  .content img {
     width: 200px;
-    padding-bottom: 20px;
   }
-  .img-text {
+
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
 }
+
+
 
 </style>
