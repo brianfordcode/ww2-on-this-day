@@ -1,13 +1,6 @@
 <template>
     <div class="box pop-days">
-        <p class="title">Most Popular Days</p>
-        <!-- <ul
-            class="days-list"
-            v-for="day in $store.state.popDays"
-            :key="day"
-        >
-            <li>{{ day }}</li>
-        </ul> -->
+        <p>Most Popular Days</p>
     </div>
 </template>
 
@@ -19,24 +12,13 @@ export default {
 
 <style scoped>
 .pop-days {
-    width: 100%;
-    height: min-content;
-    padding-bottom: 20px;
-    position: relative;
+    height: 250px;
 }
 
-.title{
+.pop-days p {
     text-align: center;
-    padding: 20px 0 10px 0;
+    padding: 20px;
     font-family: 'special elite';
-}
-
-.days-list {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 0 auto;
 }
 
 </style>

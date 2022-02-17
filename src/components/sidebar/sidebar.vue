@@ -3,10 +3,9 @@
 <div class="sidebar-container">
     <subBox/>
     <ad/>
-    <!-- <popDays/> -->
+    <popDays/>
     <ad/>
     <!-- <popEvents/> -->
-    
 </div>
 
 </template>
@@ -42,7 +41,6 @@ export default {
     background-color: rgb(238, 238, 238);
     width: 220px;
 }
-
 
 @media screen and (max-width: 925px) {
     .sidebar-container {

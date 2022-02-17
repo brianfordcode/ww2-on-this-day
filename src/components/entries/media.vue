@@ -13,9 +13,8 @@
             v-for="book in event.books"
             :key="book"
         >
-            <a :href="book.mediaLink.link" target="_blank">
+            <a :href="book.link" target="_blank">
                 <img
-                    v-if="book.title"
                     class="media"
                     :src="book.picture"
                     :alt="book.title"
@@ -32,15 +31,14 @@
         />
         <div
             class="movies media-wrapper"
-            v-for="movie in event.movies"
-            :key="movie"
+            v-for="movies in event.movies"
+            :key="movies"
         >
-            <a :href="movie.mediaLink.link" target="_blank">
+            <a :href="movies.link" target="_blank">
                 <img
-                    v-if="movie.title"
                     class="media"
-                    :src="movie.picture"
-                    :alt="movie.title"
+                    :src="movies.picture"
+                    :alt="movies.title"
                 >
             </a>
         </div>
