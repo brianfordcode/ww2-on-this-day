@@ -4,7 +4,7 @@
     <!-- BOOKS -->
     <div class="media-container">
         <img
-            v-if="event.books"
+            v-if="event.books[0]"
             src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
             draggable="false"
         />
@@ -13,9 +13,8 @@
             v-for="book in event.books"
             :key="book"
         >
-            <a :href="book.mediaLink.link" target="_blank">
+            <a :href="book.link" target="_blank">
                 <img
-                    v-if="book.title"
                     class="media"
                     :src="book.picture"
                     :alt="book.title"
@@ -26,21 +25,20 @@
     <!-- MOVIES -->
     <div class="media-container">
         <img
-            v-if="event.movies"
+            v-if="event.movies[0]"
             src="https://img.icons8.com/ios-filled/50/000000/clapperboard.png"
             draggable="false"
         />
         <div
             class="movies media-wrapper"
-            v-for="movie in event.movies"
-            :key="movie"
+            v-for="movies in event.movies"
+            :key="movies"
         >
-            <a :href="movie.mediaLink.link" target="_blank">
+            <a :href="movies.link" target="_blank">
                 <img
-                    v-if="movie.title"
                     class="media"
-                    :src="movie.picture"
-                    :alt="movie.title"
+                    :src="movies.picture"
+                    :alt="movies.title"
                 >
             </a>
         </div>
