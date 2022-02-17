@@ -8,13 +8,12 @@
       >
         <!-- LOGO -->
         <logo/>
-        <!-- ARROW ICON WHEN SMALL SCREEN -->
+        <!-- OPEN/CLOSE TIMELINE -->
         <img
           :src="arrowIcon"
           alt="arrow-icon"
           draggable = "false"
           :class="{'down': showTimeline}"
-          v-if="$route.name === 'Home'"
           style="cursor: pointer;"
           @click="showTimeline = !showTimeline"
         />
@@ -22,7 +21,7 @@
     <!-- MAIN TIMELINE -->
     <div
       class="timeline-container" 
-      v-if="$route.name === 'Home' && showTimeline"
+      v-if="showTimeline"
     >
       <!-- DAYS CONTAINER -->
       <div class="days-arrows">
@@ -49,7 +48,7 @@
             class="arrow"
             :src="arrowIcon"
             draggable = "false"
-            v-if="getDayOffset(startDate, offset - 1).getTime() === $store.state.selectedDate.getTime()"
+            v-if="(getDayOffset(startDate, offset - 1).getMonth(), getDayOffset(startDate, offset - 1).getDate()) === ($store.state.selectedDate.getMonth() - 1 , $store.state.selectedDate.getDate())"
           />
           </div>
         </div>
@@ -98,6 +97,7 @@
 
 <script>
 import logo from "./logo.vue"
+
 export default {
   data() {
     return {
@@ -112,29 +112,29 @@ export default {
     // GET BROWSER WIDTH
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
+
+    // DO NOT SHOW TIMELINE IF NAVIGATE AWAY FROM EVENTS PAGE
+    if (this.$route.params.datestring || this.$route.name === 'Home') {
+      this.showTimeline = true
+    } else {
+      this.showTimeline = false
+    }
   },
   methods: {
     getDayOffset(date, dayOffset) {
       return new Date(date.getYear(),date.getMonth(), date.getDate() + dayOffset)
     },
     yearClicked(clickedYear) {
-        this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
-        // DISPATCH date selected TO STORE
-        this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
-        console.log(this.$store.state.selectedDate)
-        this.changeRoute()
+      this.startDate = new Date(clickedYear, this.startDate.getMonth(), this.startDate.getDate());
+      // DISPATCH date selected TO STORE
+      this.$store.dispatch('changeDate', new Date(clickedYear, this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate()))
+
+      this.$router.push(`/${this.$store.getters.dateForRouter()}`)
     },
     dayClicked(offset) {
       this.$store.dispatch('changeDate', this.getDayOffset(this.startDate, offset - 1), this.$store.state.selectedDate.getFullYear())
-      console.log(this.$store.state.selectedDate)
-      this.changeRoute()
-    },
-    changeRoute() {
-      const year = this.$store.state.selectedDate.getFullYear()
-      const month = (this.$store.state.selectedDate.getMonth() < 10 ? '0' : '') + (this.$store.state.selectedDate.getMonth() + 1)
-      const day = (this.$store.state.selectedDate.getDate() < 10 ? '0' : '') + this.$store.state.selectedDate.getDate()
-      const fullDate = year + '-' + month + '-' + day
-      this.$router.push(`/${fullDate}`)
+
+      this.$router.push(`/${this.$store.getters.dateForRouter()}`)
     },
     getDayString(date) {
       return date.toLocaleDateString('en-us', {month:"long", day:"numeric"})
@@ -159,11 +159,14 @@ export default {
   box-shadow: 0px 0px 33px -20px #000000;
   user-select: none;
   background-color: white;
+  width: 100%;
+  z-index: 10000000;
 }
 
 .content {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .days-arrows {
@@ -196,7 +199,7 @@ export default {
   color: white;
   padding: 2px 0;
   cursor: pointer;
-  width: 100px;
+  width: 110px;
 }
 
 .down {
