@@ -12,7 +12,7 @@
         "keywords": ["battleship bismarck"],
         "books": [
             {
-                "id": "",
+                "bookId": "",
                 "title": "Hunt the Bismarck: The pursuit of Germany's most famous battleship",
                 "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThlQp1Bka0fo0CdDfO6ERpzGYwT-vOobZtYdmDKwDSIJ8cP7VfcZv34BSiJPgE-qL6jvo&usqp=CAU",
                 "year": "2019",
@@ -23,7 +23,7 @@
                 }
             },
             {
-                "id": "",
+                "bookId": "",
                 "title": "Battleship Bismarck: A Survivor's Story, New and Expanded Edition",
                 "picture": "https://images-na.ssl-images-amazon.com/images/I/419grCCr1ZL._SX324_BO1,204,203,200_.jpg",
                 "year": "2013",
@@ -35,7 +35,7 @@
                 }
             },
             {
-                "id": "",
+                "bookId": "",
                 "title": "Bismarck: The Final Days of Germany's Greatest Battleship",
                 "picture": "https://m.media-amazon.com/images/I/51DM1Us+lUL._SY346_.jpg",
                 "year": "2009",
@@ -48,7 +48,7 @@
         ],
         "movies": [
             {
-                "id": "",
+                 "movieId": "",
                  "title": "Expedition: Bismarck",
                  "picture": "https://upload.wikimedia.org/wikipedia/en/7/74/Dvd_bismarck.jpg",
                  "year": "2002",
@@ -59,7 +59,7 @@
                 }
              },
              {
-                "id": "",
+                 "movieId": "",
                  "title": "Sink the Bismarck!",
                  "picture": "https://flxt.tmsimg.com/assets/p4302_p_v10_ab.jpg",
                  "year": "1960",
@@ -70,7 +70,7 @@
                 }
              },
              {
-                "id": "",
+                 "movieId": "",
                  "title": "The Battle of Hood and Bismarck",
                  "picture": "https://images-na.ssl-images-amazon.com/images/I/71Bq3wS2AWL._RI_.jpg",
                  "year": "2013",
@@ -82,46 +82,172 @@
              }
         ]
     },
-
-
     {
-        "date": "",
-        "id": "",
-        "title": "",
-        "citation": "",
-        "mainPicture": "",
-        "location": {
-            "coordinates": "",
-            "mapZoom": ""
+        "date":"1942-05-07",
+        "id":"Random ID",
+        "title":"asdf asdf asdf asdfpo jasdpfioasdpfjapsdjfpasdjf askdjf l;kadjsflkadjs f'lasdf'ldfkl j;",
+        "citation":"https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Text/Wrapping_Text",
+        "mainPicture":"https://263i3m2dw9nnf6zqv39ktpr1-wpengine.netdna-ssl.com/wp-content/uploads/2021/09/16:9/Approaching_Omaha-DDay-1200x0-c-default.jpg",
+        "location":{
+           "coordinates":"51.1657, 10.4515",
+           "mapZoom":"6"
         },
-        "keywords": [""],
-        "books": [
-            {
-                "id": "",
-                "title": "",
-                "picture": "",
-                "year": "",
-                "mediaLink": {
-                    "link": "",
-                    "affiliate": false,
-                    "affiliateSource": ""
-                }
-            }
+        "keywords":[
+           "germany",
+           "ww2"
         ],
-        "movies": [
-            {
-                "id": "",
-                "title": "",
-                "picture": "",
-                "year": "",
-                "mediaLink": {
-                    "link": "",
-                    "affiliate": false,
-                    "affiliateSource": ""
-                }
-            }
+        "books":[
+           {
+              "id":"",
+              "title":"asdfasd fa sdf dsf ",
+              "picture":"https://images2.penguinrandomhouse.com/cover/9781101911525",
+              "year":"3442",
+              "mediaLink":{
+                 "link":"https://images2.penguinrandomhouse.com/cover/9781101911525",
+                 "affiliate":true,
+                 "affiliateSource":"Amazon"
+              }
+           }
+        ],
+        "movies":[
+           {
+              "id":"",
+              "title":"asdfasdfadsfasd",
+              "picture":"https://images2.penguinrandomhouse.com/cover/9781101911525",
+              "year":"ac33",
+              "mediaLink":{
+                 "link":"ehttps://images2.penguinrandomhouse.com/cover/9781101911525",
+                 "affiliate":false,
+                 "affiliateSource":"Ebay"
+              }
+           }
         ]
-    }
+     },
+     {
+        "date":"1940-02-15",
+        "id":"event-1644981142712",
+        "title":"The 2nd Battle of Summa ended in victory for the Soviets, who overran the Mannerheim Line. That night the Finnish Commander-in-Chief Carl Gustaf Emil Mannerheim ordered the II Army Corps to withdraw from the line.",
+        "mainPicture":"https://2.bp.blogspot.com/-toRmdQAig0E/VzU0AuCQboI/AAAAAAABy5I/L51Iy7sS3_UqsmsFO0Q3c_2ben4Blv7EwCLcB/s1600/Night_artillery_1_February_1940_worldwartwo.filminspector.com_1.jpg",
+        "citation":"https://en.wikipedia.org/wiki/February_1940#February_15,_1940_(Thursday)",
+        "location":{
+           "coordinates":"60.507342, 29.012389",
+           "mapZoom":5
+        },
+        "keywords":[
+           "2nd Battle of Summa",
+           "Mannerheim Line"
+        ],
+        "books":[
+           {
+              "id":"book-1644980977208",
+              "title":"The Longest Winter: The Battle of the Bulge and the Epic Story of WWII's Most Decorated Platoon ",
+              "picture":"https://images-na.ssl-images-amazon.com/images/I/61wl3RG5CML._SX498_BO1,204,203,200_.jpg",
+              "year":"2005",
+              "mediaLink":{
+                 "link":"https://www.amazon.com/gp/product/0306814404/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0306814404&linkCode=as2&tag=ww2onthisday-20&linkId=f9e64be6cbd01b9a4aa52a496639a03c",
+                 "affiliate":true,
+                 "affiliateSource":"Amazon"
+              }
+           },
+           {
+              "id":"book-1644981065915",
+              "title":"The Winter War: The Soviet Attack on Finland",
+              "picture":"https://pictures.abebooks.com/isbn/9780811724333-us.jpg",
+              "year":"1992",
+              "mediaLink":{
+                 "link":"https://www.amazon.com/gp/product/0811724336/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0811724336&linkCode=as2&tag=ww2onthisday-20&linkId=5e694becaef236e56184560fbd0c8467",
+                 "affiliate":true,
+                 "affiliateSource":"Amazon"
+              }
+           },
+           {
+              "id":"book-1644981114708",
+              "title":"Frozen Hell: The Russo-Finnish Winter War of 1939-1940",
+              "picture":"https://images-na.ssl-images-amazon.com/images/I/51m1TGDWHPL._SX334_BO1,204,203,200_.jpg",
+              "year":"2000",
+              "mediaLink":{
+                 "link":"https://www.amazon.com/gp/product/1565122496/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1565122496&linkCode=as2&tag=ww2onthisday-20&linkId=76270e7f5e10d9ad9550a563aba1f3d7",
+                 "affiliate":true,
+                 "affiliateSource":"Amazon"
+              }
+           }
+        ],
+        "movies":[
+           {
+              "id":"movie-1644980398144",
+              "title":"The Winter War",
+              "picture":"https://m.media-amazon.com/images/M/MV5BNDFjNGVkNWUtZjA3MC00YTkyLTg4NGItOTdiMDZkOWU1OTQ2XkEyXkFqcGdeQXVyNzgzODI1OTE@._V1_.jpg",
+              "year":"1989",
+              "mediaLink":{
+                 "link":"https://www.imdb.com/title/tt0098437/",
+                 "affiliate":false,
+                 "affiliateSource":""
+              }
+           }
+        ]
+     },
+     {
+        "date":"1940-02-15",
+        "id":"event-1644982049777",
+        "title":"More than 1100 Jews were deported from the German city of Stettin to the Lublin region of the General Government.",
+        "mainPicture":"https://collections.ushmm.org/iiif-b/assets/729557",
+        "citation":"https://en.wikipedia.org/wiki/February_1940#February_15,_1940_(Thursday)",
+        "location":{
+           "coordinates":"53.4285, 14.5528",
+           "mapZoom":6
+        },
+        "keywords":[
+           
+        ],
+        "books":[
+           {
+              "id":"book-1644981937725",
+              "title":"The Lost Jews of Stettin: A Revealing Letter from 1942",
+              "picture":"https://blog.ehri-project.eu/wp-content/uploads/2021/05/NRMB-HL576Y4-2_00318.jpg",
+              "year":"2021",
+              "mediaLink":{
+                 "link":"https://blog.ehri-project.eu/2021/06/02/the-lost-jews-of-stettin/",
+                 "affiliate":false,
+                 "affiliateSource":""
+              }
+           }
+        ],
+        "movies":[
+           
+        ]
+     },
+     {
+        "date":"1940-02-15",
+        "id":"event-1644994602421",
+        "title":"German submarine U-65 is commissioned. German submarine U-65 was a Type IXB U-boat of Nazi Germany's Kriegsmarine during World War II. Over the course of six war patrols between 9 April 1940 and 28 April 1941, she sank twelve ships and damaged three others for a total loss of 88,664 gross register tons (GRT).",
+        "mainPicture":"http://wrecksite.eu/img/wrecks/u_65_cutt_away.jpg?c1a190ce-03d7-455a-bd82-b16cc6bc47f2",
+        "citation":"https://en.wikipedia.org/wiki/German_submarine_U-65_(1939)",
+        "location":{
+           "coordinates":"53.0793, 8.8017",
+           "mapZoom":6
+        },
+        "keywords":[
+           "U-65",
+           "German",
+           "Kriegsmarine"
+        ],
+        "books":[
+           {
+              "id":"book-1644994537450",
+              "title":"Iron Coffins: A Personal Account Of The German U-boat Battles Of World War II",
+              "picture":"https://images-na.ssl-images-amazon.com/images/I/51FpAawbYWL._SX331_BO1,204,203,200_.jpg",
+              "year":"2002",
+              "mediaLink":{
+                 "link":"https://www.amazon.com/gp/product/030681160X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=030681160X&linkCode=as2&tag=ww2onthisday-20&linkId=c87250b51fa04b8b193b2a0c3435886c",
+                 "affiliate":true,
+                 "affiliateSource":"Amazon"
+              }
+           }
+        ],
+        "movies":[
+           
+        ]
+     }
 
 
 
