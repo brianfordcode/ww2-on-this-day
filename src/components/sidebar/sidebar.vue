@@ -6,6 +6,7 @@
     <!-- <popDays/> -->
     <ad/>
     <!-- <popEvents/> -->
+    
 </div>
 
 </template>
@@ -28,13 +29,18 @@ export default {
     display: initial;
 }
 
+
+.sidebar-container > * {
+    margin-bottom: 20px;
+}
+
+.sidebar-container:last-child {
+    margin-bottom: 90px;
+}
+
 .box {
     background-color: rgb(238, 238, 238);
     width: 220px;
-}
-
-.box:not(:last-child) {
-    margin-bottom: 20px;
 }
 
 

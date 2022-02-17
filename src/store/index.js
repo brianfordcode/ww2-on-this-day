@@ -1,8 +1,22 @@
 import { createStore } from 'vuex'
 import router from '@/router'
 
-// const route = useRoute()
-// console.log(useRoute().params)
+// FIREBASE
+import { initializeApp } from "firebase/app";
+import { doc, setDoc, getFirestore, getDocs, query, collection } from "firebase/firestore"; 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBS1sZtXMnh5xFwJnRIoGCSwCiDymKO2VI",
+  authDomain: "ww2-on-this-day.firebaseapp.com",
+  projectId: "ww2-on-this-day",
+  storageBucket: "ww2-on-this-day.appspot.com",
+  messagingSenderId: "814949029524",
+  appId: "1:814949029524:web:343f2f6669b975b9fc0681",
+  measurementId: "G-YTWHJZS99D"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
 
 const store = createStore({
   state() {
@@ -85,15 +99,22 @@ const store = createStore({
     changeDate(context, dateSelectedfromTimeline) {
       context.commit('changeDate', dateSelectedfromTimeline)
     },
-    loadJSONFiles(context) {
-      fetch("events.json")
-        .then(response => response.json())
-        .then(data => (context.commit('loadJSONFiles', data)))
-    },
+    async loadJSONFiles(context) {
+      const q = query(collection(db, "submitted-events"))
+
+      const querySnapshot = await getDocs(q);
+      const events = []
+      querySnapshot.forEach(doc => events.push(doc.data()))
+      context.commit('loadJSONFiles', events)
+
+    //   fetch("events.json")
+    //     .then(response => response.json())
+    //     .then(data => (context.commit('loadJSONFiles', data)))
+    // },
     // getPopDays(context) {
     //   const popDays = ['1945-12-07', '1939-27-09']
     //   context.commit('getPopDays', popDays)
-    // }
+    }
   },
   modules: {
   }

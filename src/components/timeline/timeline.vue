@@ -143,7 +143,7 @@ export default {
     handleResize() {
       let width = window.innerWidth
       width < 1200 ? this.numOfDaysInTimeline = 7 : ''
-      width < 800 ? this.numOfDaysInTimeline = 5 : ''
+      width < 850 ? this.numOfDaysInTimeline = 5 : ''
       width < 650 ? this.numOfDaysInTimeline = 3 : ''
       // SHOW/HIDE TIMELINE AND ARROW
       if ( width < 925 ) { this.showTimeline = false }

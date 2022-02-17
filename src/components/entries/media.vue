@@ -4,7 +4,7 @@
     <!-- BOOKS -->
     <div class="media-container">
         <img
-            v-if="event.books"
+            v-if="event.books[0]"
             src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
             draggable="false"
         />
@@ -26,7 +26,7 @@
     <!-- MOVIES -->
     <div class="media-container">
         <img
-            v-if="event.movies"
+            v-if="event.movies[0]"
             src="https://img.icons8.com/ios-filled/50/000000/clapperboard.png"
             draggable="false"
         />
