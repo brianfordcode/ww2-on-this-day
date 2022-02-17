@@ -1,20 +1,20 @@
 <template>
     <div class="ad">
-        <ins
+        <!-- <ins
             class="adsbygoogle"
             data-ad-client="ca-pub-4666012694247809"
             data-ad-slot="2938290425"
             data-ad-format="auto"
             data-full-width-responsive="true"
         >
-        </ins>
+        </ins> -->
     </div>
 </template>
 
 <script>
 export default {
     mounted() {
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({});
     }
 
 }
@@ -25,13 +25,15 @@ export default {
     border: 1px solid black;
     height: 150px;
     width: 100%;
+    display: none;
+    margin-bottom: 100px;
 }
 
-/* @media screen and (max-width: 925px) {
+@media screen and (max-width: 925px) {
     .ad {
         display: flex;
     }
-} */
+}
 
 .adsbygoogle {
     display: block;

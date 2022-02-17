@@ -1,7 +1,7 @@
 <template>
 <div class="event-details">
     <!-- DATE -->
-    <p style="font-size: 12px; color: rgba(0,0,0,0.75); margin-bottom: 3px;">{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
+    <p class="date small-text">{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
     <!-- TITLE -->
     <p class="event-title">{{event.title}}</p>
     <!-- SEARCH  -->
@@ -31,6 +31,12 @@ export default {
     height: 100%;
     width: 80%;
     margin-left: 10px;
+}
+
+.small-text {
+    font-size: 12px;
+    color: rgba(0,0,0,0.75);
+    margin-bottom: 3px;
 }
 
 @media screen and (max-width: 600px) {

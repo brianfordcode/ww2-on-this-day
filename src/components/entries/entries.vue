@@ -17,6 +17,12 @@
                 :event="event"
             />
         </div>
+            <p
+        class="citation small-text"
+        v-if="event.citation"
+    >
+    Citation: <a :href="event.citation" target="_blank">{{event.citation}}</a> 
+    </p>
     </div>
     <lowerAd/>
 </div>
@@ -39,7 +45,8 @@ export default {
 <style scoped>
 
 .main-container {
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .entries-container {
@@ -75,6 +82,13 @@ export default {
 .entries-container:hover .media-map {
     max-height: 1000px;
     opacity: 1;
+}
+
+.small-text {
+    font-size: 10px;
+    text-align: right;
+    color: rgba(0,0,0,0.75);
+    margin-bottom: 3px;
 }
 
 @media screen and (max-width: 650px) {

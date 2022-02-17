@@ -1,4 +1,8 @@
 import { createStore } from 'vuex'
+import router from '@/router'
+
+// const route = useRoute()
+// console.log(useRoute().params)
 
 const store = createStore({
   state() {
@@ -7,6 +11,7 @@ const store = createStore({
       end: 1945,
       selectedDate: new Date(1939, new Date().getMonth(), new Date().getDate()),
       events: [],
+      // popDays: [],
       video: "/banner-video.mp4",
       timelineYearPictures: {
         '1939': "https://www.thenation.com/wp-content/uploads/2015/08/germany_poland_loc_img.jpg",
@@ -41,6 +46,20 @@ const store = createStore({
         })
         return eventsOnDay
     },
+    dateForRouter: (state) => () => {
+      const year = state.selectedDate.getFullYear()
+      const month = (state.selectedDate.getMonth() < 10 ? '0' : '') + (state.selectedDate.getMonth() + 1)
+      const day = (state.selectedDate.getDate() < 10 ? '0' : '') + state.selectedDate.getDate()
+      const fullDate = year + '-' + month + '-' + day
+      return fullDate
+    },
+    currentDateForRouter: (state) => () => {
+      const year = 1939
+      const month = (new Date().getMonth() < 10 ? '0' : '') + (new Date().getMonth() + 1)
+      const day = (new Date().getDate() < 10 ? '0' : '') + new Date().getDate()
+      const fullDate = year + '-' + month + '-' + day
+      return fullDate
+    },
     yearTimeline: (state) => () => {
       const years = []
       for (let i = state.start ; i <= state.end; i++) { years.push(i) }
@@ -48,15 +67,19 @@ const store = createStore({
     },
     getPicForBg: (state) => (year) => {
       return year ? state.timelineYearPictures[year] : ''
-    },
+    }
   },
   mutations: {
     changeDate(state, dateSelectedfromTimeline) {
       state.selectedDate = dateSelectedfromTimeline
+      // console.log(dateSelectedfromTimeline)
     },
     loadJSONFiles(state, data) {
       state.events = data
-    }
+    },
+    // getPopDays(state, popDays) {
+    //   state.popDays = popDays
+    // }
   },
   actions: {
     changeDate(context, dateSelectedfromTimeline) {
@@ -66,7 +89,11 @@ const store = createStore({
       fetch("events.json")
         .then(response => response.json())
         .then(data => (context.commit('loadJSONFiles', data)))
-    }
+    },
+    // getPopDays(context) {
+    //   const popDays = ['1945-12-07', '1939-27-09']
+    //   context.commit('getPopDays', popDays)
+    // }
   },
   modules: {
   }
