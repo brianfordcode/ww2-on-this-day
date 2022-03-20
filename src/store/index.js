@@ -54,8 +54,9 @@ const store = createStore({
         .entries(state.events)
         .forEach(entry =>  {
           const [ eventId, event ] = entry
-          if (event.date === `${year}-${month}-${day}`) {
+          if (event.date === `${year}-${month}-${day}` && event.published === true) {
             eventsOnDay.push(event)
+            console.log('published')
           }
         })
         return eventsOnDay
@@ -86,14 +87,11 @@ const store = createStore({
   mutations: {
     changeDate(state, dateSelectedfromTimeline) {
       state.selectedDate = dateSelectedfromTimeline
-      // console.log(dateSelectedfromTimeline)
     },
     loadJSONFiles(state, data) {
       state.events = data
     },
-    // getPopDays(state, popDays) {
-    //   state.popDays = popDays
-    // }
+
   },
   actions: {
     changeDate(context, dateSelectedfromTimeline) {
@@ -107,13 +105,6 @@ const store = createStore({
       querySnapshot.forEach(doc => events.push(doc.data()))
       context.commit('loadJSONFiles', events)
 
-    //   fetch("events.json")
-    //     .then(response => response.json())
-    //     .then(data => (context.commit('loadJSONFiles', data)))
-    // },
-    // getPopDays(context) {
-    //   const popDays = ['1945-12-07', '1939-27-09']
-    //   context.commit('getPopDays', popDays)
     }
   },
   modules: {

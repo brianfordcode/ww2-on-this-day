@@ -21,7 +21,7 @@
         class="citation small-text"
         v-if="event.citation"
     >
-    Citation: <a :href="event.citation" target="_blank">{{event.citation}}</a> 
+    <a :href="event.citation" target="_blank">Citation</a> 
     </p>
     </div>
     <lowerAd/>
