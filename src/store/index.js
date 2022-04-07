@@ -3,8 +3,10 @@ import router from '@/router'
 
 // FIREBASE
 import { initializeApp } from "firebase/app";
-import { doc, setDoc, getFirestore, getDocs, query, collection } from "firebase/firestore"; 
+import { doc, setDoc, getFirestore, getDocs, query, collection, where } from "firebase/firestore"; 
 
+
+// REAL CREDENTIALS
 const firebaseConfig = {
   apiKey: "AIzaSyBS1sZtXMnh5xFwJnRIoGCSwCiDymKO2VI",
   authDomain: "ww2-on-this-day.firebaseapp.com",
@@ -14,9 +16,30 @@ const firebaseConfig = {
   appId: "1:814949029524:web:343f2f6669b975b9fc0681",
   measurementId: "G-YTWHJZS99D"
 };
+
+
+// TEST CREDENTIALS
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDgJkeYFH6F6h2RBn5SZJ8hDktY3bQSito",
+//   authDomain: "ww2-development.firebaseapp.com",
+//   projectId: "ww2-development",
+//   storageBucket: "ww2-development.appspot.com",
+//   messagingSenderId: "150864423280",
+//   appId: "1:150864423280:web:be521909810e49c69e87b5",
+//   measurementId: "G-B4V4090WQW"
+// }
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
+
+const formattedDate = d => {
+  const year = d.getFullYear()
+  const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
+  const day = (d.getDate() < 10 ? '0' : '') + d.getDate()
+  return year + '-' + month + '-' + day
+}
 
 const store = createStore({
   state() {
@@ -62,11 +85,7 @@ const store = createStore({
         return eventsOnDay
     },
     dateForRouter: (state) => () => {
-      const year = state.selectedDate.getFullYear()
-      const month = (state.selectedDate.getMonth() < 10 ? '0' : '') + (state.selectedDate.getMonth() + 1)
-      const day = (state.selectedDate.getDate() < 10 ? '0' : '') + state.selectedDate.getDate()
-      const fullDate = year + '-' + month + '-' + day
-      return fullDate
+      return formattedDate(state.selectedDate)
     },
     currentDateForRouter: (state) => () => {
       const year = 1939
@@ -98,8 +117,9 @@ const store = createStore({
       context.commit('changeDate', dateSelectedfromTimeline)
     },
     async loadJSONFiles(context) {
-      const q = query(collection(db, "submitted-events"))
-
+      const date = formattedDate(context.state.selectedDate)
+      const q = query(collection(db, "submitted-events"), where("date", "==", date))
+      console.log(context)
       const querySnapshot = await getDocs(q);
       const events = []
       querySnapshot.forEach(doc => events.push(doc.data()))
@@ -107,8 +127,6 @@ const store = createStore({
 
     }
   },
-  modules: {
-  }
 })
 
 export default store
