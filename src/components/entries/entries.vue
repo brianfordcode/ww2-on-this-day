@@ -1,6 +1,18 @@
 <template>
 
 <div class="main-container">
+
+    <!-- CARD IF NO EVENTS -->
+    <div
+        style="padding: 25px; display: flex; flex-direction: column; align-items: center;"
+        v-if="this.$store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate()).length === 0"
+    >
+        <p style="font-size: 20px;">No events yet!</p>
+        <p>Do you know what happened on {{this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"})}}?</p>
+        <router-link to="/contact" target="_blank">Help us out by submitting an event</router-link>
+    </div>
+
+    <!-- EVENTS -->
     <div
         class="entries-container"
         v-for="event in this.$store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate())"

@@ -34,6 +34,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
+
 const formattedDate = d => {
   const year = d.getFullYear()
   const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
