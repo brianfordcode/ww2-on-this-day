@@ -4,6 +4,7 @@
             class="event-picture"
             :src="event.mainPicture"
             :alt="event.mainPicture"
+            v-if="event.mainPicture"
         />
     </div>
 </template>
