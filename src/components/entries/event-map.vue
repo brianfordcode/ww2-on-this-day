@@ -25,8 +25,8 @@ export default {
 <style scoped>
 
 .map {
-    width:40%;
-    height:230px
+    width:50%;
+    height:200px
 }
 @media screen and (max-width: 600px) {
     .map {
