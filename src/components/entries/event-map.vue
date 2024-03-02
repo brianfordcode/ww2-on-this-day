@@ -26,13 +26,7 @@ export default {
 
 .map {
     width:90%;
-    height:140px
-}
-@media screen and (max-width: 600px) {
-    .map {
-        width: 100%;
-        height:200px;
-    }
+    height:140px;
 }
 
 </style>

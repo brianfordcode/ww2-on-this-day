@@ -23,26 +23,37 @@
                     transform: `translateX(${ position }px)`
                 }"
             >
-                <!-- INDIVIDUAL TESTIMONIALS  -->
+                <!-- INDIVIDUAL EVENTS  -->
                 <div
                     v-for="event in this.$store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate())"
                     :key="event"
                     class="event"
                 >
+                    <!-- DATE -->
+                    <div class="event-date">
+                            {{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}
+                    </div>
 
-                    <!-- <eventDetails :event="event"/> -->
-                    {{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}
-
-                    <eventPic :event="event"/>
+                    <!-- PICTURE -->
+                    <eventPic class="event-pic"
+                        :event="event"
+                    />
                     
-                    {{ event.title }}
+                    <!-- TEXT -->
+                    <div class="event-title">
+                        {{ event.title }}
+                    </div>
                     
-                    <eventMap 
+                    <!-- MAP -->
+                    <eventMap class="event-map"
                         v-if="event.location.coordinates"
                         :event="event"
                     />
 
-                    <media :event="event"/>
+                    <!-- MEDIA -->
+                    <media class="event-media"
+                        :event="event"
+                    />
                 
                 </div> 
 
@@ -55,14 +66,13 @@
 
 <script>
 
-import eventDetails from './event-details.vue'
 import eventMap from './event-map.vue'
 import media from './media.vue'
 import eventPic from './event-pic.vue'
 import searchEvent from './search-event.vue'
 
 export default {
-    components: { eventDetails, eventMap, media, eventPic, searchEvent },
+    components: { eventMap, media, eventPic, searchEvent },
 
     mounted() {
         window.addEventListener('mouseup', this.endDrag)
@@ -122,12 +132,6 @@ export default {
     display: none;
 }
 
-@media screen and (max-width: 700px) {
-    .entire-page {
-        margin-top: 50px;
-    }
-}
-
 .events-container {
     display: flex;
     width: min-content;
@@ -142,6 +146,27 @@ export default {
     display: flex;
     flex-direction: column;
     margin: 15px;
+}
+
+.event-date {
+    margin: 5px 15px;
+}
+
+.event-pic {
+    margin: 0 auto;
+}
+
+.event-title {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.event-map {
+    margin: 0 auto;
+}
+
+.event-media {
+    margin: 15px 15px;
 }
 
 .dragging {
