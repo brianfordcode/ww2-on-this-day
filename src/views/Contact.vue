@@ -1,20 +1,17 @@
 <template>
 
-    <timeline/>
+    <img
+      @click="this.$router.push(`/${this.$store.getters.dateForRouter()}`)"
+      src="/ww2-on-this-day-logo.png"
+      alt="logo"
+      style="width: 300px; margin: 10px 0 10px 0; cursor: pointer;"
+    />
 
     <div class="container">
 
         <div class="content">
             <h1>Contact Us</h1>
-            <iframe
-                style="width: 100%; height: 930px;"
-                src="https://us14.list-manage.com/contact-form?u=00d82a43010f547c0dca8843a&form_id=6ce4c415c69ff9aba7d88881897370c0"
-                frameborder="0"
-            >
-            </iframe>
         </div>
-
-        <sideBar/>
 
     </div>
 
@@ -24,10 +21,9 @@
 
 <script>
 import timeline from '../components/timeline/timeline.vue'
-import sideBar from '../components/sidebar/sidebar.vue'
 
 export default {
-  components: {timeline, sideBar }
+  components: { timeline }
 }
 </script>
 

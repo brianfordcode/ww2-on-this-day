@@ -3,7 +3,12 @@
 <div class="main-container">
   <div class="content">
         <!-- LOGO -->
-        <logo/>
+        <img
+          @click="this.$router.push(`/${this.$store.getters.dateForRouter()}`)"
+          src="/ww2-on-this-day-logo.png"
+          alt="logo"
+          style="width: 300px; margin: 10px 0 10px 0; cursor: pointer;"
+        />
         <!-- DATE SELECTOR -->
         <input type="date" v-model="selectedDate"/>
   </div>
@@ -12,7 +17,6 @@
 </template>
 
 <script>
-import logo from "./logo.vue"
 
 export default {
   created() {
@@ -27,7 +31,7 @@ export default {
       selectedDate: `${year}-${month}-${day}`,
     }
   },
-  components: { logo },
+  components: { },
   methods: {
     updateDate() {
       const [ year, month, day ] = this.$route.params.datestring.split('-')
