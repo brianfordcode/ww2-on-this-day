@@ -2,16 +2,16 @@
 
   <dateSelector/>
   
-  <entries/>
+  <events/>
 
 </template>
 
 <script>
-import dateSelector from '../components/date-selector/date-selector.vue'
-import entries from '../components/entries/entries.vue'
+import dateSelector from '../components/date-selector.vue'
+import events from '../components/events.vue'
 
 export default {
-  components: { entries, dateSelector },
+  components: { events, dateSelector },
 }
 </script>
 

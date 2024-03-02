@@ -1,9 +1,8 @@
 import { createStore } from 'vuex'
-import router from '../router/index.js'
 
 // FIREBASE
 import { initializeApp } from "firebase/app";
-import { doc, setDoc, getFirestore, getDocs, query, collection, where } from "firebase/firestore"; 
+import { getFirestore, getDocs, query, collection, where } from "firebase/firestore"; 
 
 
 // REAL CREDENTIALS
@@ -17,7 +16,6 @@ const firebaseConfig = {
   measurementId: "G-YTWHJZS99D"
 };
 
-
 // TEST CREDENTIALS
 // const firebaseConfig = {
 //   apiKey: "AIzaSyDgJkeYFH6F6h2RBn5SZJ8hDktY3bQSito",
@@ -29,11 +27,9 @@ const firebaseConfig = {
 //   measurementId: "G-B4V4090WQW"
 // }
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
-
 
 const formattedDate = d => {
   const year = d.getFullYear()
@@ -45,30 +41,11 @@ const formattedDate = d => {
 const store = createStore({
   state() {
     return {
-      start: 1939,
-      end: 1945,
       selectedDate: new Date(1939, new Date().getMonth(), new Date().getDate()),
       events: [],
-      // popDays: [],
-      video: "/banner-video.mp4",
-      dateSelectorYearPictures: {
-        '1939': "https://www.thenation.com/wp-content/uploads/2015/08/germany_poland_loc_img.jpg",
-        '1940': "https://www.history.com/.image/t_share/MTU3ODc4NjAyNzA4NDI4NTEx/image-placeholder-title.jpg",
-        '1941': "https://list23.com/img/pearl-harbor-day-2021-80th-anniversary-of-date-which-will-live-in-infamy.jpeg",
-        '1942': "https://i.insider.com/5b69fe6c8905f218008b5063?width=1136&format=jpeg",
-        '1943': "https://media.iwm.org.uk/ciim5/29/844/large_000000.jpg",
-        '1944': "https://media.newyorker.com/photos/5cf933a5d822ca03dda19640/16:9/w_2560,h_1440,c_limit/Angell-DDay.jpg",
-        '1945': "https://www.nationalww2museum.org/sites/default/files/styles/wide_medium/public/2021-05/626815-wiki-american_military_personnel_gather_in_paris_to_celebrate_the_japanese_surrender.jpg",
-      },
     }
   },
   getters: {
-    book(id) {
-      return state.books[id]
-    },
-    event(id) {
-      return state.events[id]
-    },
     eventsOnDay: (state, getters) => (year, month, day) => {
       const eventsOnDay = []
       // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
@@ -87,21 +64,6 @@ const store = createStore({
     dateForRouter: (state) => () => {
       return formattedDate(state.selectedDate)
     },
-    currentDateForRouter: (state) => () => {
-      const year = 1939
-      const month = (new Date().getMonth() < 10 ? '0' : '') + (new Date().getMonth() + 1)
-      const day = (new Date().getDate() < 10 ? '0' : '') + new Date().getDate()
-      const fullDate = year + '-' + month + '-' + day
-      return fullDate
-    },
-    yeardateSelector: (state) => () => {
-      const years = []
-      for (let i = state.start ; i <= state.end; i++) { years.push(i) }
-      return years
-    },
-    getPicForBg: (state) => (year) => {
-      return year ? state.dateSelectorYearPictures[year] : ''
-    }
   },
   mutations: {
     changeDate(state, dateSelectedfromdateSelector) {

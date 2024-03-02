@@ -11,9 +11,9 @@
             @mousemove="mouseMove"
         >
 
-            <!-- BOX OF ALL TESTIMONIALS -->
+            <!-- BOX OF ALL events -->
             <div
-                ref="testimonialContainer"
+                ref="eventContainer"
                 :class="{
                     'events-container': true,
                     'not-dragging': !dragging,
@@ -66,13 +66,13 @@
 
 <script>
 
-import eventMap from './event-map.vue'
-import eventMedia from './event-media.vue'
-import eventPic from './event-pic.vue'
-import searchEvent from './search-event.vue'
+import eventMap from './event-details/event-map.vue'
+import eventMedia from './event-details/event-media.vue'
+import eventPic from './event-details/event-pic.vue'
+import eventSearch from './event-details/event-search.vue'
 
 export default {
-    components: { eventMap, eventMedia, eventPic, searchEvent },
+    components: { eventMap, eventMedia, eventPic, eventSearch },
 
     mounted() {
         window.addEventListener('mouseup', this.endDrag)
@@ -101,7 +101,7 @@ export default {
 
             if (this.position > 0) this.position = 0
             else {
-                const tWidth = this.$refs.testimonialContainer.offsetWidth
+                const tWidth = this.$refs.eventContainer.offsetWidth
                 const mWidth = this.$refs.mainContainer.offsetWidth
                 // clamp new position so that there is no whitespace to the right
                 this.position = Math.max(mWidth - tWidth, this.position)
@@ -178,4 +178,4 @@ export default {
     transition: 0.20s transform ease-out;
 }
 
-</style>./event-media.vue
+</style>./event-media.vue./event-details/event-search.vue

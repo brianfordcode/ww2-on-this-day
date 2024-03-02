@@ -9,7 +9,7 @@
     alt="logo"
   />
   <!-- DATE SELECTOR -->
-  <input class="date-selector" type="date" v-model="selectedDate"/>
+  <input class="date-selector" type="date" v-model="selectedDate" v-if="this.$route.name != 'About'"/>
 
   <div class="about-contact">
     <router-link to="/about">About</router-link>
