@@ -27,24 +27,11 @@ export default {
 .event-details {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    width: 80%;
-    margin-left: 10px;
 }
 
 .small-text {
     font-size: 12px;
     color: rgba(0,0,0,0.75);
-    margin-bottom: 3px;
 }
-
-@media screen and (max-width: 600px) {
-    .event-details {
-        margin-left: 0;
-        width: 100%;
-    }
-}
-
 
 </style>

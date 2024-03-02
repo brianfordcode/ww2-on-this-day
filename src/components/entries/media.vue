@@ -3,11 +3,6 @@
 <div class="all-media-container">
     <!-- BOOKS -->
     <div class="media-container">
-        <img
-            v-if="event.books[0]"
-            src="https://img.icons8.com/external-flat-icons-inmotus-design/50/000000/external-books-reading-flat-icons-inmotus-design.png"
-            draggable="false"
-        />
         <div
             class="books media-wrapper"
             v-for="book in event.books"
@@ -25,11 +20,6 @@
     </div>
     <!-- MOVIES -->
     <div class="media-container">
-        <img
-            v-if="event.movies[0]"
-            src="https://img.icons8.com/ios-filled/50/000000/clapperboard.png"
-            draggable="false"
-        />
         <div
             class="movies media-wrapper"
             v-for="movie in event.movies"
@@ -78,13 +68,7 @@ export default {
     width: 70px;
     height: 100px;
     position: relative;
-    transition: .25s ease-in-out;
-    margin: 5px 5px 0 5px;
     overflow: hidden;
-}
-.media-wrapper:hover {
-    transform: scale(2);
-    z-index: 2;
 }
 .media {
     width: 100%;
@@ -101,19 +85,12 @@ export default {
     .all-media-container {
         margin-bottom: 10px;
     }
-    .media-wrapper:hover {
-        transform: scale(2);
-        z-index: 2;
-    }
 }
 
 @media screen and (max-width: 393px) {
     .media-wrapper {
         width: 50px;
         height: 80px;
-    }
-    .media-wrapper:hover {
-        transform: scale(1);
     }
 }
 

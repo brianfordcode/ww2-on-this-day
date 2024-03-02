@@ -26,7 +26,6 @@ export default {
 
   data() {
     const [year, month, day] = this.$route.params.datestring.split('-')
-    console.log(this.$route.params.datestring)
     return {
       selectedDate: `${year}-${month}-${day}`,
     }

@@ -80,7 +80,6 @@ const store = createStore({
           const [ eventId, event ] = entry
           if (event.date === `${year}-${month}-${day}` && event.published === true) {
             eventsOnDay.push(event)
-            console.log('published')
           }
         })
         return eventsOnDay
@@ -120,7 +119,6 @@ const store = createStore({
     async loadJSONFiles(context) {
       const date = formattedDate(context.state.selectedDate)
       const q = query(collection(db, "submitted-events"), where("date", "==", date))
-      console.log(context)
       const querySnapshot = await getDocs(q);
       const events = []
       querySnapshot.forEach(doc => events.push(doc.data()))
