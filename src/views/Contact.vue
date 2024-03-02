@@ -1,5 +1,12 @@
 <template>
 
+    <img
+        class="logo"
+        @click="this.$router.push(`/${this.$store.getters.dateForRouter()}`)"
+        src="/ww2-on-this-day-logo.png"
+        alt="logo"
+    />
+
     <div class="container">
 
         <div class="content">

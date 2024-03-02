@@ -5,8 +5,8 @@ const routes = [
   {
     path: '/',
     name: 'x',
-    // redirect: `/1938-${new Date().getMonth()+1}-${new Date().getDate()}`
-    redirect: '1939-03-01'
+    // redirect: `1939-${new Date().getMonth()+1}-${new Date().getDate()}`
+    redirect: '1939-03-17'
   },
   {
     path: '/:datestring',

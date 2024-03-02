@@ -2,7 +2,7 @@
 
     <!-- CAROUSEL -->
     <div class="entire-page">
-        
+
         <!-- MAIN VW PAGE -->
         <div
             ref="mainContainer"
@@ -10,7 +10,6 @@
             @mousedown="startDrag"
             @mousemove="mouseMove"
         >
-
             <!-- BOX OF ALL events -->
             <div
                 ref="eventContainer"
