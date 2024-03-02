@@ -13,7 +13,7 @@ const routes = [
     name: 'datestring',
     component: Home,
     meta: {
-      title: "WW2 on this day"
+      title: "ww2 on this day"
     }
   },
   {

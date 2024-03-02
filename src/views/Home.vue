@@ -7,11 +7,11 @@
       <div class="entries-sidebar" :key="selectedDate">
 
         <div class="datebox-entries">
-          <dateBox/>
+          <!-- <dateBox/> -->
           <entries/>
         </div>
 
-        <sideBar/>
+        <!-- <sideBar/> -->
         
       </div>
   
