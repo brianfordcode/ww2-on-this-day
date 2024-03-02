@@ -4,11 +4,9 @@ import Home from '../views/Home.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-    meta: {
-      title: "WW2 on this day"
-    }
+    name: 'x',
+    // redirect: `/1938-${new Date().getMonth()+1}-${new Date().getDate()}`
+    redirect: '1939-03-01'
   },
   {
     path: '/:datestring',

@@ -1,4 +1,5 @@
 <template>
+
     <div class="date-box">
         <video
           :src="this.$store.state.video"

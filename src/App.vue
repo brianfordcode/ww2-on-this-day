@@ -14,7 +14,7 @@
 import foot from './components/foot.vue'
 
 export default {
-  components: { foot }
+  components: { foot },
 }
 </script>
 
