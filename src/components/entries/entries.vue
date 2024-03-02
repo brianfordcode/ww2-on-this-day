@@ -140,6 +140,7 @@ export default {
 
 .event {
     background-color: white;
+    box-shadow: 2px 3px 18px -3px rgba(0,0,0,0.5);
     border-radius: 10px;
     width: 325px;
     height: min-content;

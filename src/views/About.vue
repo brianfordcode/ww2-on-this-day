@@ -32,10 +32,10 @@
 </template>
 
 <script>
-import timeline from '../components/timeline/timeline.vue'
+import dateSelector from '../components/date-selector/date-selector.vue'
 
 export default {
-  components: { timeline }
+  components: { dateSelector }
 }
 </script>
 

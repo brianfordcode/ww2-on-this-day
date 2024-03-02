@@ -1,17 +1,17 @@
 <template>
 
-  <timeline/>
+  <dateSelector/>
   
   <entries/>
 
 </template>
 
 <script>
-import timeline from '../components/timeline/timeline.vue'
+import dateSelector from '../components/date-selector/date-selector.vue'
 import entries from '../components/entries/entries.vue'
 
 export default {
-  components: { entries, timeline },
+  components: { entries, dateSelector },
 }
 </script>
 

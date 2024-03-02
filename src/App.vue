@@ -4,17 +4,14 @@
 
     <router-view/>
 
-    <foot/>
-    
   </div>
 
 </template>
 
 <script>
-import foot from './components/foot.vue'
 
 export default {
-  components: { foot },
+
 }
 </script>
 

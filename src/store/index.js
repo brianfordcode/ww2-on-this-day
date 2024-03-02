@@ -51,7 +51,7 @@ const store = createStore({
       events: [],
       // popDays: [],
       video: "/banner-video.mp4",
-      timelineYearPictures: {
+      dateSelectorYearPictures: {
         '1939': "https://www.thenation.com/wp-content/uploads/2015/08/germany_poland_loc_img.jpg",
         '1940': "https://www.history.com/.image/t_share/MTU3ODc4NjAyNzA4NDI4NTEx/image-placeholder-title.jpg",
         '1941': "https://list23.com/img/pearl-harbor-day-2021-80th-anniversary-of-date-which-will-live-in-infamy.jpeg",
@@ -94,18 +94,18 @@ const store = createStore({
       const fullDate = year + '-' + month + '-' + day
       return fullDate
     },
-    yearTimeline: (state) => () => {
+    yeardateSelector: (state) => () => {
       const years = []
       for (let i = state.start ; i <= state.end; i++) { years.push(i) }
       return years
     },
     getPicForBg: (state) => (year) => {
-      return year ? state.timelineYearPictures[year] : ''
+      return year ? state.dateSelectorYearPictures[year] : ''
     }
   },
   mutations: {
-    changeDate(state, dateSelectedfromTimeline) {
-      state.selectedDate = dateSelectedfromTimeline
+    changeDate(state, dateSelectedfromdateSelector) {
+      state.selectedDate = dateSelectedfromdateSelector
     },
     loadJSONFiles(state, data) {
       state.events = data
@@ -113,8 +113,8 @@ const store = createStore({
 
   },
   actions: {
-    changeDate(context, dateSelectedfromTimeline) {
-      context.commit('changeDate', dateSelectedfromTimeline)
+    changeDate(context, dateSelectedfromdateSelector) {
+      context.commit('changeDate', dateSelectedfromdateSelector)
     },
     async loadJSONFiles(context) {
       const date = formattedDate(context.state.selectedDate)

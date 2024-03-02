@@ -62,7 +62,7 @@ export default {
     height: 100px;
     position: relative;
     overflow: hidden;
-    margin-right:5px;
+    margin-right: 5px;
 }
 
 .media {
