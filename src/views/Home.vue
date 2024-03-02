@@ -2,11 +2,9 @@
 
 <input type="date" v-model="selectedDate"/>
 
-    <timeline/>
+    <!-- <timeline :key="selectedDate"/> -->
 
-    {{ selectedDate }}
-
-      <div class="entries-sidebar">
+      <div class="entries-sidebar" :key="selectedDate">
 
         <div class="datebox-entries">
           <dateBox/>
@@ -27,11 +25,7 @@ import sideBar from '../components/sidebar/sidebar.vue'
 
 export default {
   created() {
-      const [ year, month, day ] = this.$route.params.datestring.split('-')
-      const date = new Date(+year, +month - 1, +day)
-      this.$store.dispatch('changeDate', date)
-      this.$store.state.selectedDate = date
-      this.$store.dispatch('changeDate', date)
+      this.updateDate()
   },
   components: { entries, dateBox, timeline, sideBar },
   data() {
@@ -41,8 +35,18 @@ export default {
       selectedDate: `${year}-${month}-${day}`,
     }
   },
+  methods: {
+    updateDate() {
+      const [ year, month, day ] = this.$route.params.datestring.split('-')
+      const date = new Date(+year, +month - 1, +day)
+      this.$store.dispatch('changeDate', date)
+      this.$store.state.selectedDate = date
+      this.$store.dispatch('changeDate', date)
+    }
+  },
   watch: {
     selectedDate(val) {
+      this.updateDate()
       this.$router.push(`/${val}`)
     }
   }
