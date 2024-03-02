@@ -51,7 +51,7 @@
                     />
 
                     <!-- MEDIA -->
-                    <media class="event-media"
+                    <eventMedia class="event-media"
                         :event="event"
                     />
                 
@@ -67,12 +67,12 @@
 <script>
 
 import eventMap from './event-map.vue'
-import media from './media.vue'
+import eventMedia from './event-media.vue'
 import eventPic from './event-pic.vue'
 import searchEvent from './search-event.vue'
 
 export default {
-    components: { eventMap, media, eventPic, searchEvent },
+    components: { eventMap, eventMedia, eventPic, searchEvent },
 
     mounted() {
         window.addEventListener('mouseup', this.endDrag)
@@ -177,4 +177,4 @@ export default {
     transition: 0.20s transform ease-out;
 }
 
-</style>
+</style>./event-media.vue
