@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import router from '@/router'
+import router from '../router/index.js'
 
 // FIREBASE
 import { initializeApp } from "firebase/app";
