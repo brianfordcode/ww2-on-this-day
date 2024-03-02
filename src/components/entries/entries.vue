@@ -7,7 +7,7 @@
         style="padding: 25px; display: flex; flex-direction: column; align-items: center;"
         v-if="this.$store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate()).length === 0"
     >
-        <p style="font-size: 20px;">No events yet!</p>
+        <p style="font-size: 20px;">No events yet! TEST TEST TEST</p>
         <p>Do you know what happened on {{this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"})}}?</p>
         <router-link to="/contact" target="_blank">Help us out by submitting an event</router-link>
     </div>
@@ -36,7 +36,6 @@
     <a :href="event.citation" target="_blank">Citation</a> 
     </p>
     </div>
-    <lowerAd/>
 </div>
 
 </template>
@@ -47,10 +46,9 @@ import eventMap from './event-map.vue'
 import media from './media.vue'
 import eventPic from './event-pic.vue'
 import searchEvent from './search-event.vue'
-import lowerAd from '../ads/lower-ad.vue'
 
 export default {
-    components: { eventDetails, eventMap, media, eventPic, searchEvent, lowerAd },
+    components: { eventDetails, eventMap, media, eventPic, searchEvent },
 }
 </script>
 

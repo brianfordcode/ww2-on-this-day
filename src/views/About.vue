@@ -1,16 +1,4 @@
-
-    <!-- https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/MacArthur_Manila.jpg/220px-MacArthur_Manila.jpg" alt="macarthur" -->
-
-        <!-- <p>
-        This site has been crafted from a love and respect of history and everything World War 2.
-        <br>
-        <br>
-        Follow along daily as each of the days events are highlighted.
-        </p> -->
-
 <template>
-
-    <timeline/>
 
     <div class="container">
 
@@ -30,9 +18,6 @@
 
         </div>
 
-
-        <sideBar/>
-
     </div>
 
     
@@ -44,7 +29,7 @@ import timeline from '../components/timeline/timeline.vue'
 import sideBar from '../components/sidebar/sidebar.vue'
 
 export default {
-  components: {timeline, sideBar }
+  components: {timeline}
 }
 </script>
 
