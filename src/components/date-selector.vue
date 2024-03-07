@@ -9,7 +9,9 @@
     alt="logo"
   />
   <!-- DATE SELECTOR -->
-  <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/>
+  <div class="input-container">
+      <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/>
+  </div>
 
   <div class="about-contact">
     <router-link to="/about">About</router-link>
@@ -67,6 +69,12 @@ export default {
   cursor: pointer;
 }
 
+.input-container {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
 .date-selector {
   font-size: 30px;
   font-family: 'Courier New', Courier, monospace;
@@ -81,6 +89,18 @@ export default {
     color: black;
     font-size: 12px;
     margin: 10px;
+}
+
+@media screen and (max-width: 900px) { 
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-container {
+    position: initial;
+  }
 }
 
 </style>

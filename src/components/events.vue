@@ -88,6 +88,7 @@ export default {
 
         mouseMove(e) {
             const changeInX = e.clientX - this.lastX
+            console.log(window.screen.width)
 
             if (this.dragging) {
                 this.position += changeInX
@@ -110,8 +111,8 @@ export default {
     data() {
         return {
             dragging: false,
-            startingX: 0,
-            endingX: 0,
+            // startingX: 0,
+            // endingX: 0,
             position: 0,
         }
     }
@@ -177,4 +178,11 @@ export default {
     transition: 0.20s transform ease-out;
 }
 
-</style>./event-media.vue./event-details/event-search.vue
+@media screen and (max-width: 450px) {
+
+    .event {
+        width: 90vw;
+    }
+}
+
+</style>
