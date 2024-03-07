@@ -24,14 +24,17 @@
             >
                 <!-- INDIVIDUAL EVENTS  -->
                 <div
-                    v-for="event in this.$store.getters.eventsOnDay($store.state.selectedDate.getFullYear(), $store.state.selectedDate.getMonth(), $store.state.selectedDate.getDate())"
+                    v-for="event in todaysEvents"
                     :key="event"
                     class="event"
                 >
-                    <!-- DATE -->
-                    <div class="event-date">
-                            {{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}
-                    </div>
+      
+                <!-- DATE -->
+                <div class="event-date">
+                        <p>{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
+                        <p style="font-size: 12px">{{ todaysEvents.indexOf(event)+1 }} of {{ todaysEvents.length }}</p>
+                </div>
+
 
                     <!-- PICTURE -->
                     <eventPic class="event-pic"
@@ -88,7 +91,6 @@ export default {
 
         mouseMove(e) {
             const changeInX = e.clientX - this.lastX
-            console.log(window.screen.width)
 
             if (this.dragging) {
                 this.position += changeInX
@@ -114,6 +116,11 @@ export default {
             // startingX: 0,
             // endingX: 0,
             position: 0,
+        }
+    },
+    computed: {
+        todaysEvents() {
+            return this.$store.getters.eventsOnDay(this.$store.state.selectedDate.getFullYear(), this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate())
         }
     }
 }
@@ -150,6 +157,8 @@ export default {
 }
 
 .event-date {
+    display: flex;
+    justify-content: space-between;
     margin: 5px 15px;
 }
 

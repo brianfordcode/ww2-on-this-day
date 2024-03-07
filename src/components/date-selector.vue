@@ -27,9 +27,8 @@
 export default {
   created() {
       this.updateDate()
+      console.log()
   },
-
-
   data() {
     const [year, month, day] = this.$route.params.datestring.split('-')
     return {
@@ -44,6 +43,8 @@ export default {
       this.$store.dispatch('changeDate', date)
       this.$store.state.selectedDate = date
       this.$store.dispatch('changeDate', date)
+
+      console.log(date)
     }
   },
   watch: {

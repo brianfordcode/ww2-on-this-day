@@ -24,6 +24,7 @@ export default {
   font-family: 'Courier New', Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
   position: relative;
   height: 100%;
   background-color: #eeeeee;
