@@ -8,10 +8,9 @@
     src="/ww2-on-this-day-logo.png"
     alt="logo"
   />
+
   <!-- DATE SELECTOR -->
-  <div class="input-container">
-      <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/>
-  </div>
+  <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/>
 
   <div class="about-contact">
     <router-link to="/about">About</router-link>
@@ -27,7 +26,6 @@
 export default {
   created() {
       this.updateDate()
-      console.log()
   },
   data() {
     const [year, month, day] = this.$route.params.datestring.split('-')
@@ -43,8 +41,6 @@ export default {
       this.$store.dispatch('changeDate', date)
       this.$store.state.selectedDate = date
       this.$store.dispatch('changeDate', date)
-
-      console.log(date)
     }
   },
   watch: {
@@ -70,12 +66,6 @@ export default {
   cursor: pointer;
 }
 
-.input-container {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-}
-
 .date-selector {
   font-size: 30px;
   font-family: 'Courier New', Courier, monospace;
@@ -99,9 +89,6 @@ export default {
     flex-direction: column;
   }
 
-  .input-container {
-    position: initial;
-  }
 }
 
 </style>

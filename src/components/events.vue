@@ -29,11 +29,11 @@
                     class="event"
                 >
       
-                <!-- DATE -->
-                <div class="event-date">
-                        <p>{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
-                        <p style="font-size: 12px">{{ todaysEvents.indexOf(event)+1 }} of {{ todaysEvents.length }}</p>
-                </div>
+                    <!-- DATE -->
+                    <div class="event-date">
+                            <p>{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
+                            <p style="font-size: 12px">{{ todaysEvents.indexOf(event)+1 }} of {{ todaysEvents.length }}</p>
+                    </div>
 
 
                     <!-- PICTURE -->
@@ -96,15 +96,17 @@ export default {
                 this.position += changeInX
                 this.lastX = e.clientX
             }
+
         },
 
         endDrag() {
             this.dragging = false
+            const tWidth = this.$refs.eventContainer.offsetWidth
+            const mWidth = this.$refs.mainContainer.offsetWidth
 
-            if (this.position > 0) this.position = 0
+            if (this.position > 0 || tWidth < mWidth ) this.position = 0
+            
             else {
-                const tWidth = this.$refs.eventContainer.offsetWidth
-                const mWidth = this.$refs.mainContainer.offsetWidth
                 // clamp new position so that there is no whitespace to the right
                 this.position = Math.max(mWidth - tWidth, this.position)
             }
@@ -113,8 +115,6 @@ export default {
     data() {
         return {
             dragging: false,
-            // startingX: 0,
-            // endingX: 0,
             position: 0,
         }
     },
@@ -154,6 +154,7 @@ export default {
     display: flex;
     flex-direction: column;
     margin: 15px;
+    
 }
 
 .event-date {

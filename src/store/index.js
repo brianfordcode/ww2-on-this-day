@@ -66,8 +66,8 @@ const store = createStore({
     },
   },
   mutations: {
-    changeDate(state, dateSelectedfromdateSelector) {
-      state.selectedDate = dateSelectedfromdateSelector
+    changeDate(state, dateSelectedFromDateSelector) {
+      state.selectedDate = dateSelectedFromDateSelector
     },
     loadJSONFiles(state, data) {
       state.events = data
@@ -75,9 +75,10 @@ const store = createStore({
 
   },
   actions: {
-    changeDate(context, dateSelectedfromdateSelector) {
-      context.commit('changeDate', dateSelectedfromdateSelector)
+    changeDate(context, dateSelectedFromDateSelector) {
+      context.commit('changeDate', dateSelectedFromDateSelector)
     },
+
     async loadJSONFiles(context) {
       const date = formattedDate(context.state.selectedDate)
       const q = query(collection(db, "submitted-events"), where("date", "==", date))
