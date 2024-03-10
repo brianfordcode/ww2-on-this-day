@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .event-pic-container {
-    height: 170px;
+    height: 180px;
     width: 90%;
 }
 

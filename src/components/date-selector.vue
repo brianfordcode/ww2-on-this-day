@@ -22,8 +22,12 @@
     menu-class-name="dp-custom-menu"
     style="--dp-font-family: courier"
     :action-row="{ showCancel: false }"
+    year-first
     no-today
   >
+    <template #clear-icon="{ clear }"></template>
+    <template #action-extra="{  }"><p @click="selectCurrentDate()">today</p></template>
+    
   </VueDatePicker>
 
   <div class="about-contact">
@@ -42,7 +46,6 @@ import '@vuepic/vue-datepicker/dist/main.css'
 
 // const date = ref((new Date(1939, new Date().getMonth(), new Date().getDate())));
 
-
 export default {
   components: { VueDatePicker },
   created() {
@@ -56,6 +59,9 @@ export default {
     }
   },
   methods: {
+    selectCurrentDate() {
+      console.log('test')
+    },
     updateDate() {
       const [ year, month, day ] = this.$route.params.datestring.split('-')
       const date = new Date(+year, +month - 1, +day)
