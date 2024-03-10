@@ -10,7 +10,21 @@
   />
 
   <!-- DATE SELECTOR -->
-  <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/>
+  <!-- <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/> -->
+
+  <VueDatePicker 
+    v-model="selectedDate"
+    :year-range="[1939, 1945]"
+    month-name-format="long"
+    :enable-time-picker="false"
+    model-type="yyyy-MM-dd"
+    input-class-name="dp-custom-input"
+    menu-class-name="dp-custom-menu"
+    style="--dp-font-family: courier"
+    :action-row="{ showCancel: false }"
+    no-today
+  >
+  </VueDatePicker>
 
   <div class="about-contact">
     <router-link to="/about">About</router-link>
@@ -22,8 +36,15 @@
 </template>
 
 <script>
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+// import { ref } from 'vue';
+
+// const date = ref((new Date(1939, new Date().getMonth(), new Date().getDate())));
+
 
 export default {
+  components: { VueDatePicker },
   created() {
       this.updateDate()
   },
@@ -31,9 +52,9 @@ export default {
     const [year, month, day] = this.$route.params.datestring.split('-')
     return {
       selectedDate: `${year}-${month}-${day}`,
+      // date: null,
     }
   },
-  components: { },
   methods: {
     updateDate() {
       const [ year, month, day ] = this.$route.params.datestring.split('-')
@@ -41,7 +62,8 @@ export default {
       this.$store.dispatch('changeDate', date)
       this.$store.state.selectedDate = date
       this.$store.dispatch('changeDate', date)
-    }
+    },
+
   },
   watch: {
     selectedDate(val) {
@@ -66,20 +88,21 @@ export default {
   cursor: pointer;
 }
 
-.date-selector {
+/* .date-selector {
   font-size: 30px;
   font-family: 'Courier New', Courier, monospace;
   background: transparent;
   border: none;
   outline: none;
   user-select: none;
-}
+} */
 
 .about-contact a {
     text-decoration: none;
     color: black;
     font-size: 12px;
     margin: 10px;
+    font-family: 'Courier', Courier, monospace;
 }
 
 @media screen and (max-width: 900px) { 

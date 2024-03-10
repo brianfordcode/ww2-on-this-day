@@ -1,67 +1,65 @@
 <template>
 
     <!-- CAROUSEL -->
-    <div class="entire-page">
 
-        <!-- MAIN VW PAGE -->
+    <!-- MAIN VW PAGE -->
+    <div
+        ref="mainContainer"
+        class="main-container"
+        @mousedown="startDrag"
+        @mousemove="mouseMove"
+    >
+        <!-- BOX OF ALL events -->
         <div
-            ref="mainContainer"
-            class="main-container"
-            @mousedown="startDrag"
-            @mousemove="mouseMove"
+            ref="eventContainer"
+            :class="{
+                'events-container': true,
+                'not-dragging': !dragging,
+                'dragging': dragging
+            }"
+            :style="{
+                transform: `translateX(${ position }px)`
+            }"
         >
-            <!-- BOX OF ALL events -->
+            <!-- INDIVIDUAL EVENTS  -->
             <div
-                ref="eventContainer"
-                :class="{
-                    'events-container': true,
-                    'not-dragging': !dragging,
-                    'dragging': dragging
-                }"
-                :style="{
-                    transform: `translateX(${ position }px)`
-                }"
+                v-for="event in todaysEvents"
+                :key="event"
+                class="event"
             >
-                <!-- INDIVIDUAL EVENTS  -->
-                <div
-                    v-for="event in todaysEvents"
-                    :key="event"
-                    class="event"
-                >
-      
-                    <!-- DATE -->
-                    <div class="event-date">
-                            <p>{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
-                            <p style="font-size: 12px">{{ todaysEvents.indexOf(event)+1 }} of {{ todaysEvents.length }}</p>
-                    </div>
+    
+                <!-- DATE -->
+                <div class="event-date">
+                        <p>{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p>
+                        <p style="font-size: 12px">{{ todaysEvents.indexOf(event)+1 }} of {{ todaysEvents.length }}</p>
+                </div>
 
 
-                    <!-- PICTURE -->
-                    <eventPic class="event-pic"
-                        :event="event"
-                    />
-                    
-                    <!-- TEXT -->
-                    <div class="event-title">
-                        {{ event.title }}
-                    </div>
-                    
-                    <!-- MAP -->
-                    <eventMap class="event-map"
-                        v-if="event.location.coordinates"
-                        :event="event"
-                    />
-
-                    <!-- MEDIA -->
-                    <eventMedia class="event-media"
-                        :event="event"
-                    />
+                <!-- PICTURE -->
+                <eventPic class="event-pic"
+                    :event="event"
+                />
                 
-                </div> 
-
-            </div>
+                <!-- TEXT -->
+                <p class="event-title">
+                    {{ event.title }}
+                </p>
                 
+                <!-- MAP -->
+                <eventMap class="event-map"
+                    v-if="event.location.coordinates"
+                    :event="event"
+                />
+
+                <!-- MEDIA -->
+                <eventMedia class="event-media"
+                    :event="event"
+                />
+            
+            </div> 
+
         </div>
+            
     </div>
 
 </template>
@@ -74,6 +72,7 @@ import eventPic from './event-details/event-pic.vue'
 import eventSearch from './event-details/event-search.vue'
 
 export default {
+    
     components: { eventMap, eventMedia, eventPic, eventSearch },
 
     mounted() {
@@ -116,6 +115,7 @@ export default {
         return {
             dragging: false,
             position: 0,
+            date: '2019-01-01'
         }
     },
     computed: {
@@ -160,6 +160,7 @@ export default {
 .event-date {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 5px 15px;
 }
 
@@ -174,6 +175,7 @@ export default {
 
 .event-map {
     margin: 0 auto;
+    height: 200px;
 }
 
 .event-media {
