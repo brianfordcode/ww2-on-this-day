@@ -27,7 +27,7 @@ export default {
   color: rgb(82, 78, 78);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 14px;
+  font-size: 12px;
   position: relative;
   height: 100%;
   background-color: #eeeeee;

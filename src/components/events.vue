@@ -153,7 +153,7 @@ export default {
     height: min-content;
     display: flex;
     flex-direction: column;
-    margin: 15px;
+    margin: 15px 10px 10px 10px;
     
 }
 
@@ -176,6 +176,7 @@ export default {
 .event-map {
     margin: 0 auto;
     height: 200px;
+    width: 90%;
 }
 
 .event-media {

@@ -94,7 +94,7 @@ export default {
 }
 
 .logo {
-  width: 250px;
+  width: 225px;
   margin: 10px;
   cursor: pointer;
 }
