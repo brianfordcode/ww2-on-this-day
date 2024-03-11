@@ -15,7 +15,6 @@
 
     </div>
 
-    
 
 </template>
 
@@ -65,7 +64,7 @@ h1 {
     >
     </VueDatePicker>
 
-  </template>
+</template>
   
   <script>
   import VueDatePicker from '@vuepic/vue-datepicker';

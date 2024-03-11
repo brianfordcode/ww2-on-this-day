@@ -15,16 +15,19 @@ export default {
 </script>
 
 <style>
+
 * {
   padding: 0;
   margin: 0;
 }
 
 #app {
-  font-family: 'Courier New', Courier, monospace;
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-family: "Courier Prime", monospace;
+  color: rgb(82, 78, 78);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: 14px;
   position: relative;
   height: 100%;
   background-color: #eeeeee;

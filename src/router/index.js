@@ -4,9 +4,10 @@ import Home from '../views/Home.vue'
 const routes = [
   {
     path: '/',
-    name: 'x',
+    name: 'Home',
     // redirect: `1939-${new Date().getMonth()+1}-${new Date().getDate()}`
     redirect: '1939-03-17'
+    // component: Home
   },
   {
     path: '/:datestring',

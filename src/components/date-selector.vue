@@ -11,26 +11,31 @@
 
   <!-- DATE SELECTOR -->
   <!-- <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/> -->
-
-  <VueDatePicker 
-    v-model="selectedDate"
-    :year-range="[1939, 1945]"
-    month-name-format="long"
-    :enable-time-picker="false"
-    model-type="yyyy-MM-dd"
-    input-class-name="dp-custom-input"
-    menu-class-name="dp-custom-menu"
-    style="--dp-font-family: courier"
-    :action-row="{ showCancel: false }"
-    year-first
-    no-today
-  >
-    <template #clear-icon="{ clear }"></template>
-    <template #action-extra="{  }"><p @click="selectCurrentDate()">today</p></template>
-    
-  </VueDatePicker>
+    <VueDatePicker 
+        v-model="selectedDate"
+        :year-range="[1939, 1945]"
+        month-name-format="long"
+        :enable-time-picker="false"
+        model-type="yyyy-MM-dd"
+        input-class-name="dp-custom-input"
+        menu-class-name="dp-custom-menu"
+        style="--dp-font-family: Courier Prime, monospace;"
+        :action-row="{ showCancel: false }"
+        year-first
+        no-today
+        position="center"
+        class="date-picker"
+      >
+        <template #clear-icon="{ clear }">
+          <!-- <img class="input-slot-image" src="/public/ww2-on-this-day-logo.png" @click="selectCurrentDate()" /> -->
+        </template>
+        <!-- <template #action-extra="{  }"><p @click="selectCurrentDate()">today</p></template> -->
+        
+      </VueDatePicker>    
+  
 
   <div class="about-contact">
+    <!-- <p style="font-size: 20px;" @click="selectCurrentDate">Today</p> -->
     <router-link to="/about">About</router-link>
     <router-link to="/contact">Contact</router-link>
   </div>
@@ -65,7 +70,7 @@ export default {
     updateDate() {
       const [ year, month, day ] = this.$route.params.datestring.split('-')
       const date = new Date(+year, +month - 1, +day)
-      this.$store.dispatch('changeDate', date)
+      // this.$store.dispatch('changeDate', date)
       this.$store.state.selectedDate = date
       this.$store.dispatch('changeDate', date)
     },
@@ -89,10 +94,11 @@ export default {
 }
 
 .logo {
-  width: 300px;
+  width: 250px;
   margin: 10px;
   cursor: pointer;
 }
+
 
 /* .date-selector {
   font-size: 30px;
@@ -103,12 +109,20 @@ export default {
   user-select: none;
 } */
 
-.about-contact a {
+.about-contact {
+  display: flex;
+  align-items: center;
+}
+
+.about-contact > * {
+  cursor: pointer;
     text-decoration: none;
     color: black;
     font-size: 12px;
     margin: 10px;
-    font-family: 'Courier', Courier, monospace;
+    font-family: "Courier Prime", monospace;
+    color: rgb(82, 78, 78);
+    /* display: flex; */
 }
 
 @media screen and (max-width: 900px) { 
@@ -117,6 +131,10 @@ export default {
     display: flex;
     flex-direction: column;
   }
+
+  .date-picker {
+  width: 90%;
+}
 
 }
 
