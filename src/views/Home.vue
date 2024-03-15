@@ -1,7 +1,7 @@
 <template>
 
   <dateSelector/>
-  
+
   <events/>
 
 </template>

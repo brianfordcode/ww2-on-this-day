@@ -55,6 +55,7 @@ export default {
   components: { VueDatePicker },
   created() {
       this.updateDate()
+      console.log(this.$store.state.selectedDate)
   },
   data() {
     const [year, month, day] = this.$route.params.datestring.split('-')
@@ -65,9 +66,11 @@ export default {
   },
   methods: {
     selectCurrentDate() {
-      console.log('test')
+      // console.log('test')
     },
     updateDate() {
+      console.log(this.$route.params.datestring.split('-'))
+
       const [ year, month, day ] = this.$route.params.datestring.split('-')
       const date = new Date(+year, +month - 1, +day)
       // this.$store.dispatch('changeDate', date)
@@ -94,7 +97,7 @@ export default {
 }
 
 .logo {
-  width: 225px;
+  width: 250px;
   margin: 10px;
   cursor: pointer;
 }

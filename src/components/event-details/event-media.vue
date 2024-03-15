@@ -63,6 +63,7 @@ export default {
     position: relative;
     overflow: hidden;
     margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .media {
