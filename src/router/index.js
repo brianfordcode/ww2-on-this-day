@@ -5,13 +5,13 @@ const routes = [
   {
     path: '/',
     // redirect: `1939-${new Date().getMonth()+1}-${new Date().getDate()}`
-    redirect: '1939-03-17',
+    // redirect: '1939-03-17',
     
-    // name: 'Home',
-    // component: Home,
-    // meta: {
-    //   title: "WW2 on this day"
-    // }
+    name: 'Home',
+    component: Home,
+    meta: {
+      title: "WW2 on this day"
+    }
   },
   {
     path: '/:datestring',

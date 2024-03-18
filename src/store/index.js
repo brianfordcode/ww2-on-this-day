@@ -46,7 +46,40 @@ const store = createStore({
     }
   },
   getters: {
+    // eventsOnDay: (state, getters) => (year, month, day) => {
+    //   const eventsOnDay = []
+    //   // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
+    //   month = (month < 10 ? '0' : '') + (month + 1)
+    //   day = (day < 10 ? '0' : '') + day
+    //   Object
+    //     .entries(state.events)
+    //     .forEach(entry =>  {
+    //       const [ eventId, event ] = entry
+    //       if (event.date === `${year}-${month}-${day}` && event.published === true) {
+    //         eventsOnDay.push(event)
+    //       }
+    //     })
+    //     return eventsOnDay
+    // },
+
+
+    // eventsOnDay: (state, getters) => (year, month, day) => {
+    //   const eventsOnDay = []
+    //   // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
+    //   month = (month < 10 ? '0' : '') + (month + 1)
+    //   day = (day < 10 ? '0' : '') + day
+    //   Object
+    //     .entries(state.events)
+    //     .forEach(entry =>  {
+    //       const [ eventId, event ] = entry
+    //       if (event.date === `${year}-${month}-${day}` && event.published === true) {
+    //         eventsOnDay.push(event)
+    //       }
+    //     })
+    //     return eventsOnDay
+    // },
     eventsOnDay: (state, getters) => (year, month, day) => {
+      console.log(state.selectedDate, "events on day")
       const eventsOnDay = []
       // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
       month = (month < 10 ? '0' : '') + (month + 1)
@@ -55,12 +88,14 @@ const store = createStore({
         .entries(state.events)
         .forEach(entry =>  {
           const [ eventId, event ] = entry
-          if (event.date === `${year}-${month}-${day}` && event.published === true) {
+          if (event.date === state.selectedDate && event.published === true) {
             eventsOnDay.push(event)
           }
         })
         return eventsOnDay
     },
+
+
     dateForRouter: (state) => () => {
       return formattedDate(state.selectedDate)
     },
@@ -71,16 +106,29 @@ const store = createStore({
     },
     loadJSONFiles(state, data) {
       state.events = data
+      console.log(state.events)
     },
 
   },
   actions: {
     changeDate(context, dateSelectedFromDateSelector) {
+      console.log(dateSelectedFromDateSelector, "date from selector in store")
+      
       context.commit('changeDate', dateSelectedFromDateSelector)
+      console.log(context.state.selectedDate, "store date")
     },
 
+    // async loadJSONFiles(context) {
+    //   const date = formattedDate(context.state.selectedDate)
+    //   const q = query(collection(db, "submitted-events"), where("date", "==", date))
+    //   const querySnapshot = await getDocs(q);
+    //   const events = []
+    //   querySnapshot.forEach(doc => events.push(doc.data()))
+    //   context.commit('loadJSONFiles', events)
+
+    // }
     async loadJSONFiles(context) {
-      const date = formattedDate(context.state.selectedDate)
+      const date = context.state.selectedDate
       const q = query(collection(db, "submitted-events"), where("date", "==", date))
       const querySnapshot = await getDocs(q);
       const events = []
