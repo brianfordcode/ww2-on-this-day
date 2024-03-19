@@ -31,6 +31,7 @@
                 <!-- DATE -->
                 <div class="event-date">
                         <!-- <p>{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p> -->
+                        <!-- <p>{{ new Date(this.$store.state.selectedDate).toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p> -->
                         <p>{{ new Date(new Date(this.$store.state.selectedDate).setDate(new Date(this.$store.state.selectedDate).getDate() + 1)).toDateString() }}</p>
                         <p style="font-size: 12px">{{ todaysEvents.indexOf(event)+1 }} of {{ todaysEvents.length }}</p>
                 </div>
@@ -100,6 +101,7 @@ export default {
         },
 
         endDrag() {
+            
             this.dragging = false
             const tWidth = this.$refs.eventContainer.offsetWidth
             const mWidth = this.$refs.mainContainer.offsetWidth
@@ -110,7 +112,7 @@ export default {
                 // clamp new position so that there is no whitespace to the right
                 this.position = Math.max(mWidth - tWidth, this.position)
             }
-        }
+        },
     },
     data() {
         return {

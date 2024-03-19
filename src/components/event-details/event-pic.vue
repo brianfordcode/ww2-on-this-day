@@ -7,6 +7,9 @@
             draggable="false"
         />
     </div>
+
+
+
 </template>
 
 <script>
@@ -16,7 +19,7 @@ export default {
             type: Object,
             required: true,
         }
-    },
+    }
 }
 </script>
 

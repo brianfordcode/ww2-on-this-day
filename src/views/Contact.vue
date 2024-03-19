@@ -58,7 +58,7 @@ h1 {
         :year-range="[1939, 1945]"
         month-name-format="long"
         :enable-time-picker="false"
-        model-type="yyyy-MM-dd"
+        
         input-class-name="dp-custom-input"
         menu-class-name="dp-custom-menu"
     >
@@ -83,7 +83,7 @@ h1 {
     },
     watch: {
         date(val) {
-            console.log(val)
+            console.log(val.toUTCString())
         }
     },
     created(){
