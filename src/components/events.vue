@@ -123,10 +123,9 @@ export default {
     },
     computed: {
         todaysEvents() {
-            console.log(this.$store.state.selectedDate)
             // return this.$store.getters.eventsOnDay(this.$store.state.selectedDate.getFullYear(), this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate())
-            // return this.$store.getters.eventsOnDay()
-            return (this.$store.state.events)
+            return this.$store.getters.eventsOnDay()
+            // return (this.$store.state.events)
         },
     }
 }

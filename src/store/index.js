@@ -31,12 +31,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
-const formattedDate = d => {
-  const year = d.getFullYear()
-  const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
-  const day = (d.getDate() < 10 ? '0' : '') + d.getDate()
-  return year + '-' + month + '-' + day
-}
+// const formattedDate = d => {
+//   const year = d.getFullYear()
+//   const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
+//   const day = (d.getDate() < 10 ? '0' : '') + d.getDate()
+//   return year + '-' + month + '-' + day
+// }
 
 const store = createStore({
   state() {
@@ -61,29 +61,19 @@ const store = createStore({
     //     })
     //     return eventsOnDay
     // },
-
-
-    // eventsOnDay: (state, getters) => (year, month, day) => {
-    //   const eventsOnDay = []
-    //   // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
-    //   month = (month < 10 ? '0' : '') + (month + 1)
-    //   day = (day < 10 ? '0' : '') + day
-    //   Object
-    //     .entries(state.events)
-    //     .forEach(entry =>  {
-    //       const [ eventId, event ] = entry
-    //       if (event.date === `${year}-${month}-${day}` && event.published === true) {
-    //         eventsOnDay.push(event)
-    //       }
-    //     })
-    //     return eventsOnDay
-    // },
-    eventsOnDay: (state, getters) => (year, month, day) => {
-      console.log(state.selectedDate, "events on day")
+    getTodaysDate: () => (moveDate) => {
+      const d = new Date()
+      const year = '1939'
+      const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
+      const day = (d.getDate() < 10 ? '0' : '') + d.getDate()
+      const todaysDate = year + '-' + month + '-' + day
+      return todaysDate
+    },
+    eventsOnDay: (state, getters) => () => {
       const eventsOnDay = []
-      // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
-      month = (month < 10 ? '0' : '') + (month + 1)
-      day = (day < 10 ? '0' : '') + day
+      // // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
+      // month = (month < 10 ? '0' : '') + (month + 1)
+      // day = (day < 10 ? '0' : '') + day
       Object
         .entries(state.events)
         .forEach(entry =>  {
@@ -94,11 +84,6 @@ const store = createStore({
         })
         return eventsOnDay
     },
-
-
-    dateForRouter: (state) => () => {
-      return formattedDate(state.selectedDate)
-    },
   },
   mutations: {
     changeDate(state, dateSelectedFromDateSelector) {
@@ -106,16 +91,13 @@ const store = createStore({
     },
     loadJSONFiles(state, data) {
       state.events = data
-      console.log(state.events)
+      // console.log(state.events)
     },
 
   },
   actions: {
     changeDate(context, dateSelectedFromDateSelector) {
-      console.log(dateSelectedFromDateSelector, "date from selector in store")
-      
       context.commit('changeDate', dateSelectedFromDateSelector)
-      console.log(context.state.selectedDate, "store date")
     },
 
     // async loadJSONFiles(context) {

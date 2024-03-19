@@ -85,20 +85,7 @@ h1 {
         date(val) {
             console.log(val.toUTCString())
         }
-    },
-    created(){
-        // console.log(new Date(1939, new Date().getMonth(), new Date().getDate()))
-    },
-    methods: {
-        getTodaysDate() {
-            return this.$store.getters.dateForRouter()
-        }
     }
-    // computed: {
-    //     date() {
-    //         return this.$store.getters.dateForRouter()
-    //     }
-    // }
   }
   </script>
 

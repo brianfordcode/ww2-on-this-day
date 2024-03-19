@@ -4,13 +4,16 @@
   <!-- LOGO -->
   <img
     class="logo"
-    @click="this.$router.push(`/${this.$store.getters.dateForRouter()}`)"
+    @click="this.$router.push(`/${this.$store.state.selectedDate}`)"
     src="/ww2-on-this-day-logo.png"
     alt="logo"
   />
 
   <!-- DATE SELECTOR -->
   <!-- <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/> -->
+
+  <!-- <p @click="moveDay(1)">tomorrow</p> -->
+
     <VueDatePicker 
         v-model="selectedDate"
         :year-range="[1939, 1945]"
@@ -57,16 +60,18 @@ export default {
       this.updateDate()
   },
   data() {
-    const [year, month, day] = this.$route.params.datestring.split('-')
+    // const [year, month, day] = this.$route.params.datestring.split('-')
     return {
-      selectedDate: `${year}-${month}-${day}`,
-      // date: null,
+      // selectedDate: `${year}-${month}-${day}`,
+      selectedDate: this.$route.params.datestring
     }
   },
   methods: {
-    selectCurrentDate() {
-      // console.log('test')
-    },
+    // moveDay(num) {
+    //   console.log(num)
+    //   this.selectedDate = this.$store.getters.getTodaysDate(num)
+    //   this.$store.dispatch('changeDate', this.selectedDate)
+    // },
     // updateDate() {
     //   console.log(this.$route.params.datestring.split('-'))
 
@@ -78,23 +83,30 @@ export default {
     // },
 
     updateDate() {
-      console.log(this.$route.params.datestring, "updateDate")
+      // IF NO DATE, GO TO TODAYS DATE 1939
+      if (this.selectedDate === undefined) {
 
-      const [ year, month, day ] = this.$route.params.datestring.split('-')
-      const date = new Date(+year, +month - 1, +day)
-      console.log(date, "update")
-      this.$store.dispatch('changeDate', date)
-      this.$store.state.selectedDate = this.selectedDate
-      this.$store.dispatch('changeDate', this.selectedDate)
+        this.selectedDate = this.$store.getters.getTodaysDate()
+        this.$store.dispatch('changeDate', this.selectedDate)
+
+      } 
+      // ELSE GO TO DATE PICKER DATE
+      else {
+
+        this.$store.state.selectedDate = this.selectedDate
+        this.$store.dispatch('changeDate', this.selectedDate)        
+
+      }
+
+      this.$router.push(`/${this.selectedDate}`)
     },
 
   },
   watch: {
-    selectedDate(val) {
+    selectedDate() {
       this.updateDate()
-      this.$router.push(`/${val}`)
     }
-  }
+  },
 }
 </script>
 
@@ -112,16 +124,6 @@ export default {
   margin: 10px;
   cursor: pointer;
 }
-
-
-/* .date-selector {
-  font-size: 30px;
-  font-family: 'Courier New', Courier, monospace;
-  background: transparent;
-  border: none;
-  outline: none;
-  user-select: none;
-} */
 
 .about-contact {
   display: flex;

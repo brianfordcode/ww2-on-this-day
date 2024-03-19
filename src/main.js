@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 
 
-// store.dispatch('getPopDays')
 
 watch(() => store.state.selectedDate, function() {
     store.dispatch('loadJSONFiles')
