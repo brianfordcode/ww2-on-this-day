@@ -11,31 +11,33 @@
 
   <!-- DATE SELECTOR -->
   <!-- <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/> -->
+      <!-- MOVE BACK ONE DAY -->
+<p @click="moveDay(-1)" style="font-size: 30px; cursor: pointer; margin: 5px;"><</p>
 
-  <!-- <p @click="moveDay(1)">tomorrow</p> -->
+<VueDatePicker 
+    v-model="selectedDate"
+    :year-range="[1939, 1945]"
+    month-name-format="long"
+    :enable-time-picker="false"
+    model-type="yyyy-MM-dd"
+    input-class-name="dp-custom-input"
+    menu-class-name="dp-custom-menu"
+    style="--dp-font-family: Courier Prime, monospace;"
+    :action-row="{ showCancel: false }"
+    year-first
+    no-today
+    position="center"
+    class="date-picker"
+  >
+    <template #clear-icon="{ clear }">
+      <!-- <img class="input-slot-image" src="/public/ww2-on-this-day-logo.png" @click="selectCurrentDate()" /> -->
+    </template>
+    <!-- <template #action-extra="{  }"><p @click="selectCurrentDate()">today</p></template> -->
+    
+  </VueDatePicker>    
 
-    <VueDatePicker 
-        v-model="selectedDate"
-        :year-range="[1939, 1945]"
-        month-name-format="long"
-        :enable-time-picker="false"
-        model-type="yyyy-MM-dd"
-        input-class-name="dp-custom-input"
-        menu-class-name="dp-custom-menu"
-        style="--dp-font-family: Courier Prime, monospace;"
-        :action-row="{ showCancel: false }"
-        year-first
-        no-today
-        position="center"
-        class="date-picker"
-      >
-        <template #clear-icon="{ clear }">
-          <!-- <img class="input-slot-image" src="/public/ww2-on-this-day-logo.png" @click="selectCurrentDate()" /> -->
-        </template>
-        <!-- <template #action-extra="{  }"><p @click="selectCurrentDate()">today</p></template> -->
-        
-      </VueDatePicker>    
-  
+  <!-- MOVE FORWARD ONE DAY -->
+  <p @click="moveDay(1)" style="font-size: 30px; cursor: pointer; margin: 5px;">></p>
 
   <div class="about-contact">
     <!-- <p style="font-size: 20px;" @click="selectCurrentDate">Today</p> -->
@@ -67,11 +69,17 @@ export default {
     }
   },
   methods: {
-    // moveDay(num) {
-    //   console.log(num)
-    //   this.selectedDate = this.$store.getters.getTodaysDate(num)
-    //   this.$store.dispatch('changeDate', this.selectedDate)
-    // },
+    moveDay(num) {
+      // Create a Date object from the input date string
+      const date = new Date(this.selectedDate);
+      // change date by num
+      date.setDate(date.getDate() + num);
+      // Format the increased date to 'YYYY-MM-DD' format
+      const changedDate = date.toISOString().split('T')[0];
+
+      this.selectedDate = changedDate
+    },
+
     // updateDate() {
     //   console.log(this.$route.params.datestring.split('-'))
 
@@ -93,8 +101,8 @@ export default {
       // ELSE GO TO DATE PICKER DATE
       else {
 
-        this.$store.state.selectedDate = this.selectedDate
-        this.$store.dispatch('changeDate', this.selectedDate)        
+        // this.$store.state.selectedDate = this.selectedDate
+        this.$store.dispatch('changeDate', this.selectedDate)
 
       }
 

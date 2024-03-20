@@ -41,7 +41,7 @@ const db = getFirestore();
 const store = createStore({
   state() {
     return {
-      selectedDate: new Date(1939, new Date().getMonth(), new Date().getDate()),
+      selectedDate: '',
       events: [],
     }
   },
@@ -61,11 +61,11 @@ const store = createStore({
     //     })
     //     return eventsOnDay
     // },
-    getTodaysDate: () => (moveDate) => {
+    getTodaysDate: () => (moveDay) => {
       const d = new Date()
       const year = '1939'
       const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
-      const day = (d.getDate() < 10 ? '0' : '') + d.getDate()
+      const day = (d.getDate() < 10 ? '0' : '') + (d.getDate() + (moveDay ? moveDay : 0))
       const todaysDate = year + '-' + month + '-' + day
       return todaysDate
     },
