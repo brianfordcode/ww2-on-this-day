@@ -178,11 +178,12 @@ export default {
     margin: 10px auto;
 }
 
-.event-map {
+/* .event-map {
     margin: 0 auto;
     height: 200px;
     width: 90%;
-}
+    border: 0;
+} */
 
 .event-media {
     margin: 15px 15px;

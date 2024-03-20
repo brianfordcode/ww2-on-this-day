@@ -1,14 +1,23 @@
 <template>
+    <!-- GOOGLE MAPS MARKER -->
     <iframe
-        class="map"
         v-if="event.location"
-        style="border:0;"
+        style="border:0; margin: 0 auto; height: 210px; width: 90%; "
+        loading="lazy"
+        allowfullscreen
+        :src="`https://www.google.com/maps/embed/v1/place?key=AIzaSyAzuMuGU3ynDz4KU87IzdKY_pXzhUyILoQ&q=
+        ${event.location.coordinates}&zoom=${event.location.mapZoom ? event.location.mapZoom : 7}&maptype=satellite`"
+    ></iframe>
+    <!-- GOOGLE MAPS NO MARKER -->
+    <!-- <iframe
+        v-if="event.location"
+        style="border:0; margin: 0 auto; height: 200px; width: 90%; "
         loading="lazy"
         allowfullscreen
         :src="`https://www.google.com/maps/embed/v1/view?key=AIzaSyAzuMuGU3ynDz4KU87IzdKY_pXzhUyILoQ&center=
-        ${event.location.coordinates}&zoom=${event.location.mapZoom ? event.location.mapZoom : 7}
-        &maptype=satellite`"
-    />
+        ${event.location.coordinates}&zoom=${event.location.mapZoom ? event.location.mapZoom : 7}&maptype=satellite`"
+    ></iframe> -->
+
 </template>
 
 <script>

@@ -74,7 +74,7 @@ export default {
       const date = new Date(this.selectedDate);
       // change date by num
       date.setDate(date.getDate() + num);
-      // Format the increased date to 'YYYY-MM-DD' format
+      // Format the changed date to 'YYYY-MM-DD' format
       const changedDate = date.toISOString().split('T')[0];
 
       this.selectedDate = changedDate
