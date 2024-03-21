@@ -24,13 +24,13 @@ export default {
 #app {
   /* font-family: 'Courier New', Courier, monospace; */
   font-family: "Courier Prime", monospace;
-  color: rgb(82, 78, 78);
+  color: rgb(60, 60, 67); /* rgb(82, 78, 78) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 12px;
   position: relative;
   height: 100%;
-  background-color: #eeeeee;
+  background-color: #f5f5f5;
 }
 
 .app-container {

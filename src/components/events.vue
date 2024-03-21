@@ -106,9 +106,9 @@ export default {
             const tWidth = this.$refs.eventContainer.offsetWidth
             const mWidth = this.$refs.mainContainer.offsetWidth
 
-            if (this.position > 0 || tWidth < mWidth ) this.position = 0
-            
-            else {
+            if (this.position > 0 || tWidth < mWidth ) {
+                this.position = 0
+            } else {
                 // clamp new position so that there is no whitespace to the right
                 this.position = Math.max(mWidth - tWidth, this.position)
             }

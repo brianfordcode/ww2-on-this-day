@@ -1,113 +1,44 @@
-<!-- <template>
+<template>
 
-    <img
-        class="logo"
-        @click="this.$router.push(`/${this.$store.getters.dateForRouter()}`)"
-        src="/ww2-on-this-day-logo.png"
-        alt="logo"
-    />
+    <GoogleMap
+        api-key="AIzaSyAzuMuGU3ynDz4KU87IzdKY_pXzhUyILoQ"
+        style="width: 100%; height: 700px"
+        :center="{ lat: 30, lng: -10 }"
+        :zoom="2.35"
+    >
+        <Marker
+            v-for="(location, i) in locations"
+            :key="i"
+            :options="{ position: location, label: `${i+1}`, }"
+        /> 
+    </GoogleMap>
 
-    <div class="container">
-
-        <div class="content">
-            <h1>Contact Us</h1>
-        </div>
-
-    </div>
 
 
 </template>
-
+  
 <script>
+import { GoogleMap, Marker, MarkerCluster } from 'vue3-google-map'
 
 export default {
+
+    components: { GoogleMap, Marker, MarkerCluster },
+
+    data() {
+        return {
+            date: null,
+            locations: [
+                { lat: 39.89979826448187, lng: 10.892903923808237 },
+                { lat: 51.32648231820734, lng: 18.029571802640568 },
+                { lat: 58.5705351552613, lng: 15.041293964508027 },
+            ]
+        };
+    }
 }
 </script>
 
-<style scoped>
-
-.container {
-    display: flex;
-    /* user-select: none; */
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-iframe {
-     margin: 25px auto;
-}
-
-.content {
-    width: 100%;
-    position: relative;
-}
-
-h1 {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    margin-top: 3%;
-}
-</style> -->
-
-
-<template>
-
-    <VueDatePicker 
-        v-model="date"
-        :year-range="[1939, 1945]"
-        month-name-format="long"
-        :enable-time-picker="false"
-        
-        input-class-name="dp-custom-input"
-        menu-class-name="dp-custom-menu"
-    >
-    </VueDatePicker>
-
-</template>
-  
-  <script>
-  import VueDatePicker from '@vuepic/vue-datepicker';
-  import '@vuepic/vue-datepicker/dist/main.css'
-  import { ref } from 'vue';
-
-  const date = ref((new Date(1939, new Date().getMonth(), new Date().getDate())));
-  
-  
-  export default {
-    components: { VueDatePicker },
-    data() {
-      return {
-        date: null,
-      };
-    },
-    watch: {
-        date(val) {
-            console.log(val.toUTCString())
-        }
-    }
-  }
-  </script>
-
-
 <style>
 
-.dp-custom-input {
-    background: transparent;
-    border: none;
-    border: 1px solid;
-    border-radius: 0;
-}
 
-.dp-custom-menu {
-    font-family: 'Courier New', Courier, monospace;
-    --dp-font-family: 'Courier New', Courier, monospace;
-}
-
-:root {
-    --dp-font-family: 'Courier New', Courier, monospace;
-    --dp-font-size: 16px;
-    /* --dp-cell-size: 45px; */
-}
 
 </style>
