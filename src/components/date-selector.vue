@@ -4,7 +4,7 @@
   <!-- LOGO -->
   <img
     class="logo"
-    @click="this.$router.push(`/${this.$store.state.selectedDate}`)"
+    @click="this.$router.push(`/`)"
     src="/ww2-on-this-day-logo.png"
     alt="logo"
   />
@@ -58,15 +58,8 @@ import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
   components: { VueDatePicker },
-  created() {
-      this.updateDate()
-  },
   data() {
-    // const [year, month, day] = this.$route.params.datestring.split('-')
-    return {
-      // selectedDate: `${year}-${month}-${day}`,
-      selectedDate: this.$route.params.datestring
-    }
+    return {}
   },
   methods: {
     moveDay(num) {
@@ -79,40 +72,16 @@ export default {
 
       this.selectedDate = changedDate
     },
-
-    // updateDate() {
-    //   console.log(this.$route.params.datestring.split('-'))
-
-    //   const [ year, month, day ] = this.$route.params.datestring.split('-')
-    //   const date = new Date(+year, +month - 1, +day)
-    //   // this.$store.dispatch('changeDate', date)
-    //   this.$store.state.selectedDate = date
-    //   this.$store.dispatch('changeDate', date)
-    // },
-
-    updateDate() {
-      // IF NO DATE, GO TO TODAYS DATE 1939
-      if (this.selectedDate === undefined) {
-
-        this.selectedDate = this.$store.getters.getTodaysDate()
-        this.$store.dispatch('changeDate', this.selectedDate)
-
-      } 
-      // ELSE GO TO DATE PICKER DATE
-      else {
-
-        // this.$store.state.selectedDate = this.selectedDate
-        this.$store.dispatch('changeDate', this.selectedDate)
-
-      }
-
-      this.$router.push(`/${this.selectedDate}`)
-    },
-
   },
-  watch: {
-    selectedDate() {
-      this.updateDate()
+
+  computed: {
+    selectedDate: {
+      get() {
+        return this.$store.state.selectedDate
+      },
+      set(value) {
+        this.$store.dispatch('changeDate', value)
+      }
     }
   },
 }

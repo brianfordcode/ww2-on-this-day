@@ -2,7 +2,7 @@
   
     <img
       class="logo"
-      @click="this.$router.push(`/${this.$store.state.selectedDate}`)"
+      @click="this.$router.push(`/`)"
       src="/ww2-on-this-day-logo.png"
       alt="logo"
     />

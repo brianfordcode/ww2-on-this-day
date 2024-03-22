@@ -2,7 +2,10 @@ import { createStore } from 'vuex'
 
 // FIREBASE
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, query, collection, where } from "firebase/firestore"; 
+import { getFirestore, getDocs, query, collection, where } from "firebase/firestore";
+import router from '../router/index.js'
+
+
 
 
 // REAL CREDENTIALS
@@ -38,42 +41,28 @@ const db = getFirestore();
 //   return year + '-' + month + '-' + day
 // }
 
+function getTodaysDate() {
+  const d = new Date()
+  const year = '1939'
+  const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
+  const day = (d.getDate() < 10 ? '0' : '') + (d.getDate())
+  const todaysDate = year + '-' + month + '-' + day
+  return todaysDate
+}
+
 const store = createStore({
   state() {
-    return {
-      selectedDate: '',
+    const date = window.location.pathname.slice(1)
+    // TODO: ADD VALIDATION ON DATE BEFORE USE
+    return { 
+      selectedDate: date || getTodaysDate(),
       events: [],
     }
   },
   getters: {
-    // eventsOnDay: (state, getters) => (year, month, day) => {
-    //   const eventsOnDay = []
-    //   // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
-    //   month = (month < 10 ? '0' : '') + (month + 1)
-    //   day = (day < 10 ? '0' : '') + day
-    //   Object
-    //     .entries(state.events)
-    //     .forEach(entry =>  {
-    //       const [ eventId, event ] = entry
-    //       if (event.date === `${year}-${month}-${day}` && event.published === true) {
-    //         eventsOnDay.push(event)
-    //       }
-    //     })
-    //     return eventsOnDay
-    // },
-    getTodaysDate: () => (moveDay) => {
-      const d = new Date()
-      const year = '1939'
-      const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
-      const day = (d.getDate() < 10 ? '0' : '') + (d.getDate() + (moveDay ? moveDay : 0))
-      const todaysDate = year + '-' + month + '-' + day
-      return todaysDate
-    },
+
     eventsOnDay: (state, getters) => () => {
       const eventsOnDay = []
-      // // MONTHS OFFSET BY 1, IF 1 DIGIT ADD 0 TO BEGINNING
-      // month = (month < 10 ? '0' : '') + (month + 1)
-      // day = (day < 10 ? '0' : '') + day
       Object
         .entries(state.events)
         .forEach(entry =>  {
@@ -91,24 +80,16 @@ const store = createStore({
     },
     loadJSONFiles(state, data) {
       state.events = data
-      // console.log(state.events)
     },
 
   },
   actions: {
     changeDate(context, dateSelectedFromDateSelector) {
       context.commit('changeDate', dateSelectedFromDateSelector)
+      router.push(`/${dateSelectedFromDateSelector}`)
+      
     },
 
-    // async loadJSONFiles(context) {
-    //   const date = formattedDate(context.state.selectedDate)
-    //   const q = query(collection(db, "submitted-events"), where("date", "==", date))
-    //   const querySnapshot = await getDocs(q);
-    //   const events = []
-    //   querySnapshot.forEach(doc => events.push(doc.data()))
-    //   context.commit('loadJSONFiles', events)
-
-    // }
     async loadJSONFiles(context) {
       const date = context.state.selectedDate
       const q = query(collection(db, "submitted-events"), where("date", "==", date))
@@ -119,6 +100,15 @@ const store = createStore({
 
     }
   },
+})
+
+router.afterEach((to, from) => {
+  console.log('router', to, from)
+  if (to.params.datestring !== store.state.selectedDate) {
+    store.dispatch('changeDate', to.params.datestring)
+  }
+  store.dispatch('loadJSONFiles')
+
 })
 
 export default store

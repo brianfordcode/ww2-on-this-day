@@ -4,10 +4,4 @@ import router from './router'
 import store from './store'
 
 
-
-watch(() => store.state.selectedDate, function() {
-    store.dispatch('loadJSONFiles')
-});
-
-
 createApp(App).use(store).use(router).mount('#app')

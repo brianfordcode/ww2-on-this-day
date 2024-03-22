@@ -1,12 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
+
+function getTodaysDate() {
+  const d = new Date()
+  const year = '1939'
+  const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
+  const day = (d.getDate() < 10 ? '0' : '') + (d.getDate())
+  const todaysDate = year + '-' + month + '-' + day
+  return todaysDate
+}
+
 const routes = [
   {
     path: '/',
-    // redirect: `1939-${new Date().getMonth()+1}-${new Date().getDate()}`
-    // redirect: '1939-03-17',
-    
+    redirect: getTodaysDate(),
     name: 'Home',
     component: Home,
     meta: {
