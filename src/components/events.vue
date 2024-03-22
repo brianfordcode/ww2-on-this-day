@@ -4,6 +4,7 @@
 
     <!-- MAIN VW PAGE -->
     <div v-if="$store.state.loading">loading</div>
+    <div v-else-if="$store.getters.eventsOnDay().length === 0" style="">no events</div>
 
     <div
         v-else
@@ -33,12 +34,9 @@
     
                 <!-- DATE -->
                 <div class="event-date">
-                        <!-- <p>{{ this.$store.state.selectedDate.toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p> -->
-                        <!-- <p>{{ new Date(this.$store.state.selectedDate).toLocaleDateString('en-us', {month:"long", day:"numeric", year: "numeric"}) }}</p> -->
                         <p>{{ new Date(new Date(this.$store.state.selectedDate).setDate(new Date(this.$store.state.selectedDate).getDate() + 1)).toDateString() }}</p>
                         <p style="font-size: 12px">{{ todaysEvents.indexOf(event)+1 }} of {{ todaysEvents.length }}</p>
                 </div>
-
 
                 <!-- PICTURE -->
                 <eventPic class="event-pic"
@@ -89,11 +87,16 @@ export default {
     methods: {
 
         startDrag(e) {
+            if (!this.$refs.mainContainer) return
+
+
             this.dragging = true
             this.lastX = e.clientX
         },
 
         mouseMove(e) {
+            if (!this.$refs.mainContainer) return
+            
             const changeInX = e.clientX - this.lastX
 
             if (this.dragging) {
@@ -104,7 +107,8 @@ export default {
         },
 
         endDrag() {
-            
+            if (!this.$refs.mainContainer) return
+
             this.dragging = false
             const tWidth = this.$refs.eventContainer.offsetWidth
             const mWidth = this.$refs.mainContainer.offsetWidth
@@ -121,14 +125,11 @@ export default {
         return {
             dragging: false,
             position: 0,
-            // date: '2019-01-01'
         }
     },
     computed: {
         todaysEvents() {
-            // return this.$store.getters.eventsOnDay(this.$store.state.selectedDate.getFullYear(), this.$store.state.selectedDate.getMonth(), this.$store.state.selectedDate.getDate())
             return this.$store.getters.eventsOnDay()
-            // return (this.$store.state.events)
         },
     }
 }
