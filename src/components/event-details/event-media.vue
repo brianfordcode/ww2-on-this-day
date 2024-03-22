@@ -52,6 +52,10 @@ export default {
 
 <style scoped>
 
+.all-media-container {
+    padding: 15px;
+}
+
 .media-container {
     display: flex;
     flex-wrap: wrap;

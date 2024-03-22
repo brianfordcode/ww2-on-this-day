@@ -3,8 +3,8 @@
     <!-- CAROUSEL -->
 
     <!-- MAIN VW PAGE -->
-    <div v-if="$store.state.loading">loading</div>
-    <div v-else-if="$store.getters.eventsOnDay().length === 0" style="">no events</div>
+    <div v-if="$store.state.loading"></div>
+    <div class="no-events event" v-else-if="$store.getters.eventsOnDay().length === 0" style="">There are no events on {{ new Date(new Date(this.$store.state.selectedDate).setDate(new Date(this.$store.state.selectedDate).getDate() + 1)).toDateString() }}.</div>
 
     <div
         v-else
@@ -39,25 +39,16 @@
                 </div>
 
                 <!-- PICTURE -->
-                <eventPic class="event-pic"
-                    :event="event"
-                />
+                <eventPic :event="event"/>
                 
                 <!-- TEXT -->
-                <p class="event-title">
-                    {{ event.title }}
-                </p>
+                <p class="event-title">{{ event.title }}</p>
                 
                 <!-- MAP -->
-                <eventMap class="event-map"
-                    v-if="event.location.coordinates"
-                    :event="event"
-                />
+                <eventMap :event="event"/>
 
                 <!-- MEDIA -->
-                <eventMedia class="event-media"
-                    :event="event"
-                />
+                <eventMedia :event="event"/>
             
             </div> 
 
@@ -85,15 +76,12 @@ export default {
         window.removeEventListener('mouseup', this.endDrag)
     },
     methods: {
-
         startDrag(e) {
             if (!this.$refs.mainContainer) return
-
 
             this.dragging = true
             this.lastX = e.clientX
         },
-
         mouseMove(e) {
             if (!this.$refs.mainContainer) return
             
@@ -103,9 +91,7 @@ export default {
                 this.position += changeInX
                 this.lastX = e.clientX
             }
-
         },
-
         endDrag() {
             if (!this.$refs.mainContainer) return
 
@@ -177,10 +163,6 @@ export default {
     margin: 10px auto;
 }
 
-.event-media {
-    margin: 15px 15px;
-}
-
 .dragging {
     cursor: grabbing;
 }
@@ -189,11 +171,10 @@ export default {
     transition: 0.20s transform ease-out;
 }
 
-@media screen and (max-width: 450px) {
-
-    .event {
-        width: 90vw;
-    }
+.no-events {
+    margin: 50px auto;
+    padding: 20px;
+    width: max-content;
 }
 
 </style>

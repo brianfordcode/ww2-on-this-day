@@ -1,7 +1,7 @@
 <template>
 
     <iframe
-        v-if="event.location"
+        v-if="event.location && event.location.coordinates"
         style="border:0; margin: 0 auto; height: 210px; width: 90%; "
         loading="lazy"
         allowfullscreen
