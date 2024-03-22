@@ -40,7 +40,6 @@
   <p @click="moveDay(1)" style="font-size: 30px; cursor: pointer; margin: 5px; user-select: none;">></p>
 
   <div class="about-contact">
-    <!-- <p style="font-size: 20px;" @click="selectCurrentDate">Today</p> -->
     <router-link to="/about">About</router-link>
     <router-link to="/contact">Contact</router-link>
   </div>

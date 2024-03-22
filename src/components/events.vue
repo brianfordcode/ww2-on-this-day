@@ -3,7 +3,10 @@
     <!-- CAROUSEL -->
 
     <!-- MAIN VW PAGE -->
+    <div v-if="$store.state.loading">loading</div>
+
     <div
+        v-else
         ref="mainContainer"
         class="main-container"
         @mousedown="startDrag"

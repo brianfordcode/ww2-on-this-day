@@ -34,13 +34,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
-// const formattedDate = d => {
-//   const year = d.getFullYear()
-//   const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
-//   const day = (d.getDate() < 10 ? '0' : '') + d.getDate()
-//   return year + '-' + month + '-' + day
-// }
-
 function getTodaysDate() {
   const d = new Date()
   const year = '1939'
@@ -57,6 +50,7 @@ const store = createStore({
     return { 
       selectedDate: date || getTodaysDate(),
       events: [],
+      loading: false,
     }
   },
   getters: {
@@ -81,16 +75,20 @@ const store = createStore({
     loadJSONFiles(state, data) {
       state.events = data
     },
+    loading(state, value) {
+      state.loading = value
+    }
 
   },
   actions: {
     changeDate(context, dateSelectedFromDateSelector) {
       context.commit('changeDate', dateSelectedFromDateSelector)
       router.push(`/${dateSelectedFromDateSelector}`)
-      
     },
 
     async loadJSONFiles(context) {
+      context.commit('loading', true)
+
       const date = context.state.selectedDate
       const q = query(collection(db, "submitted-events"), where("date", "==", date))
       const querySnapshot = await getDocs(q);
@@ -98,17 +96,18 @@ const store = createStore({
       querySnapshot.forEach(doc => events.push(doc.data()))
       context.commit('loadJSONFiles', events)
 
+      context.commit('loading', false)
     }
   },
 })
 
 router.afterEach((to, from) => {
-  console.log('router', to, from)
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(to.params.datestring)) return
+
   if (to.params.datestring !== store.state.selectedDate) {
     store.dispatch('changeDate', to.params.datestring)
   }
   store.dispatch('loadJSONFiles')
-
 })
 
 export default store
