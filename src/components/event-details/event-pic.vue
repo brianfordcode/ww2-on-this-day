@@ -1,13 +1,13 @@
 <template>
     <div class="event-pic-container" v-if="event.mainPicture">
-        <!-- <a :href="event.mainPicture" target="_blank" style="position: absolute; bottom: 0px">Xasdfasdf</a> -->
+        <a :href="event.mainPicture" target="_blank">
         <img
             class="event-picture"
             :src="event.mainPicture"
             :alt="event.mainPicture"
             draggable="false"
         />
-       
+       </a>
     </div>
     
 

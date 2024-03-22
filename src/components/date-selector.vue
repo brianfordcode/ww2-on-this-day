@@ -12,9 +12,9 @@
   <!-- DATE SELECTOR -->
   <!-- <input class="date-selector" type="date" v-model="selectedDate" min="1939-01-01" max="1945-12-31"/> -->
       <!-- MOVE BACK ONE DAY -->
-<p @click="moveDay(-1)" style="font-size: 30px; cursor: pointer; margin: 5px;"><</p>
+<p @click="moveDay(-1)" style="font-size: 30px; cursor: pointer; margin: 5px; user-select: none;"><</p>
 
-<VueDatePicker 
+<VueDatePicker
     v-model="selectedDate"
     :year-range="[1939, 1945]"
     month-name-format="long"
@@ -37,7 +37,7 @@
   </VueDatePicker>    
 
   <!-- MOVE FORWARD ONE DAY -->
-  <p @click="moveDay(1)" style="font-size: 30px; cursor: pointer; margin: 5px;">></p>
+  <p @click="moveDay(1)" style="font-size: 30px; cursor: pointer; margin: 5px; user-select: none;">></p>
 
   <div class="about-contact">
     <!-- <p style="font-size: 20px;" @click="selectCurrentDate">Today</p> -->

@@ -9,7 +9,7 @@
         <Marker
             v-for="(location, i) in locations"
             :key="i"
-            :options="{ position: location, label: `${i+1}`, }"
+            :options="{ position: location, label: `${i+1}` }"
         /> 
     </GoogleMap>
 

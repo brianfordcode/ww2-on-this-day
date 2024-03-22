@@ -18,7 +18,7 @@
                 'dragging': dragging
             }"
             :style="{
-                transform: `translateX(${ position }px)`
+                transform: `translateX(${ position }px)`,
             }"
         >
             <!-- INDIVIDUAL EVENTS  -->
