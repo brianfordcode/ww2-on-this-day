@@ -169,25 +169,13 @@ export default {
 .event-date {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin: 5px 15px;
-}
-
-.event-pic {
-    margin: 0 auto;
 }
 
 .event-title {
     width: 90%;
     margin: 10px auto;
 }
-
-/* .event-map {
-    margin: 0 auto;
-    height: 200px;
-    width: 90%;
-    border: 0;
-} */
 
 .event-media {
     margin: 15px 15px;

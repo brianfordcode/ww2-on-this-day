@@ -27,8 +27,8 @@ export default {
 
 <style scoped>
 .event-pic-container {
-    /* height: 180px; */
     width: 90%;
+    margin: 0 auto;
     position: relative;
 }
 

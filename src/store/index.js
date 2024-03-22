@@ -5,9 +5,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, query, collection, where } from "firebase/firestore";
 import router from '../router/index.js'
 
-
-
-
 // REAL CREDENTIALS
 const firebaseConfig = {
   apiKey: "AIzaSyBS1sZtXMnh5xFwJnRIoGCSwCiDymKO2VI",
