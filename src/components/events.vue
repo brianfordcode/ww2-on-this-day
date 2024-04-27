@@ -3,7 +3,7 @@
     <!-- CAROUSEL -->
 
     <!-- MAIN VW PAGE -->
-    <div v-if="$store.state.loading"></div>
+    <div style="padding: 20px;" v-if="$store.state.loading">Getting Events...</div>
     <div class="no-events event" v-else-if="$store.getters.eventsOnDay().length === 0" style="">There are no events on {{ new Date(new Date(this.$store.state.selectedDate).setDate(new Date(this.$store.state.selectedDate).getDate() + 1)).toDateString() }}.</div>
 
     <div
@@ -30,6 +30,7 @@
                 v-for="event in todaysEvents"
                 :key="event"
                 class="event"
+                @click="goToLink"
             >
     
                 <!-- DATE -->
@@ -42,7 +43,9 @@
                 <eventPic :event="event"/>
                 
                 <!-- TEXT -->
-                <p class="event-title">{{ event.title }}</p>
+                <!-- <p class="event-title"> {{ event.title }} </p> -->
+
+                <p class="event-title" v-html="formatWithKeywords(event.title, event.keywords)"></p>
                 
                 <!-- MAP -->
                 <eventMap :event="event"/>
@@ -106,6 +109,23 @@ export default {
                 this.position = Math.max(mWidth - tWidth, this.position)
             }
         },
+        formatWithKeywords(text, keywords) {
+            let formattedText = text;
+            keywords.forEach(keyword => {
+            const regex = new RegExp(`\\b${keyword}\\b`, "gi");
+            formattedText = formattedText.replace(
+                regex,
+                `<span class="keyword" style="color: blue; cursor: pointer;">${keyword}</span>`
+                );
+            });
+            return formattedText;
+        },
+        goToLink(event) {
+            if (event.target.classList.contains("keyword")) {
+                const keyword = event.target.textContent;
+                window.open(`https://www.google.com/search?q=${keyword}`);
+            }
+        }
     },
     data() {
         return {
@@ -124,9 +144,12 @@ export default {
 
 <style scoped>
 
+.keyword {
+    color: blue
+}
+
 .main-container {
     overflow-x: scroll;
-    user-select: none;
     position: relative;
 }
 
