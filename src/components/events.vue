@@ -3,6 +3,7 @@
     <!-- CAROUSEL -->
 
     <!-- MAIN VW PAGE -->
+    <!-- test -->
     <div style="padding: 20px;" v-if="$store.state.loading">Getting Events...</div>
     <div class="no-events event" v-else-if="$store.getters.eventsOnDay().length === 0" style="">There are no events on {{ new Date(new Date(this.$store.state.selectedDate).setDate(new Date(this.$store.state.selectedDate).getDate() + 1)).toDateString() }}.</div>
 
