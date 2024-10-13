@@ -5,8 +5,8 @@ import Home from '../views/Home.vue'
 function getTodaysDate() {
   const d = new Date()
   const year = '1939'
-  const month = (d.getMonth() < 10 ? '0' : '') + (d.getMonth() + 1)
-  const day = (d.getDate() < 10 ? '0' : '') + (d.getDate())
+  const month = (d.getMonth() < 9 ? '0' : '') + (d.getMonth() + 1)
+  const day = (d.getDate() < 9 ? '0' : '') + (d.getDate())
   const todaysDate = year + '-' + month + '-' + day
   return todaysDate
 }
